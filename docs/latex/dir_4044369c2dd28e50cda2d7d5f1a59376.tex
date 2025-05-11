@@ -1,0 +1,82 @@
+\doxysection{node\+\_\+modules/bson/vendor/text-\/encoding Directory Reference}
+\hypertarget{dir_4044369c2dd28e50cda2d7d5f1a59376}{}\label{dir_4044369c2dd28e50cda2d7d5f1a59376}\index{node\_modules/bson/vendor/text-\/encoding Directory Reference@{node\_modules/bson/vendor/text-\/encoding Directory Reference}}
+\doxysubsubsection*{Directories}
+\begin{DoxyCompactItemize}
+\item 
+directory \mbox{\hyperlink{dir_2b9551e0981ab4c95180c5e8d5cbcacf}{lib}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is a polyfill for the \href{https://encoding.spec.whatwg.org/}{\texttt{ Encoding Living Standard}} API for the Web, allowing encoding and decoding of textual data to and from Typed Array buffers for binary data in Java\+Script.
+
+By default it adheres to the spec and does not support {\itshape encoding} to legacy encodings, only {\itshape decoding}. It is also implemented to match the specification\textquotesingle{}s algorithms, rather than for performance. The intended use is within Web pages, so it has no dependency on server frameworks or particular module schemes.
+
+Basic examples and tests are included.\hypertarget{README.md_autotoc_md562}{}\doxysubsubsection{\texorpdfstring{Install}{Install}}\label{README.md_autotoc_md562}
+There are a few ways you can get and use the {\ttfamily text-\/encoding} library.\hypertarget{README.md_autotoc_md563}{}\doxysubsubsection{\texorpdfstring{HTML Page Usage}{HTML Page Usage}}\label{README.md_autotoc_md563}
+Clone the repo and include the files directly\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<!-\/-\/\ Required\ for\ non-\/UTF\ encodings\ -\/-\/>}
+\DoxyCodeLine{<script\ src="{}encoding-\/indexes.js"{}></script>}
+\DoxyCodeLine{<script\ src="{}encoding.js"{}></script>}
+
+\end{DoxyCode}
+
+
+This is the only use case the developer cares about. If you want those fancy module and/or package manager things that are popular these days you should probably use a different library.\hypertarget{README.md_autotoc_md564}{}\doxysubsubsubsection{\texorpdfstring{Package Managers}{Package Managers}}\label{README.md_autotoc_md564}
+The package is published to {\bfseries{npm}} and {\bfseries{bower}} as {\ttfamily text-\/encoding}. Use through these is not really supported, since they aren\textquotesingle{}t used by the developer of the library. Using {\ttfamily require()} in interesting ways probably breaks. Patches welcome, as long as they don\textquotesingle{}t break the basic use of the files via {\ttfamily \texorpdfstring{$<$}{<}script\texorpdfstring{$>$}{>}}.\hypertarget{README.md_autotoc_md565}{}\doxysubsubsection{\texorpdfstring{API Overview}{API Overview}}\label{README.md_autotoc_md565}
+Basic Usage
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ uint8array\ =\ new\ TextEncoder().encode(string);}
+\DoxyCodeLine{var\ string\ =\ new\ TextDecoder(encoding).decode(uint8array);}
+
+\end{DoxyCode}
+
+
+Streaming Decode
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ string\ =\ "{}"{},\ decoder\ =\ new\ TextDecoder(encoding),\ buffer;}
+\DoxyCodeLine{while\ (buffer\ =\ next\_chunk())\ \{}
+\DoxyCodeLine{\ \ string\ +=\ decoder.decode(buffer,\ \{stream:true\});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{string\ +=\ decoder.decode();\ //\ finish\ the\ stream}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md566}{}\doxysubsubsection{\texorpdfstring{Encodings}{Encodings}}\label{README.md_autotoc_md566}
+All encodings from the Encoding specification are supported\+:
+
+utf-\/8 ibm866 iso-\/8859-\/2 iso-\/8859-\/3 iso-\/8859-\/4 iso-\/8859-\/5 iso-\/8859-\/6 iso-\/8859-\/7 iso-\/8859-\/8 iso-\/8859-\/8-\/i iso-\/8859-\/10 iso-\/8859-\/13 iso-\/8859-\/14 iso-\/8859-\/15 iso-\/8859-\/16 koi8-\/r koi8-\/u macintosh windows-\/874 windows-\/1250 windows-\/1251 windows-\/1252 windows-\/1253 windows-\/1254 windows-\/1255 windows-\/1256 windows-\/1257 windows-\/1258 x-\/mac-\/cyrillic gb18030 hz-\/gb-\/2312 big5 euc-\/jp iso-\/2022-\/jp shift\+\_\+jis euc-\/kr replacement utf-\/16be utf-\/16le x-\/user-\/defined
+
+(Some encodings may be supported under other names, e.\+g. ascii, iso-\/8859-\/1, etc. See \href{https://encoding.spec.whatwg.org/}{\texttt{ Encoding}} for additional labels for each encoding.)
+
+Encodings other than {\bfseries{utf-\/8}}, {\bfseries{utf-\/16le}} and {\bfseries{utf-\/16be}} require an additional {\ttfamily encoding-\/indexes.\+js} file to be included. It is rather large (596kB uncompressed, 188kB gzipped); portions may be deleted if support for some encodings is not required.\hypertarget{README.md_autotoc_md567}{}\doxysubsubsection{\texorpdfstring{Non-\/\+Standard Behavior}{Non-\/\+Standard Behavior}}\label{README.md_autotoc_md567}
+As required by the specification, only encoding to {\bfseries{utf-\/8}} is supported. If you want to try it out, you can force a non-\/standard behavior by passing the {\ttfamily NONSTANDARD\+\_\+allow\+Legacy\+Encoding} option to Text\+Encoder and a label. For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ uint8array\ =\ new\ TextEncoder(}
+\DoxyCodeLine{\ \ 'windows-\/1252',\ \{\ NONSTANDARD\_allowLegacyEncoding:\ true\ \}).encode(text);}
+
+\end{DoxyCode}
+
+
+But note that the above won\textquotesingle{}t work if you\textquotesingle{}re using the polyfill in a browser that natively supports the Text\+Encoder API natively, since the polyfill won\textquotesingle{}t be used!
+
+You can force the polyfill to be used by using this before the polyfill\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script>}
+\DoxyCodeLine{window.TextEncoder\ =\ window.TextDecoder\ =\ null;}
+\DoxyCodeLine{</script>}
+
+\end{DoxyCode}
+
+
+To support the legacy encodings (which may be stateful), the Text\+Encoder {\ttfamily encode()} method accepts an optional dictionary and {\ttfamily stream} option, e.\+g. {\ttfamily encoder.\+encode(string, \{stream\+: true\});} This is not needed for standard encoding since the input is always in complete code points. 

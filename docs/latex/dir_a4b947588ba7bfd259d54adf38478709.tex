@@ -1,0 +1,32 @@
+\doxysection{node\+\_\+modules/mongodb-\/connection-\/string-\/url Directory Reference}
+\hypertarget{dir_a4b947588ba7bfd259d54adf38478709}{}\label{dir_a4b947588ba7bfd259d54adf38478709}\index{node\_modules/mongodb-\/connection-\/string-\/url Directory Reference@{node\_modules/mongodb-\/connection-\/string-\/url Directory Reference}}
+\doxysubsubsection*{Directories}
+\begin{DoxyCompactItemize}
+\item 
+directory \mbox{\hyperlink{dir_4fdd387797a0ca5128c08f67a1a6d37a}{lib}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Mongo\+DB connection strings, based on the What\+WG URL API
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ ConnectionString\ from\ 'mongodb-\/connection-\/string-\/url';}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ cs\ =\ new\ ConnectionString('mongodb://localhost');}
+\DoxyCodeLine{cs.searchParams.set('readPreference',\ 'secondary');}
+\DoxyCodeLine{console.log(cs.href);\ //\ 'mongodb://localhost/?readPreference=secondary'}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md2471}{}\doxysubsection{\texorpdfstring{Deviations from the What\+WG URL package}{Deviations from the What\+WG URL package}}\label{README.md_autotoc_md2471}
+
+\begin{DoxyItemize}
+\item URL parameters are case-\/insensitive
+\item The {\ttfamily .host}, {\ttfamily .hostname} and {\ttfamily .port} properties cannot be set, and reading them does not return meaningful results (and are typed as {\ttfamily never}in Type\+Script)
+\item The {\ttfamily .hosts} property contains a list of all hosts in the connection string
+\item The {\ttfamily .href} property cannot be set, only read
+\item There is an additional {\ttfamily .is\+SRV} property, set to {\ttfamily true} for {\ttfamily mongodb+srv\+://}
+\item There is an additional {\ttfamily .clone()} utility method on the prototype
+\end{DoxyItemize}\hypertarget{README.md_autotoc_md2472}{}\doxysubsection{\texorpdfstring{LICENSE}{LICENSE}}\label{README.md_autotoc_md2472}
+Apache-\/2.\+0 

@@ -1,0 +1,26 @@
+\doxysection{node\+\_\+modules/@mongodb-\/js/saslprep Directory Reference}
+\hypertarget{dir_5cc97c85fda0329fcb04445ccaba5dbd}{}\label{dir_5cc97c85fda0329fcb04445ccaba5dbd}\index{node\_modules/"@mongodb-\/js/saslprep Directory Reference@{node\_modules/"@mongodb-\/js/saslprep Directory Reference}}
+\doxysubsubsection*{Directories}
+\begin{DoxyCompactItemize}
+\item 
+directory \mbox{\hyperlink{dir_a5ec6c4bf4cd467071a5f42d1e919480}{dist}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+{\itshape Note\+: This is a fork of the original \href{https://www.npmjs.com/package/saslprep}{\texttt{ {\ttfamily saslprep}}} npm package and provides equivalent functionality.}
+
+Stringprep Profile for User Names and Passwords, \href{https://tools.ietf.org/html/rfc4013}{\texttt{ rfc4013}}\hypertarget{readme.md_autotoc_md171}{}\doxysubsubsection{\texorpdfstring{Usage}{Usage}}\label{readme.md_autotoc_md171}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ saslprep\ =\ require('@mongodb-\/js/saslprep');}
+\DoxyCodeLine{}
+\DoxyCodeLine{saslprep('password\(\backslash\)u00AD');\ //\ password}
+\DoxyCodeLine{saslprep('password\(\backslash\)u0007');\ //\ Error:\ prohibited\ character}
+
+\end{DoxyCode}
+\hypertarget{readme.md_autotoc_md172}{}\doxysubsubsection{\texorpdfstring{API}{API}}\label{readme.md_autotoc_md172}
+\hypertarget{readme.md_autotoc_md173}{}\doxysubsubsubsubsection{\texorpdfstring{{\ttfamily saslprep(input\+: String, opts\+: Options)\+: String}}{{\ttfamily saslprep(input\+: String, opts\+: Options)\+: String}}}\label{readme.md_autotoc_md173}
+Normalize user name or password.\hypertarget{readme.md_autotoc_md174}{}\doxysubsubsubsubsection{\texorpdfstring{{\ttfamily Options.\+allow\+Unassigned\+: bool}}{{\ttfamily Options.\+allow\+Unassigned\+: bool}}}\label{readme.md_autotoc_md174}
+A special behavior for unassigned code points, see \href{https://tools.ietf.org/html/rfc4013\#section-2.5}{\texttt{ https\+://tools.\+ietf.\+org/html/rfc4013\#section-\/2.\+5}}. Disabled by default.\hypertarget{readme.md_autotoc_md175}{}\doxysubsection{\texorpdfstring{License}{License}}\label{readme.md_autotoc_md175}
+MIT, 2017-\/2019 (c) Dmitriy Tsvettsikh 

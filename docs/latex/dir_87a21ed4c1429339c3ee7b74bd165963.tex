@@ -1,0 +1,447 @@
+\doxysection{node\+\_\+modules/jsonwebtoken Directory Reference}
+\hypertarget{dir_87a21ed4c1429339c3ee7b74bd165963}{}\label{dir_87a21ed4c1429339c3ee7b74bd165963}\index{node\_modules/jsonwebtoken Directory Reference@{node\_modules/jsonwebtoken Directory Reference}}
+\doxysubsubsection*{Directories}
+\begin{DoxyCompactItemize}
+\item 
+directory \mbox{\hyperlink{dir_8ab6f99bf995e3a2b30cac1781062313}{lib}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Build}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Dependency}}    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Build}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Dependency}}    }\\\cline{1-2}
+\endhead
+\href{http://travis-ci.org/auth0/node-jsonwebtoken}{\texttt{ }}   &\href{https://david-dm.org/auth0/node-jsonwebtoken}{\texttt{ }}   \\\cline{1-2}
+\end{longtabu}
+
+
+An implementation of \href{https://tools.ietf.org/html/rfc7519}{\texttt{ JSON Web Tokens}}.
+
+This was developed against {\ttfamily draft-\/ietf-\/oauth-\/json-\/web-\/token-\/08}. It makes use of \href{https://github.com/brianloveswords/node-jws}{\texttt{ node-\/jws}}\hypertarget{README.md_autotoc_md1976}{}\doxysubsection{\texorpdfstring{Install}{Install}}\label{README.md_autotoc_md1976}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ jsonwebtoken}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md1977}{}\doxysubsection{\texorpdfstring{Migration notes}{Migration notes}}\label{README.md_autotoc_md1977}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/auth0/node-jsonwebtoken/wiki/Migration-Notes:-v8-to-v9}{\texttt{ From v8 to v9}}
+\item \href{https://github.com/auth0/node-jsonwebtoken/wiki/Migration-Notes:-v7-to-v8}{\texttt{ From v7 to v8}}
+\end{DoxyItemize}\hypertarget{README.md_autotoc_md1978}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{README.md_autotoc_md1978}
+\hypertarget{README.md_autotoc_md1979}{}\doxysubsubsubsection{\texorpdfstring{jwt.\+sign(payload, secret\+Or\+Private\+Key, \mbox{[}options, callback\mbox{]})}{jwt.\+sign(payload, secret\+Or\+Private\+Key, \mbox{[}options, callback\mbox{]})}}\label{README.md_autotoc_md1979}
+(Asynchronous) If a callback is supplied, the callback is called with the {\ttfamily err} or the JWT.
+
+(Synchronous) Returns the Json\+Web\+Token as string
+
+{\ttfamily payload} could be an object literal, buffer or string representing valid JSON. \begin{quote}
+{\bfseries{Please {\itshape note} that}} {\ttfamily exp} or any other claim is only set if the payload is an object literal. Buffer or string payloads are not checked for JSON validity. \end{quote}
+
+
+\begin{quote}
+If {\ttfamily payload} is not a buffer or a string, it will be coerced into a string using {\ttfamily JSON.\+stringify}. \end{quote}
+
+
+{\ttfamily secret\+Or\+Private\+Key} is a string (utf-\/8 encoded), buffer, object, or Key\+Object containing either the secret for HMAC algorithms or the PEM encoded private key for RSA and ECDSA. In case of a private key with passphrase an object {\ttfamily \{ key, passphrase \}} can be used (based on \href{https://nodejs.org/api/crypto.html\#crypto_sign_sign_private_key_output_format}{\texttt{ crypto documentation}}), in this case be sure you pass the {\ttfamily algorithm} option. When signing with RSA algorithms the minimum modulus length is 2048 except when the allow\+Insecure\+Key\+Sizes option is set to true. Private keys below this size will be rejected with an error.
+
+{\ttfamily options}\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily algorithm} (default\+: {\ttfamily HS256})
+\item {\ttfamily expires\+In}\+: expressed in seconds or a string describing a time span \href{https://github.com/vercel/ms}{\texttt{ vercel/ms}}. \begin{quote}
+Eg\+: {\ttfamily 60}, {\ttfamily "{}2 days"{}}, {\ttfamily "{}10h"{}}, {\ttfamily "{}7d"{}}. A numeric value is interpreted as a seconds count. If you use a string be sure you provide the time units (days, hours, etc), otherwise milliseconds unit is used by default ({\ttfamily "{}120"{}} is equal to {\ttfamily "{}120ms"{}}). \end{quote}
+
+\item {\ttfamily not\+Before}\+: expressed in seconds or a string describing a time span \href{https://github.com/vercel/ms}{\texttt{ vercel/ms}}. \begin{quote}
+Eg\+: {\ttfamily 60}, {\ttfamily "{}2 days"{}}, {\ttfamily "{}10h"{}}, {\ttfamily "{}7d"{}}. A numeric value is interpreted as a seconds count. If you use a string be sure you provide the time units (days, hours, etc), otherwise milliseconds unit is used by default ({\ttfamily "{}120"{}} is equal to {\ttfamily "{}120ms"{}}). \end{quote}
+
+\item {\ttfamily audience}
+\item {\ttfamily issuer}
+\item {\ttfamily jwtid}
+\item {\ttfamily subject}
+\item {\ttfamily no\+Timestamp}
+\item {\ttfamily header}
+\item {\ttfamily keyid}
+\item {\ttfamily mutate\+Payload}\+: if true, the sign function will modify the payload object directly. This is useful if you need a raw reference to the payload after claims have been applied to it but before it has been encoded into a token.
+\item {\ttfamily allow\+Insecure\+Key\+Sizes}\+: if true allows private keys with a modulus below 2048 to be used for RSA
+\item {\ttfamily allow\+Invalid\+Asymmetric\+Key\+Types}\+: if true, allows asymmetric keys which do not match the specified algorithm. This option is intended only for backwards compatability and should be avoided.
+\end{DoxyItemize}
+
+\begin{quote}
+There are no default values for {\ttfamily expires\+In}, {\ttfamily not\+Before}, {\ttfamily audience}, {\ttfamily subject}, {\ttfamily issuer}. These claims can also be provided in the payload directly with {\ttfamily exp}, {\ttfamily nbf}, {\ttfamily aud}, {\ttfamily sub} and {\ttfamily iss} respectively, but you \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+\_\+can\textquotesingle{}t\+\_\+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} include in both places. \end{quote}
+
+
+Remember that {\ttfamily exp}, {\ttfamily nbf} and {\ttfamily iat} are {\bfseries{Numeric\+Date}}, see related Token Expiration (exp claim)
+
+The header can be customized via the {\ttfamily options.\+header} object.
+
+Generated jwts will include an {\ttfamily iat} (issued at) claim by default unless {\ttfamily no\+Timestamp} is specified. If {\ttfamily iat} is inserted in the payload, it will be used instead of the real timestamp for calculating other things like {\ttfamily exp} given a timespan in {\ttfamily options.\+expires\+In}.
+
+Synchronous Sign with default (HMAC SHA256)
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ jwt\ =\ require('jsonwebtoken');}
+\DoxyCodeLine{var\ token\ =\ jwt.sign(\{\ foo:\ 'bar'\ \},\ 'shhhhh');}
+
+\end{DoxyCode}
+
+
+Synchronous Sign with RSA SHA256 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ sign\ with\ RSA\ SHA256}
+\DoxyCodeLine{var\ privateKey\ =\ fs.readFileSync('private.key');}
+\DoxyCodeLine{var\ token\ =\ jwt.sign(\{\ foo:\ 'bar'\ \},\ privateKey,\ \{\ algorithm:\ 'RS256'\ \});}
+
+\end{DoxyCode}
+
+
+Sign asynchronously 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{jwt.sign(\{\ foo:\ 'bar'\ \},\ privateKey,\ \{\ algorithm:\ 'RS256'\ \},\ function(err,\ token)\ \{}
+\DoxyCodeLine{\ \ console.log(token);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Backdate a jwt 30 seconds 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ older\_token\ =\ jwt.sign(\{\ foo:\ 'bar',\ iat:\ Math.floor(Date.now()\ /\ 1000)\ -\/\ 30\ \},\ 'shhhhh');}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md1980}{}\doxysubsubsubsubsection{\texorpdfstring{Token Expiration (exp claim)}{Token Expiration (exp claim)}}\label{README.md_autotoc_md1980}
+The standard for JWT defines an {\ttfamily exp} claim for expiration. The expiration is represented as a {\bfseries{Numeric\+Date}}\+:
+
+\begin{quote}
+A JSON numeric value representing the number of seconds from 1970-\/01-\/01T00\+:00\+:00Z UTC until the specified UTC date/time, ignoring leap seconds. This is equivalent to the IEEE Std 1003.\+1, 2013 Edition \mbox{[}POSIX.\+1\mbox{]} definition "{}\+Seconds Since the Epoch"{}, in which each day is accounted for by exactly 86400 seconds, other than that non-\/integer values can be represented. See RFC 3339 \mbox{[}RFC3339\mbox{]} for details regarding date/times in general and UTC in particular. \end{quote}
+
+
+This means that the {\ttfamily exp} field should contain the number of seconds since the epoch.
+
+Signing a token with 1 hour of expiration\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{jwt.sign(\{}
+\DoxyCodeLine{\ \ exp:\ Math.floor(Date.now()\ /\ 1000)\ +\ (60\ *\ 60),}
+\DoxyCodeLine{\ \ data:\ 'foobar'}
+\DoxyCodeLine{\},\ 'secret');}
+
+\end{DoxyCode}
+
+
+Another way to generate a token like this with this library is\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{jwt.sign(\{}
+\DoxyCodeLine{\ \ data:\ 'foobar'}
+\DoxyCodeLine{\},\ 'secret',\ \{\ expiresIn:\ 60\ *\ 60\ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//or\ even\ better:}
+\DoxyCodeLine{}
+\DoxyCodeLine{jwt.sign(\{}
+\DoxyCodeLine{\ \ data:\ 'foobar'}
+\DoxyCodeLine{\},\ 'secret',\ \{\ expiresIn:\ '1h'\ \});}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md1981}{}\doxysubsubsubsection{\texorpdfstring{jwt.\+verify(token, secret\+Or\+Public\+Key, \mbox{[}options, callback\mbox{]})}{jwt.\+verify(token, secret\+Or\+Public\+Key, \mbox{[}options, callback\mbox{]})}}\label{README.md_autotoc_md1981}
+(Asynchronous) If a callback is supplied, function acts asynchronously. The callback is called with the decoded payload if the signature is valid and optional expiration, audience, or issuer are valid. If not, it will be called with the error.
+
+(Synchronous) If a callback is not supplied, function acts synchronously. Returns the payload decoded if the signature is valid and optional expiration, audience, or issuer are valid. If not, it will throw the error.
+
+\begin{quote}
+{\bfseries{Warning\+:}} When the token comes from an untrusted source (e.\+g. user input or external requests), the returned decoded payload should be treated like any other user input; please make sure to sanitize and only work with properties that are expected \end{quote}
+
+
+{\ttfamily token} is the Json\+Web\+Token string
+
+{\ttfamily secret\+Or\+Public\+Key} is a string (utf-\/8 encoded), buffer, or Key\+Object containing either the secret for HMAC algorithms, or the PEM encoded public key for RSA and ECDSA. If {\ttfamily jwt.\+verify} is called asynchronous, {\ttfamily secret\+Or\+Public\+Key} can be a function that should fetch the secret or public key. See below for a detailed example
+
+As mentioned in \href{https://github.com/auth0/node-jsonwebtoken/issues/208\#issuecomment-231861138}{\texttt{ this comment}}, there are other libraries that expect base64 encoded secrets (random bytes encoded using base64), if that is your case you can pass `Buffer.\+from(secret, \textquotesingle{}base64')\`{}, by doing this the secret will be decoded using base64 and the token verification will use the original random bytes.
+
+{\ttfamily options}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily algorithms}\+: List of strings with the names of the allowed algorithms. For instance, {\ttfamily \mbox{[}"{}\+HS256"{}, "{}\+HS384"{}\mbox{]}}. \begin{quote}
+If not specified a defaults will be used based on the type of key provided\end{quote}
+
+\item secret -\/ \mbox{[}\textquotesingle{}HS256\textquotesingle{}, \textquotesingle{}HS384\textquotesingle{}, \textquotesingle{}HS512\textquotesingle{}\mbox{]}
+\item rsa -\/ \mbox{[}\textquotesingle{}RS256\textquotesingle{}, \textquotesingle{}RS384\textquotesingle{}, \textquotesingle{}RS512\textquotesingle{}\mbox{]}
+\item ec -\/ \mbox{[}\textquotesingle{}ES256\textquotesingle{}, \textquotesingle{}ES384\textquotesingle{}, \textquotesingle{}ES512\textquotesingle{}\mbox{]}
+\item default -\/ \mbox{[}\textquotesingle{}RS256\textquotesingle{}, \textquotesingle{}RS384\textquotesingle{}, \textquotesingle{}RS512\textquotesingle{}\mbox{]} 
+\end{DoxyItemize}
+\begin{DoxyItemize}
+\item {\ttfamily audience}\+: if you want to check audience ({\ttfamily aud}), provide a value here. The audience can be checked against a string, a regular expression or a list of strings and/or regular expressions. \begin{quote}
+Eg\+: {\ttfamily "{}urn\+:foo"{}}, {\ttfamily /urn\+:f\mbox{[}o\mbox{]}\{2\}/}, {\ttfamily \mbox{[}/urn\+:f\mbox{[}o\mbox{]}\{2\}/, "{}urn\+:bar"{}\mbox{]}} \end{quote}
+
+\item {\ttfamily complete}\+: return an object with the decoded {\ttfamily \{ payload, header, signature \}} instead of only the usual content of the payload.
+\item {\ttfamily issuer} (optional)\+: string or array of strings of valid values for the {\ttfamily iss} field.
+\item {\ttfamily jwtid} (optional)\+: if you want to check JWT ID ({\ttfamily jti}), provide a string value here.
+\item {\ttfamily ignore\+Expiration}\+: if {\ttfamily true} do not validate the expiration of the token.
+\item {\ttfamily ignore\+Not\+Before}...
+\item {\ttfamily subject}\+: if you want to check subject ({\ttfamily sub}), provide a value here
+\item {\ttfamily clock\+Tolerance}\+: number of seconds to tolerate when checking the {\ttfamily nbf} and {\ttfamily exp} claims, to deal with small clock differences among different servers
+\item {\ttfamily max\+Age}\+: the maximum allowed age for tokens to still be valid. It is expressed in seconds or a string describing a time span \href{https://github.com/vercel/ms}{\texttt{ vercel/ms}}. \begin{quote}
+Eg\+: {\ttfamily 1000}, {\ttfamily "{}2 days"{}}, {\ttfamily "{}10h"{}}, {\ttfamily "{}7d"{}}. A numeric value is interpreted as a seconds count. If you use a string be sure you provide the time units (days, hours, etc), otherwise milliseconds unit is used by default ({\ttfamily "{}120"{}} is equal to {\ttfamily "{}120ms"{}}). \end{quote}
+
+\item {\ttfamily clock\+Timestamp}\+: the time in seconds that should be used as the current time for all necessary comparisons.
+\item {\ttfamily nonce}\+: if you want to check {\ttfamily nonce} claim, provide a string value here. It is used on Open ID for the ID Tokens. (\href{https://openid.net/specs/openid-connect-core-1_0.html\#NonceNotes}{\texttt{ Open ID implementation notes}})
+\item {\ttfamily allow\+Invalid\+Asymmetric\+Key\+Types}\+: if true, allows asymmetric keys which do not match the specified algorithm. This option is intended only for backwards compatability and should be avoided.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ verify\ a\ token\ symmetric\ -\/\ synchronous}
+\DoxyCodeLine{var\ decoded\ =\ jwt.verify(token,\ 'shhhhh');}
+\DoxyCodeLine{console.log(decoded.foo)\ //\ bar}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ verify\ a\ token\ symmetric}
+\DoxyCodeLine{jwt.verify(token,\ 'shhhhh',\ function(err,\ decoded)\ \{}
+\DoxyCodeLine{\ \ console.log(decoded.foo)\ //\ bar}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ invalid\ token\ -\/\ synchronous}
+\DoxyCodeLine{try\ \{}
+\DoxyCodeLine{\ \ var\ decoded\ =\ jwt.verify(token,\ 'wrong-\/secret');}
+\DoxyCodeLine{\}\ catch(err)\ \{}
+\DoxyCodeLine{\ \ //\ err}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ invalid\ token}
+\DoxyCodeLine{jwt.verify(token,\ 'wrong-\/secret',\ function(err,\ decoded)\ \{}
+\DoxyCodeLine{\ \ //\ err}
+\DoxyCodeLine{\ \ //\ decoded\ undefined}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ verify\ a\ token\ asymmetric}
+\DoxyCodeLine{var\ cert\ =\ fs.readFileSync('public.pem');\ \ //\ get\ public\ key}
+\DoxyCodeLine{jwt.verify(token,\ cert,\ function(err,\ decoded)\ \{}
+\DoxyCodeLine{\ \ console.log(decoded.foo)\ //\ bar}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ verify\ audience}
+\DoxyCodeLine{var\ cert\ =\ fs.readFileSync('public.pem');\ \ //\ get\ public\ key}
+\DoxyCodeLine{jwt.verify(token,\ cert,\ \{\ audience:\ 'urn:foo'\ \},\ function(err,\ decoded)\ \{}
+\DoxyCodeLine{\ \ //\ if\ audience\ mismatch,\ err\ ==\ invalid\ audience}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ verify\ issuer}
+\DoxyCodeLine{var\ cert\ =\ fs.readFileSync('public.pem');\ \ //\ get\ public\ key}
+\DoxyCodeLine{jwt.verify(token,\ cert,\ \{\ audience:\ 'urn:foo',\ issuer:\ 'urn:issuer'\ \},\ function(err,\ decoded)\ \{}
+\DoxyCodeLine{\ \ //\ if\ issuer\ mismatch,\ err\ ==\ invalid\ issuer}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ verify\ jwt\ id}
+\DoxyCodeLine{var\ cert\ =\ fs.readFileSync('public.pem');\ \ //\ get\ public\ key}
+\DoxyCodeLine{jwt.verify(token,\ cert,\ \{\ audience:\ 'urn:foo',\ issuer:\ 'urn:issuer',\ jwtid:\ 'jwtid'\ \},\ function(err,\ decoded)\ \{}
+\DoxyCodeLine{\ \ //\ if\ jwt\ id\ mismatch,\ err\ ==\ invalid\ jwt\ id}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ verify\ subject}
+\DoxyCodeLine{var\ cert\ =\ fs.readFileSync('public.pem');\ \ //\ get\ public\ key}
+\DoxyCodeLine{jwt.verify(token,\ cert,\ \{\ audience:\ 'urn:foo',\ issuer:\ 'urn:issuer',\ jwtid:\ 'jwtid',\ subject:\ 'subject'\ \},\ function(err,\ decoded)\ \{}
+\DoxyCodeLine{\ \ //\ if\ subject\ mismatch,\ err\ ==\ invalid\ subject}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ alg\ mismatch}
+\DoxyCodeLine{var\ cert\ =\ fs.readFileSync('public.pem');\ //\ get\ public\ key}
+\DoxyCodeLine{jwt.verify(token,\ cert,\ \{\ algorithms:\ ['RS256']\ \},\ function\ (err,\ payload)\ \{}
+\DoxyCodeLine{\ \ //\ if\ token\ alg\ !=\ RS256,\ \ err\ ==\ invalid\ signature}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Verify\ using\ getKey\ callback}
+\DoxyCodeLine{//\ Example\ uses\ https://github.com/auth0/node-\/jwks-\/rsa\ as\ a\ way\ to\ fetch\ the\ keys.}
+\DoxyCodeLine{var\ jwksClient\ =\ require('jwks-\/rsa');}
+\DoxyCodeLine{var\ client\ =\ jwksClient(\{}
+\DoxyCodeLine{\ \ jwksUri:\ 'https://sandrino.auth0.com/.well-\/known/jwks.json'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{function\ getKey(header,\ callback)\{}
+\DoxyCodeLine{\ \ client.getSigningKey(header.kid,\ function(err,\ key)\ \{}
+\DoxyCodeLine{\ \ \ \ var\ signingKey\ =\ key.publicKey\ ||\ key.rsaPublicKey;}
+\DoxyCodeLine{\ \ \ \ callback(null,\ signingKey);}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{jwt.verify(token,\ getKey,\ options,\ function(err,\ decoded)\ \{}
+\DoxyCodeLine{\ \ console.log(decoded.foo)\ //\ bar}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+
+
+{\bfseries{{\itshape }Need to peek into a JWT without verifying it? (Click to expand)}}\begin{adjustwidth}{1em}{0em}
+
+
+\end{adjustwidth}
+\hypertarget{README.md_autotoc_md1982}{}\doxysubsubsubsection{\texorpdfstring{jwt.\+decode(token \mbox{[}, options\mbox{]})}{jwt.\+decode(token \mbox{[}, options\mbox{]})}}\label{README.md_autotoc_md1982}
+(Synchronous) Returns the decoded payload without verifying if the signature is valid.
+
+\begin{quote}
+{\bfseries{Warning\+:}} This will {\bfseries{not}} verify whether the signature is valid. You should {\bfseries{not}} use this for untrusted messages. You most likely want to use {\ttfamily jwt.\+verify} instead. \end{quote}
+
+
+\begin{quote}
+{\bfseries{Warning\+:}} When the token comes from an untrusted source (e.\+g. user input or external request), the returned decoded payload should be treated like any other user input; please make sure to sanitize and only work with properties that are expected \end{quote}
+
+
+{\ttfamily token} is the Json\+Web\+Token string
+
+{\ttfamily options}\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily json}\+: force JSON.\+parse on the payload even if the header doesn\textquotesingle{}t contain {\ttfamily "{}typ"{}\+:"{}\+JWT"{}}.
+\item {\ttfamily complete}\+: return an object with the decoded payload and header.
+\end{DoxyItemize}
+
+Example
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ get\ the\ decoded\ payload\ ignoring\ signature,\ no\ secretOrPrivateKey\ needed}
+\DoxyCodeLine{var\ decoded\ =\ jwt.decode(token);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ get\ the\ decoded\ payload\ and\ header}
+\DoxyCodeLine{var\ decoded\ =\ jwt.decode(token,\ \{complete:\ true\});}
+\DoxyCodeLine{console.log(decoded.header);}
+\DoxyCodeLine{console.log(decoded.payload)}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md1983}{}\doxysubsubsection{\texorpdfstring{Errors \& Codes}{Errors \& Codes}}\label{README.md_autotoc_md1983}
+Possible thrown errors during verification. Error is the first argument of the verification callback.\hypertarget{README.md_autotoc_md1984}{}\doxysubsubsubsection{\texorpdfstring{Token\+Expired\+Error}{Token\+Expired\+Error}}\label{README.md_autotoc_md1984}
+Thrown error if the token is expired.
+
+Error object\+:
+
+
+\begin{DoxyItemize}
+\item name\+: \textquotesingle{}Token\+Expired\+Error\textquotesingle{}
+\item message\+: \textquotesingle{}jwt expired\textquotesingle{}
+\item expired\+At\+: \mbox{[}Exp\+Date\mbox{]}
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{jwt.verify(token,\ 'shhhhh',\ function(err,\ decoded)\ \{}
+\DoxyCodeLine{\ \ if\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ /*}
+\DoxyCodeLine{\ \ \ \ \ \ err\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ name:\ 'TokenExpiredError',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ message:\ 'jwt\ expired',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ expiredAt:\ 1408621000}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ */}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md1985}{}\doxysubsubsubsection{\texorpdfstring{Json\+Web\+Token\+Error}{Json\+Web\+Token\+Error}}\label{README.md_autotoc_md1985}
+Error object\+:
+
+
+\begin{DoxyItemize}
+\item name\+: \textquotesingle{}Json\+Web\+Token\+Error\textquotesingle{}
+\item message\+:
+\begin{DoxyItemize}
+\item \textquotesingle{}invalid token\textquotesingle{} -\/ the header or payload could not be parsed
+\item \textquotesingle{}jwt malformed\textquotesingle{} -\/ the token does not have three components (delimited by a {\ttfamily .})
+\item \textquotesingle{}jwt signature is required\textquotesingle{}
+\item \textquotesingle{}invalid signature\textquotesingle{}
+\item \textquotesingle{}jwt audience invalid. expected\+: \mbox{[}OPTIONS AUDIENCE\mbox{]}\textquotesingle{}
+\item \textquotesingle{}jwt issuer invalid. expected\+: \mbox{[}OPTIONS ISSUER\mbox{]}\textquotesingle{}
+\item \textquotesingle{}jwt id invalid. expected\+: \mbox{[}OPTIONS JWT ID\mbox{]}\textquotesingle{}
+\item \textquotesingle{}jwt subject invalid. expected\+: \mbox{[}OPTIONS SUBJECT\mbox{]}\textquotesingle{}
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{jwt.verify(token,\ 'shhhhh',\ function(err,\ decoded)\ \{}
+\DoxyCodeLine{\ \ if\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ /*}
+\DoxyCodeLine{\ \ \ \ \ \ err\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ name:\ 'JsonWebTokenError',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ message:\ 'jwt\ malformed'}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ */}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md1986}{}\doxysubsubsubsection{\texorpdfstring{Not\+Before\+Error}{Not\+Before\+Error}}\label{README.md_autotoc_md1986}
+Thrown if current time is before the nbf claim.
+
+Error object\+:
+
+
+\begin{DoxyItemize}
+\item name\+: \textquotesingle{}Not\+Before\+Error\textquotesingle{}
+\item message\+: \textquotesingle{}jwt not active\textquotesingle{}
+\item date\+: 2018-\/10-\/04T16\+:10\+:44.\+000Z
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{jwt.verify(token,\ 'shhhhh',\ function(err,\ decoded)\ \{}
+\DoxyCodeLine{\ \ if\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ /*}
+\DoxyCodeLine{\ \ \ \ \ \ err\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ name:\ 'NotBeforeError',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ message:\ 'jwt\ not\ active',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ date:\ 2018-\/10-\/04T16:10:44.000Z}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ */}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md1987}{}\doxysubsubsection{\texorpdfstring{Algorithms supported}{Algorithms supported}}\label{README.md_autotoc_md1987}
+Array of supported algorithms. The following algorithms are currently supported.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ alg Parameter Value   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Digital Signature or MAC Algorithm    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ alg Parameter Value   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Digital Signature or MAC Algorithm    }\\\cline{1-2}
+\endhead
+HS256   &HMAC using SHA-\/256 hash algorithm    \\\cline{1-2}
+HS384   &HMAC using SHA-\/384 hash algorithm    \\\cline{1-2}
+HS512   &HMAC using SHA-\/512 hash algorithm    \\\cline{1-2}
+RS256   &RSASSA-\/\+PKCS1-\/v1\+\_\+5 using SHA-\/256 hash algorithm    \\\cline{1-2}
+RS384   &RSASSA-\/\+PKCS1-\/v1\+\_\+5 using SHA-\/384 hash algorithm    \\\cline{1-2}
+RS512   &RSASSA-\/\+PKCS1-\/v1\+\_\+5 using SHA-\/512 hash algorithm    \\\cline{1-2}
+PS256   &RSASSA-\/\+PSS using SHA-\/256 hash algorithm (only node \texorpdfstring{$^\wedge$}{\string^}6.12.\+0 OR \texorpdfstring{$>$}{>}=8.\+0.\+0)    \\\cline{1-2}
+PS384   &RSASSA-\/\+PSS using SHA-\/384 hash algorithm (only node \texorpdfstring{$^\wedge$}{\string^}6.12.\+0 OR \texorpdfstring{$>$}{>}=8.\+0.\+0)    \\\cline{1-2}
+PS512   &RSASSA-\/\+PSS using SHA-\/512 hash algorithm (only node \texorpdfstring{$^\wedge$}{\string^}6.12.\+0 OR \texorpdfstring{$>$}{>}=8.\+0.\+0)    \\\cline{1-2}
+ES256   &ECDSA using P-\/256 curve and SHA-\/256 hash algorithm    \\\cline{1-2}
+ES384   &ECDSA using P-\/384 curve and SHA-\/384 hash algorithm    \\\cline{1-2}
+ES512   &ECDSA using P-\/521 curve and SHA-\/512 hash algorithm    \\\cline{1-2}
+none   &No digital signature or MAC value included   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{README.md_autotoc_md1988}{}\doxysubsubsection{\texorpdfstring{Refreshing JWTs}{Refreshing JWTs}}\label{README.md_autotoc_md1988}
+First of all, we recommend you to think carefully if auto-\/refreshing a JWT will not introduce any vulnerability in your system.
+
+We are not comfortable including this as part of the library, however, you can take a look at \href{https://gist.github.com/ziluvatar/a3feb505c4c0ec37059054537b38fc48}{\texttt{ this example}} to show how this could be accomplished. Apart from that example there are \href{https://github.com/auth0/node-jsonwebtoken/issues/122}{\texttt{ an issue}} and \href{https://github.com/auth0/node-jsonwebtoken/pull/172}{\texttt{ a pull request}} to get more knowledge about this topic.\hypertarget{README.md_autotoc_md1989}{}\doxysubsection{\texorpdfstring{TODO}{TODO}}\label{README.md_autotoc_md1989}
+
+\begin{DoxyItemize}
+\item X.\+509 certificate chain is not checked
+\end{DoxyItemize}\hypertarget{README.md_autotoc_md1990}{}\doxysubsubsection{\texorpdfstring{Issue Reporting}{Issue Reporting}}\label{README.md_autotoc_md1990}
+If you have found a bug or if you have a feature request, please report them at this repository issues section. Please do not report security vulnerabilities on the public Git\+Hub issue tracker. The \href{https://auth0.com/whitehat}{\texttt{ Responsible Disclosure Program}} details the procedure for disclosing security issues.\hypertarget{README.md_autotoc_md1991}{}\doxysubsubsection{\texorpdfstring{Author}{Author}}\label{README.md_autotoc_md1991}
+\href{https://auth0.com}{\texttt{ Auth0}}\hypertarget{README.md_autotoc_md1992}{}\doxysubsubsection{\texorpdfstring{License}{License}}\label{README.md_autotoc_md1992}
+This project is licensed under the MIT license. See the \mbox{[}LICENSE\mbox{]}(LICENSE) file for more info. 

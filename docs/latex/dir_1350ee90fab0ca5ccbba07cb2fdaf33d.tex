@@ -1,0 +1,121 @@
+\doxysection{node\+\_\+modules/jwa Directory Reference}
+\hypertarget{dir_1350ee90fab0ca5ccbba07cb2fdaf33d}{}\label{dir_1350ee90fab0ca5ccbba07cb2fdaf33d}\index{node\_modules/jwa Directory Reference@{node\_modules/jwa Directory Reference}}
+
+
+\doxysubsection{Detailed Description}
+A \href{http://tools.ietf.org/id/draft-ietf-jose-json-web-algorithms-08.html}{\texttt{ JSON Web Algorithms}} implementation focusing (exclusively, at this point) on the algorithms necessary for \href{http://self-issued.info/docs/draft-ietf-jose-json-web-signature.html}{\texttt{ JSON Web Signatures}}.
+
+This library supports all of the required, recommended and optional cryptographic algorithms for JWS\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ alg Parameter Value   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Digital Signature or MAC Algorithm    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ alg Parameter Value   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Digital Signature or MAC Algorithm    }\\\cline{1-2}
+\endhead
+HS256   &HMAC using SHA-\/256 hash algorithm    \\\cline{1-2}
+HS384   &HMAC using SHA-\/384 hash algorithm    \\\cline{1-2}
+HS512   &HMAC using SHA-\/512 hash algorithm    \\\cline{1-2}
+RS256   &RSASSA using SHA-\/256 hash algorithm    \\\cline{1-2}
+RS384   &RSASSA using SHA-\/384 hash algorithm    \\\cline{1-2}
+RS512   &RSASSA using SHA-\/512 hash algorithm    \\\cline{1-2}
+PS256   &RSASSA-\/\+PSS using SHA-\/256 hash algorithm    \\\cline{1-2}
+PS384   &RSASSA-\/\+PSS using SHA-\/384 hash algorithm    \\\cline{1-2}
+PS512   &RSASSA-\/\+PSS using SHA-\/512 hash algorithm    \\\cline{1-2}
+ES256   &ECDSA using P-\/256 curve and SHA-\/256 hash algorithm    \\\cline{1-2}
+ES384   &ECDSA using P-\/384 curve and SHA-\/384 hash algorithm    \\\cline{1-2}
+ES512   &ECDSA using P-\/521 curve and SHA-\/512 hash algorithm    \\\cline{1-2}
+none   &No digital signature or MAC value included   \\\cline{1-2}
+\end{longtabu}
+
+
+Please note that PS\texorpdfstring{$\ast$}{*} only works on Node 6.\+12+ (excluding 7.\+x).\hypertarget{README.md_autotoc_md1994}{}\doxysubsection{\texorpdfstring{Requirements}{Requirements}}\label{README.md_autotoc_md1994}
+In order to run the tests, a recent version of Open\+SSL is required. {\bfseries{The version that comes with OS X (Open\+SSL 0.\+9.\+8r 8 Feb 2011) is not recent enough}}, as it does not fully support ECDSA keys. You\textquotesingle{}ll need to use a version \texorpdfstring{$>$}{>} 1.\+0.\+0; I tested with Open\+SSL 1.\+0.\+1c 10 May 2012.\hypertarget{README.md_autotoc_md1995}{}\doxysubsection{\texorpdfstring{Testing}{Testing}}\label{README.md_autotoc_md1995}
+To run the tests, do
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ test}
+
+\end{DoxyCode}
+
+
+This will generate a bunch of keypairs to use in testing. If you want to generate new keypairs, do {\ttfamily make clean} before running {\ttfamily npm test} again.\hypertarget{README.md_autotoc_md1996}{}\doxysubsubsection{\texorpdfstring{Methodology}{Methodology}}\label{README.md_autotoc_md1996}
+I spawn {\ttfamily openssl dgst -\/sign} to test Open\+SSL sign → JS verify and {\ttfamily openssl dgst -\/verify} to test JS sign → Open\+SSL verify for each of the RSA and ECDSA algorithms.\hypertarget{README.md_autotoc_md1997}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{README.md_autotoc_md1997}
+\hypertarget{README.md_autotoc_md1998}{}\doxysubsubsection{\texorpdfstring{jwa(algorithm)}{jwa(algorithm)}}\label{README.md_autotoc_md1998}
+Creates a new {\ttfamily jwa} object with {\ttfamily sign} and {\ttfamily verify} methods for the algorithm. Valid values for algorithm can be found in the table above (`\textquotesingle{}HS256'{\ttfamily ,}\textquotesingle{}HS384\textquotesingle{}{\ttfamily , etc) and are case-\/insensitive. Passing an invalid algorithm value will throw a}Type\+Error\`{}.\hypertarget{README.md_autotoc_md1999}{}\doxysubsubsection{\texorpdfstring{jwa\#sign(input, secret\+Or\+Private\+Key)}{jwa\#sign(input, secret\+Or\+Private\+Key)}}\label{README.md_autotoc_md1999}
+Sign some input with either a secret for HMAC algorithms, or a private key for RSA and ECDSA algorithms.
+
+If input is not already a string or buffer, {\ttfamily JSON.\+stringify} will be called on it to attempt to coerce it.
+
+For the HMAC algorithm, {\ttfamily secret\+Or\+Private\+Key} should be a string or a buffer. For ECDSA and RSA, the value should be a string representing a PEM encoded {\bfseries{private}} key.
+
+Output \href{http://en.wikipedia.org/wiki/Base64\#URL_applications}{\texttt{ base64url}} formatted. This is for convenience as JWS expects the signature in this format. If your application needs the output in a different format, \href{https://github.com/brianloveswords/node-jwa/issues}{\texttt{ please open an issue}}. In the meantime, you can use \href{https://github.com/brianloveswords/base64url}{\texttt{ brianloveswords/base64url}} to decode the signature.
+
+As of nodejs {\itshape v0.\+11.\+8}, SPKAC support was introduce. If your node\+Js version satisfies, then you can pass an object `\{ key\+: '..\textquotesingle{}, passphrase\+: \textquotesingle{}...\textquotesingle{} \}\`{}\hypertarget{README.md_autotoc_md2000}{}\doxysubsubsection{\texorpdfstring{jwa\#verify(input, signature, secret\+Or\+Public\+Key)}{jwa\#verify(input, signature, secret\+Or\+Public\+Key)}}\label{README.md_autotoc_md2000}
+Verify a signature. Returns {\ttfamily true} or {\ttfamily false}.
+
+{\ttfamily signature} should be a base64url encoded string.
+
+For the HMAC algorithm, {\ttfamily secret\+Or\+Public\+Key} should be a string or a buffer. For ECDSA and RSA, the value should be a string represented a PEM encoded {\bfseries{public}} key.\hypertarget{README.md_autotoc_md2001}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{README.md_autotoc_md2001}
+HMAC 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ jwa\ =\ require('jwa');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ hmac\ =\ jwa('HS256');}
+\DoxyCodeLine{const\ input\ =\ 'super\ important\ stuff';}
+\DoxyCodeLine{const\ secret\ =\ 'shhhhhh';}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ signature\ =\ hmac.sign(input,\ secret);}
+\DoxyCodeLine{hmac.verify(input,\ signature,\ secret)\ //\ ===\ true}
+\DoxyCodeLine{hmac.verify(input,\ signature,\ 'trickery!')\ //\ ===\ false}
+
+\end{DoxyCode}
+
+
+With keys 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ fs\ =\ require('fs');}
+\DoxyCodeLine{const\ jwa\ =\ require('jwa');}
+\DoxyCodeLine{const\ privateKey\ =\ fs.readFileSync(\_\_dirname\ +\ '/ecdsa-\/p521-\/private.pem');}
+\DoxyCodeLine{const\ publicKey\ =\ fs.readFileSync(\_\_dirname\ +\ '/ecdsa-\/p521-\/public.pem');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ ecdsa\ =\ jwa('ES512');}
+\DoxyCodeLine{const\ input\ =\ 'very\ important\ stuff';}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ signature\ =\ ecdsa.sign(input,\ privateKey);}
+\DoxyCodeLine{ecdsa.verify(input,\ signature,\ publicKey)\ //\ ===\ true}
+
+\end{DoxyCode}
+ \hypertarget{README.md_autotoc_md2002}{}\doxysubsubsection{\texorpdfstring{License}{License}}\label{README.md_autotoc_md2002}
+MIT
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Copyright\ (c)\ 2013\ Brian\ J.\ Brennan}
+\DoxyCodeLine{}
+\DoxyCodeLine{Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a}
+\DoxyCodeLine{copy\ of\ this\ software\ and\ associated\ documentation\ files\ (the}
+\DoxyCodeLine{"{}Software"{}),\ to\ deal\ in\ the\ Software\ without\ restriction,\ including}
+\DoxyCodeLine{without\ limitation\ the\ rights\ to\ use,\ copy,\ modify,\ merge,\ publish,}
+\DoxyCodeLine{distribute,\ sublicense,\ and/or\ sell\ copies\ of\ the\ Software,\ and\ to}
+\DoxyCodeLine{permit\ persons\ to\ whom\ the\ Software\ is\ furnished\ to\ do\ so,\ subject\ to}
+\DoxyCodeLine{the\ following\ conditions:}
+\DoxyCodeLine{}
+\DoxyCodeLine{The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included}
+\DoxyCodeLine{in\ all\ copies\ or\ substantial\ portions\ of\ the\ Software.}
+\DoxyCodeLine{}
+\DoxyCodeLine{THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS}
+\DoxyCodeLine{OR\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF}
+\DoxyCodeLine{MERCHANTABILITY,\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND}
+\DoxyCodeLine{NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE}
+\DoxyCodeLine{LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION}
+\DoxyCodeLine{OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,\ OUT\ OF\ OR\ IN\ CONNECTION}
+\DoxyCodeLine{WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE\ SOFTWARE.}
+
+\end{DoxyCode}
+ 

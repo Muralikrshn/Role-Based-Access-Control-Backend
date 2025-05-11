@@ -1,0 +1,162 @@
+\doxysection{Napi\+::Property\+Descriptor Class Reference}
+\hypertarget{class_napi_1_1_property_descriptor}{}\label{class_napi_1_1_property_descriptor}\index{Napi::PropertyDescriptor@{Napi::PropertyDescriptor}}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a4ecbadecdded147a5be9d5774c144a8e}\label{class_napi_1_1_property_descriptor_a4ecbadecdded147a5be9d5774c144a8e} 
+using {\bfseries Getter\+Callback} = \mbox{\hyperlink{class_napi_1_1_value}{Napi\+::\+Value}} (\texorpdfstring{$\ast$}{*})(const \mbox{\hyperlink{class_napi_1_1_callback_info}{Napi\+::\+Callback\+Info}}\& info)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a7aebc1f42dd9c382dcd40d973d85a56f}\label{class_napi_1_1_property_descriptor_a7aebc1f42dd9c382dcd40d973d85a56f} 
+using {\bfseries Setter\+Callback} = void (\texorpdfstring{$\ast$}{*})(const \mbox{\hyperlink{class_napi_1_1_callback_info}{Napi\+::\+Callback\+Info}}\& info)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a2d5971898bedf9a4d3377f1b4f34286e}\label{class_napi_1_1_property_descriptor_a2d5971898bedf9a4d3377f1b4f34286e} 
+{\bfseries Property\+Descriptor} (napi\+\_\+property\+\_\+descriptor desc)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_acfd28d5225366e98ee5b91ac171a7ca6}\label{class_napi_1_1_property_descriptor_acfd28d5225366e98ee5b91ac171a7ca6} 
+{\bfseries operator napi\+\_\+property\+\_\+descriptor \&} ()
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a341c8f3deb2e5efa08429413badd0397}\label{class_napi_1_1_property_descriptor_a341c8f3deb2e5efa08429413badd0397} 
+{\bfseries operator const napi\+\_\+property\+\_\+descriptor \&} () const
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a0d4573d1d6f0be6b652ffe2bb2d0b34a}\label{class_napi_1_1_property_descriptor_a0d4573d1d6f0be6b652ffe2bb2d0b34a} 
+{\footnotesize template$<$typename Getter$>$ }\\\mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (const char \texorpdfstring{$\ast$}{*}utf8name, Getter getter, napi\+\_\+property\+\_\+attributes attributes, void \texorpdfstring{$\ast$}{*})
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_ab6e160cdb415ba07e0aded66176af8ea}\label{class_napi_1_1_property_descriptor_ab6e160cdb415ba07e0aded66176af8ea} 
+{\footnotesize template$<$typename Getter$>$ }\\\mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (const std\+::string \&utf8name, Getter getter, napi\+\_\+property\+\_\+attributes attributes, void \texorpdfstring{$\ast$}{*}data)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a0de34e94b9bbad1ccccc3d6b21e3d708}\label{class_napi_1_1_property_descriptor_a0de34e94b9bbad1ccccc3d6b21e3d708} 
+{\footnotesize template$<$typename Getter$>$ }\\\mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (napi\+\_\+value name, Getter getter, napi\+\_\+property\+\_\+attributes attributes, void \texorpdfstring{$\ast$}{*})
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a08ee3dffe6b4321914c50881d4d4fc8a}\label{class_napi_1_1_property_descriptor_a08ee3dffe6b4321914c50881d4d4fc8a} 
+{\footnotesize template$<$typename Getter$>$ }\\\mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (\mbox{\hyperlink{class_napi_1_1_name}{Name}} name, Getter getter, napi\+\_\+property\+\_\+attributes attributes, void \texorpdfstring{$\ast$}{*}data)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_ad0581011e88c3f06edcfef0ac36eb17f}\label{class_napi_1_1_property_descriptor_ad0581011e88c3f06edcfef0ac36eb17f} 
+{\footnotesize template$<$typename Getter, typename Setter$>$ }\\\mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (const char \texorpdfstring{$\ast$}{*}utf8name, Getter getter, Setter setter, napi\+\_\+property\+\_\+attributes attributes, void \texorpdfstring{$\ast$}{*})
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a53c549413a5f743a92d1a2d5282df71f}\label{class_napi_1_1_property_descriptor_a53c549413a5f743a92d1a2d5282df71f} 
+{\footnotesize template$<$typename Getter, typename Setter$>$ }\\\mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (const std\+::string \&utf8name, Getter getter, Setter setter, napi\+\_\+property\+\_\+attributes attributes, void \texorpdfstring{$\ast$}{*}data)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a5d28fa5d829efca03caa1440b68a713d}\label{class_napi_1_1_property_descriptor_a5d28fa5d829efca03caa1440b68a713d} 
+{\footnotesize template$<$typename Getter, typename Setter$>$ }\\\mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (napi\+\_\+value name, Getter getter, Setter setter, napi\+\_\+property\+\_\+attributes attributes, void \texorpdfstring{$\ast$}{*})
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a6126611c83975c6b5379fa11b8cd3ba5}\label{class_napi_1_1_property_descriptor_a6126611c83975c6b5379fa11b8cd3ba5} 
+{\footnotesize template$<$typename Getter, typename Setter$>$ }\\\mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (\mbox{\hyperlink{class_napi_1_1_name}{Name}} name, Getter getter, Setter setter, napi\+\_\+property\+\_\+attributes attributes, void \texorpdfstring{$\ast$}{*}data)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a4d6798bd7c3c4f5b2d59d34585f7df42}\label{class_napi_1_1_property_descriptor_a4d6798bd7c3c4f5b2d59d34585f7df42} 
+{\footnotesize template$<$typename Callable$>$ }\\\mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Function} (const char \texorpdfstring{$\ast$}{*}utf8name, Callable cb, napi\+\_\+property\+\_\+attributes attributes, void \texorpdfstring{$\ast$}{*})
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_aae671c77de4433c6a24954aef23ace7d}\label{class_napi_1_1_property_descriptor_aae671c77de4433c6a24954aef23ace7d} 
+{\footnotesize template$<$typename Callable$>$ }\\\mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Function} (const std\+::string \&utf8name, Callable cb, napi\+\_\+property\+\_\+attributes attributes, void \texorpdfstring{$\ast$}{*}data)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a9bfe265943c0118e0c5075d8f4e90acb}\label{class_napi_1_1_property_descriptor_a9bfe265943c0118e0c5075d8f4e90acb} 
+{\footnotesize template$<$typename Callable$>$ }\\\mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Function} (napi\+\_\+value name, Callable cb, napi\+\_\+property\+\_\+attributes attributes, void \texorpdfstring{$\ast$}{*})
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a7d8981c62477f91876873b2402a3dbbc}\label{class_napi_1_1_property_descriptor_a7d8981c62477f91876873b2402a3dbbc} 
+{\footnotesize template$<$typename Callable$>$ }\\\mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Function} (\mbox{\hyperlink{class_napi_1_1_name}{Name}} name, Callable cb, napi\+\_\+property\+\_\+attributes attributes, void \texorpdfstring{$\ast$}{*}data)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a199a818d94d40833ad9d021c0706a0f7}\label{class_napi_1_1_property_descriptor_a199a818d94d40833ad9d021c0706a0f7} 
+{\footnotesize template$<$typename Getter$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (const char \texorpdfstring{$\ast$}{*}utf8name, Getter getter, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a4c57d753df8dc969d732d4475dab72ca}\label{class_napi_1_1_property_descriptor_a4c57d753df8dc969d732d4475dab72ca} 
+{\footnotesize template$<$typename Getter$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (const std\+::string \&utf8name, Getter getter, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a407e8797b256bb097a7f147e4481a597}\label{class_napi_1_1_property_descriptor_a407e8797b256bb097a7f147e4481a597} 
+{\footnotesize template$<$typename Getter$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (napi\+\_\+value name, Getter getter, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_ab05dbc9f311eaed835e04b386a276616}\label{class_napi_1_1_property_descriptor_ab05dbc9f311eaed835e04b386a276616} 
+{\footnotesize template$<$typename Getter$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (\mbox{\hyperlink{class_napi_1_1_name}{Name}} name, Getter getter, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a204ea07f9a0546eb772d24d073fb8c1d}\label{class_napi_1_1_property_descriptor_a204ea07f9a0546eb772d24d073fb8c1d} 
+{\footnotesize template$<$typename Getter, typename Setter$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (const char \texorpdfstring{$\ast$}{*}utf8name, Getter getter, Setter setter, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_ab374aef3a4e541f24216e4b5b4cc926c}\label{class_napi_1_1_property_descriptor_ab374aef3a4e541f24216e4b5b4cc926c} 
+{\footnotesize template$<$typename Getter, typename Setter$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (const std\+::string \&utf8name, Getter getter, Setter setter, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a7b477c22dfaf2b62cd8b8bcb60dd3d21}\label{class_napi_1_1_property_descriptor_a7b477c22dfaf2b62cd8b8bcb60dd3d21} 
+{\footnotesize template$<$typename Getter, typename Setter$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (napi\+\_\+value name, Getter getter, Setter setter, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a0e5fe657dcadd539618fdeeac90e259e}\label{class_napi_1_1_property_descriptor_a0e5fe657dcadd539618fdeeac90e259e} 
+{\footnotesize template$<$typename Getter, typename Setter$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (\mbox{\hyperlink{class_napi_1_1_name}{Name}} name, Getter getter, Setter setter, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_aeec746cc244fc872d00be7671a33ae2e}\label{class_napi_1_1_property_descriptor_aeec746cc244fc872d00be7671a33ae2e} 
+{\footnotesize template$<$typename Callable$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Function} (const char \texorpdfstring{$\ast$}{*}utf8name, Callable cb, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a195d441cc931f4a59d32837a7c917e96}\label{class_napi_1_1_property_descriptor_a195d441cc931f4a59d32837a7c917e96} 
+{\footnotesize template$<$typename Callable$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Function} (const std\+::string \&utf8name, Callable cb, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_ab4fb1392d870cad76500b4b4e146e8bd}\label{class_napi_1_1_property_descriptor_ab4fb1392d870cad76500b4b4e146e8bd} 
+{\footnotesize template$<$typename Callable$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Function} (napi\+\_\+value name, Callable cb, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a04c2ff2cd738238bdf92fe746e59310b}\label{class_napi_1_1_property_descriptor_a04c2ff2cd738238bdf92fe746e59310b} 
+{\footnotesize template$<$typename Callable$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Function} (\mbox{\hyperlink{class_napi_1_1_name}{Name}} name, Callable cb, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_aaadd6523879645330d49f3556f8f663a}\label{class_napi_1_1_property_descriptor_aaadd6523879645330d49f3556f8f663a} 
+{\footnotesize template$<$Getter\+Callback Getter$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (const char \texorpdfstring{$\ast$}{*}utf8name, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a70dc0766c6fa721d9152fc63e7ad4bf3}\label{class_napi_1_1_property_descriptor_a70dc0766c6fa721d9152fc63e7ad4bf3} 
+{\footnotesize template$<$Getter\+Callback Getter$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (const std\+::string \&utf8name, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_ae5e73f7668ed104444482e8c2b32b966}\label{class_napi_1_1_property_descriptor_ae5e73f7668ed104444482e8c2b32b966} 
+{\footnotesize template$<$Getter\+Callback Getter$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (\mbox{\hyperlink{class_napi_1_1_name}{Name}} name, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_aae07b5652cc757b4772c6cd18e23b473}\label{class_napi_1_1_property_descriptor_aae07b5652cc757b4772c6cd18e23b473} 
+{\footnotesize template$<$Getter\+Callback Getter, Setter\+Callback Setter$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (const char \texorpdfstring{$\ast$}{*}utf8name, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a671f5508b5b5ee3ef770031167ba28e3}\label{class_napi_1_1_property_descriptor_a671f5508b5b5ee3ef770031167ba28e3} 
+{\footnotesize template$<$Getter\+Callback Getter, Setter\+Callback Setter$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (const std\+::string \&utf8name, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a7e6b69ae81d46629b1b749c64ce79af2}\label{class_napi_1_1_property_descriptor_a7e6b69ae81d46629b1b749c64ce79af2} 
+{\footnotesize template$<$Getter\+Callback Getter, Setter\+Callback Setter$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (\mbox{\hyperlink{class_napi_1_1_name}{Name}} name, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_ac407403f7b15d71b19ef003295fac88f}\label{class_napi_1_1_property_descriptor_ac407403f7b15d71b19ef003295fac88f} 
+{\footnotesize template$<$typename Getter$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (\mbox{\hyperlink{class_napi_1_1_env}{Napi\+::\+Env}} env, \mbox{\hyperlink{class_napi_1_1_object}{Napi\+::\+Object}} object, const char \texorpdfstring{$\ast$}{*}utf8name, Getter getter, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_ae968fd85ed98e36ffaf12b1f31e67d3e}\label{class_napi_1_1_property_descriptor_ae968fd85ed98e36ffaf12b1f31e67d3e} 
+{\footnotesize template$<$typename Getter$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (\mbox{\hyperlink{class_napi_1_1_env}{Napi\+::\+Env}} env, \mbox{\hyperlink{class_napi_1_1_object}{Napi\+::\+Object}} object, const std\+::string \&utf8name, Getter getter, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a4dbef111beaa652e2d4f2b24d597089a}\label{class_napi_1_1_property_descriptor_a4dbef111beaa652e2d4f2b24d597089a} 
+{\footnotesize template$<$typename Getter$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (\mbox{\hyperlink{class_napi_1_1_env}{Napi\+::\+Env}} env, \mbox{\hyperlink{class_napi_1_1_object}{Napi\+::\+Object}} object, \mbox{\hyperlink{class_napi_1_1_name}{Name}} name, Getter getter, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_abef724c711cb44977c3a96a2f65f0540}\label{class_napi_1_1_property_descriptor_abef724c711cb44977c3a96a2f65f0540} 
+{\footnotesize template$<$typename Getter, typename Setter$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (\mbox{\hyperlink{class_napi_1_1_env}{Napi\+::\+Env}} env, \mbox{\hyperlink{class_napi_1_1_object}{Napi\+::\+Object}} object, const char \texorpdfstring{$\ast$}{*}utf8name, Getter getter, Setter setter, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_afdaa248c7df73e74e38784e2ab8c8d7d}\label{class_napi_1_1_property_descriptor_afdaa248c7df73e74e38784e2ab8c8d7d} 
+{\footnotesize template$<$typename Getter, typename Setter$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (\mbox{\hyperlink{class_napi_1_1_env}{Napi\+::\+Env}} env, \mbox{\hyperlink{class_napi_1_1_object}{Napi\+::\+Object}} object, const std\+::string \&utf8name, Getter getter, Setter setter, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a882a436096c97c74e08ffa8d7e58fb59}\label{class_napi_1_1_property_descriptor_a882a436096c97c74e08ffa8d7e58fb59} 
+{\footnotesize template$<$typename Getter, typename Setter$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Accessor} (\mbox{\hyperlink{class_napi_1_1_env}{Napi\+::\+Env}} env, \mbox{\hyperlink{class_napi_1_1_object}{Napi\+::\+Object}} object, \mbox{\hyperlink{class_napi_1_1_name}{Name}} name, Getter getter, Setter setter, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a0e65ad3b25ba73737b8c20cd08b2ab39}\label{class_napi_1_1_property_descriptor_a0e65ad3b25ba73737b8c20cd08b2ab39} 
+{\footnotesize template$<$typename Callable$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Function} (\mbox{\hyperlink{class_napi_1_1_env}{Napi\+::\+Env}} env, \mbox{\hyperlink{class_napi_1_1_object}{Napi\+::\+Object}} object, const char \texorpdfstring{$\ast$}{*}utf8name, Callable cb, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a051d8a2c553f5675a85b1a16bd796992}\label{class_napi_1_1_property_descriptor_a051d8a2c553f5675a85b1a16bd796992} 
+{\footnotesize template$<$typename Callable$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Function} (\mbox{\hyperlink{class_napi_1_1_env}{Napi\+::\+Env}} env, \mbox{\hyperlink{class_napi_1_1_object}{Napi\+::\+Object}} object, const std\+::string \&utf8name, Callable cb, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_ab907137b7a0ed9beec6e2aa396bf5e02}\label{class_napi_1_1_property_descriptor_ab907137b7a0ed9beec6e2aa396bf5e02} 
+{\footnotesize template$<$typename Callable$>$ }\\static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Function} (\mbox{\hyperlink{class_napi_1_1_env}{Napi\+::\+Env}} env, \mbox{\hyperlink{class_napi_1_1_object}{Napi\+::\+Object}} object, \mbox{\hyperlink{class_napi_1_1_name}{Name}} name, Callable cb, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default, void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a30be11ee835fe628990a240e9df48002}\label{class_napi_1_1_property_descriptor_a30be11ee835fe628990a240e9df48002} 
+static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Value} (const char \texorpdfstring{$\ast$}{*}utf8name, napi\+\_\+value value, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a8fdb2b63a3d8a7d52f3cbff7a43c3346}\label{class_napi_1_1_property_descriptor_a8fdb2b63a3d8a7d52f3cbff7a43c3346} 
+static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Value} (const std\+::string \&utf8name, napi\+\_\+value value, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_a0adaf0b36be57dcaf2450119c438448f}\label{class_napi_1_1_property_descriptor_a0adaf0b36be57dcaf2450119c438448f} 
+static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Value} (napi\+\_\+value name, napi\+\_\+value value, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default)
+\item 
+\Hypertarget{class_napi_1_1_property_descriptor_acec96795d95f92fa668c2036278369b5}\label{class_napi_1_1_property_descriptor_acec96795d95f92fa668c2036278369b5} 
+static \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Property\+Descriptor}} {\bfseries Value} (\mbox{\hyperlink{class_napi_1_1_name}{Name}} name, \mbox{\hyperlink{class_napi_1_1_value}{Napi\+::\+Value}} value, napi\+\_\+property\+\_\+attributes attributes=napi\+\_\+default)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+node\+\_\+modules/node-\/addon-\/api/napi.\+h\item 
+node\+\_\+modules/node-\/addon-\/api/napi-\/inl.\+deprecated.\+h\item 
+node\+\_\+modules/node-\/addon-\/api/napi-\/inl.\+h\end{DoxyCompactItemize}

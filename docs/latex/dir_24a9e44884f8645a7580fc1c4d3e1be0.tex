@@ -1,0 +1,52 @@
+\doxysection{node\+\_\+modules/memory-\/pager Directory Reference}
+\hypertarget{dir_24a9e44884f8645a7580fc1c4d3e1be0}{}\label{dir_24a9e44884f8645a7580fc1c4d3e1be0}\index{node\_modules/memory-\/pager Directory Reference@{node\_modules/memory-\/pager Directory Reference}}
+
+
+\doxysubsection{Detailed Description}
+Access memory using small fixed sized buffers instead of allocating a huge buffer. Useful if you are implementing sparse data structures (such as large bitfield).
+
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ memory-\/pager}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md2205}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{README.md_autotoc_md2205}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ pager\ =\ require('paged-\/memory')}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ pages\ =\ pager(1024)\ //\ use\ 1kb\ per\ page}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ page\ =\ pages.get(10)\ //\ get\ page\ \#10}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(page.offset)\ //\ 10240}
+\DoxyCodeLine{console.log(page.buffer)\ //\ a\ blank\ 1kb\ buffer}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md2206}{}\doxysubsection{\texorpdfstring{API}{API}}\label{README.md_autotoc_md2206}
+\hypertarget{README.md_autotoc_md2207}{}\doxysubsubsubsection{\texorpdfstring{{\ttfamily var pages = pager(page\+Size)}}{{\ttfamily var pages = pager(page\+Size)}}}\label{README.md_autotoc_md2207}
+Create a new pager. {\ttfamily page\+Size} defaults to {\ttfamily 1024}.\hypertarget{README.md_autotoc_md2208}{}\doxysubsubsubsection{\texorpdfstring{{\ttfamily var page = pages.\+get(page\+Number, \mbox{[}no\+Allocate\mbox{]})}}{{\ttfamily var page = pages.\+get(page\+Number, \mbox{[}no\+Allocate\mbox{]})}}}\label{README.md_autotoc_md2208}
+Get a page. The page will be allocated at first access.
+
+Optionally you can set the {\ttfamily no\+Allocate} flag which will make the method return undefined if no page has been allocated already
+
+A page looks like this
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ offset:\ byteOffset,}
+\DoxyCodeLine{\ \ buffer:\ bufferWithPageSize}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md2209}{}\doxysubsubsubsection{\texorpdfstring{{\ttfamily pages.\+set(page\+Number, buffer)}}{{\ttfamily pages.\+set(page\+Number, buffer)}}}\label{README.md_autotoc_md2209}
+Explicitly set the buffer for a page.\hypertarget{README.md_autotoc_md2210}{}\doxysubsubsubsection{\texorpdfstring{{\ttfamily pages.\+updated(page)}}{{\ttfamily pages.\+updated(page)}}}\label{README.md_autotoc_md2210}
+Mark a page as updated.\hypertarget{README.md_autotoc_md2211}{}\doxysubsubsubsection{\texorpdfstring{{\ttfamily pages.\+last\+Update()}}{{\ttfamily pages.\+last\+Update()}}}\label{README.md_autotoc_md2211}
+Get the last page that was updated.\hypertarget{README.md_autotoc_md2212}{}\doxysubsubsubsection{\texorpdfstring{{\ttfamily var buf = pages.\+to\+Buffer()}}{{\ttfamily var buf = pages.\+to\+Buffer()}}}\label{README.md_autotoc_md2212}
+Concat all pages allocated pages into a single buffer\hypertarget{README.md_autotoc_md2213}{}\doxysubsection{\texorpdfstring{License}{License}}\label{README.md_autotoc_md2213}
+MIT 

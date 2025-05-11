@@ -1,0 +1,38 @@
+\doxysection{node\+\_\+modules/pstree.remy Directory Reference}
+\hypertarget{dir_ec683faefb3ab3039ecee90aa81182b3}{}\label{dir_ec683faefb3ab3039ecee90aa81182b3}\index{node\_modules/pstree.remy Directory Reference@{node\_modules/pstree.remy Directory Reference}}
+\doxysubsubsection*{Directories}
+\begin{DoxyCompactItemize}
+\item 
+directory \mbox{\hyperlink{dir_925b9497d9360b1c591cefda0cfecffa}{lib}}
+\item 
+directory \mbox{\hyperlink{dir_d4b3a8e3b1d7f2e94200d4dadae84e57}{tests}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{quote}
+Cross platform ps-\/tree (including unix flavours without ps) \end{quote}
+\hypertarget{README.md_autotoc_md3209}{}\doxysubsection{\texorpdfstring{Installation}{Installation}}\label{README.md_autotoc_md3209}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ pstree.remy}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md3210}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{README.md_autotoc_md3210}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ psTree\ =\ psTree\ require('pstree.remy');}
+\DoxyCodeLine{}
+\DoxyCodeLine{psTree(PID,\ (err,\ pids)\ =>\ \{}
+\DoxyCodeLine{\ \ if\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ console.error(err);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ console.log(pids)}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(psTree.hasPS}
+\DoxyCodeLine{\ \ ?\ "{}This\ platform\ has\ the\ ps\ shell\ command"{}}
+\DoxyCodeLine{\ \ :\ "{}This\ platform\ does\ not\ have\ the\ ps\ shell\ command"{});}
+
+\end{DoxyCode}
+ 

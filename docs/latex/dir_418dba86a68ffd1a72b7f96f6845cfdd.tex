@@ -1,0 +1,114 @@
+\doxysection{node\+\_\+modules/finalhandler Directory Reference}
+\hypertarget{dir_418dba86a68ffd1a72b7f96f6845cfdd}{}\label{dir_418dba86a68ffd1a72b7f96f6845cfdd}\index{node\_modules/finalhandler Directory Reference@{node\_modules/finalhandler Directory Reference}}
+
+
+\doxysubsection{Detailed Description}
+\href{https://npmjs.org/package/finalhandler}{\texttt{ }} \href{https://npmjs.org/package/finalhandler}{\texttt{ }} \href{https://nodejs.org/en/download}{\texttt{ }} \href{https://github.com/pillarjs/finalhandler/actions/workflows/ci.yml}{\texttt{ }} \href{https://coveralls.io/r/pillarjs/finalhandler?branch=master}{\texttt{ }}
+
+Node.\+js function to invoke as the final step to respond to HTTP request.\hypertarget{README.md_autotoc_md1509}{}\doxysubsection{\texorpdfstring{Installation}{Installation}}\label{README.md_autotoc_md1509}
+This is a \href{https://nodejs.org/en/}{\texttt{ Node.\+js}} module available through the \href{https://www.npmjs.com/}{\texttt{ npm registry}}. Installation is done using the \href{https://docs.npmjs.com/getting-started/installing-npm-packages-locally}{\texttt{ {\ttfamily npm install} command}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ finalhandler}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md1510}{}\doxysubsection{\texorpdfstring{API}{API}}\label{README.md_autotoc_md1510}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ finalhandler\ =\ require('finalhandler')}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md1511}{}\doxysubsubsection{\texorpdfstring{finalhandler(req, res, \mbox{[}options\mbox{]})}{finalhandler(req, res, \mbox{[}options\mbox{]})}}\label{README.md_autotoc_md1511}
+Returns function to be invoked as the final step for the given {\ttfamily req} and {\ttfamily res}. This function is to be invoked as {\ttfamily fn(err)}. If {\ttfamily err} is falsy, the handler will write out a 404 response to the {\ttfamily res}. If it is truthy, an error response will be written out to the {\ttfamily res} or {\ttfamily res} will be terminated if a response has already started.
+
+When an error is written, the following information is added to the response\+:
+
+
+\begin{DoxyItemize}
+\item The {\ttfamily res.\+status\+Code} is set from {\ttfamily err.\+status} (or {\ttfamily err.\+status\+Code}). If this value is outside the 4xx or 5xx range, it will be set to 500.
+\item The {\ttfamily res.\+status\+Message} is set according to the status code.
+\item The body will be the HTML of the status code message if {\ttfamily env} is `\textquotesingle{}production'{\ttfamily , otherwise will be}err.\+stack{\ttfamily .}
+\item {\ttfamily Any headers specified in an}err.\+headers\`{} object.
+\end{DoxyItemize}
+
+The final handler will also unpipe anything from {\ttfamily req} when it is invoked.\hypertarget{README.md_autotoc_md1512}{}\doxysubsubsubsection{\texorpdfstring{options.\+env}{options.\+env}}\label{README.md_autotoc_md1512}
+By default, the environment is determined by {\ttfamily NODE\+\_\+\+ENV} variable, but it can be overridden by this option.\hypertarget{README.md_autotoc_md1513}{}\doxysubsubsubsection{\texorpdfstring{options.\+onerror}{options.\+onerror}}\label{README.md_autotoc_md1513}
+Provide a function to be called with the {\ttfamily err} when it exists. Can be used for writing errors to a central location without excessive function generation. Called as {\ttfamily onerror(err, req, res)}.\hypertarget{README.md_autotoc_md1514}{}\doxysubsection{\texorpdfstring{Examples}{Examples}}\label{README.md_autotoc_md1514}
+\hypertarget{README.md_autotoc_md1515}{}\doxysubsubsection{\texorpdfstring{always 404}{always 404}}\label{README.md_autotoc_md1515}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ finalhandler\ =\ require('finalhandler')}
+\DoxyCodeLine{var\ http\ =\ require('http')}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ server\ =\ http.createServer(function\ (req,\ res)\ \{}
+\DoxyCodeLine{\ \ var\ done\ =\ finalhandler(req,\ res)}
+\DoxyCodeLine{\ \ done()}
+\DoxyCodeLine{\})}
+\DoxyCodeLine{}
+\DoxyCodeLine{server.listen(3000)}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md1516}{}\doxysubsubsection{\texorpdfstring{perform simple action}{perform simple action}}\label{README.md_autotoc_md1516}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ finalhandler\ =\ require('finalhandler')}
+\DoxyCodeLine{var\ fs\ =\ require('fs')}
+\DoxyCodeLine{var\ http\ =\ require('http')}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ server\ =\ http.createServer(function\ (req,\ res)\ \{}
+\DoxyCodeLine{\ \ var\ done\ =\ finalhandler(req,\ res)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ fs.readFile('index.html',\ function\ (err,\ buf)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (err)\ return\ done(err)}
+\DoxyCodeLine{\ \ \ \ res.setHeader('Content-\/Type',\ 'text/html')}
+\DoxyCodeLine{\ \ \ \ res.end(buf)}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{\})}
+\DoxyCodeLine{}
+\DoxyCodeLine{server.listen(3000)}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md1517}{}\doxysubsubsection{\texorpdfstring{use with middleware-\/style functions}{use with middleware-\/style functions}}\label{README.md_autotoc_md1517}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ finalhandler\ =\ require('finalhandler')}
+\DoxyCodeLine{var\ http\ =\ require('http')}
+\DoxyCodeLine{var\ serveStatic\ =\ require('serve-\/static')}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ serve\ =\ serveStatic('public')}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ server\ =\ http.createServer(function\ (req,\ res)\ \{}
+\DoxyCodeLine{\ \ var\ done\ =\ finalhandler(req,\ res)}
+\DoxyCodeLine{\ \ serve(req,\ res,\ done)}
+\DoxyCodeLine{\})}
+\DoxyCodeLine{}
+\DoxyCodeLine{server.listen(3000)}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md1518}{}\doxysubsubsection{\texorpdfstring{keep log of all errors}{keep log of all errors}}\label{README.md_autotoc_md1518}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ finalhandler\ =\ require('finalhandler')}
+\DoxyCodeLine{var\ fs\ =\ require('fs')}
+\DoxyCodeLine{var\ http\ =\ require('http')}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ server\ =\ http.createServer(function\ (req,\ res)\ \{}
+\DoxyCodeLine{\ \ var\ done\ =\ finalhandler(req,\ res,\ \{\ onerror:\ logerror\ \})}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ fs.readFile('index.html',\ function\ (err,\ buf)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (err)\ return\ done(err)}
+\DoxyCodeLine{\ \ \ \ res.setHeader('Content-\/Type',\ 'text/html')}
+\DoxyCodeLine{\ \ \ \ res.end(buf)}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{\})}
+\DoxyCodeLine{}
+\DoxyCodeLine{server.listen(3000)}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ logerror\ (err)\ \{}
+\DoxyCodeLine{\ \ console.error(err.stack\ ||\ err.toString())}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md1519}{}\doxysubsection{\texorpdfstring{License}{License}}\label{README.md_autotoc_md1519}
+\mbox{[}MIT\mbox{]}(LICENSE) 

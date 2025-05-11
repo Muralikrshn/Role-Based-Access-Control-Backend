@@ -1,0 +1,182 @@
+\doxysection{Napi\+::Value Class Reference}
+\hypertarget{class_napi_1_1_value}{}\label{class_napi_1_1_value}\index{Napi::Value@{Napi::Value}}
+
+
+{\ttfamily \#include $<$napi.\+h$>$}
+
+Inheritance diagram for Napi\+::Value\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.788114cm]{class_napi_1_1_value}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_napi_1_1_value_a91352891b563fb744683240949e458e4}\label{class_napi_1_1_value_a91352891b563fb744683240949e458e4} 
+{\bfseries Value} ()
+\begin{DoxyCompactList}\small\item\em Creates a new {\itshape empty} \doxylink{class_napi_1_1_value}{Value} instance. \end{DoxyCompactList}\item 
+\Hypertarget{class_napi_1_1_value_a0517f43046a9d6f33ec975ec12aa8641}\label{class_napi_1_1_value_a0517f43046a9d6f33ec975ec12aa8641} 
+{\bfseries Value} (napi\+\_\+env env, napi\+\_\+value value)
+\begin{DoxyCompactList}\small\item\em Wraps a Node-\/\+API value primitive. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_napi_1_1_value_af19dbe71df9d7d29bd204935192a4d5f}{operator napi\+\_\+value}} () const
+\item 
+\Hypertarget{class_napi_1_1_value_aeacac83e70476de242048d8ee6329fd0}\label{class_napi_1_1_value_aeacac83e70476de242048d8ee6329fd0} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{class_napi_1_1_value}{Value}} \&other) const
+\begin{DoxyCompactList}\small\item\em Tests if this value strictly equals another value. \end{DoxyCompactList}\item 
+\Hypertarget{class_napi_1_1_value_a580263f743cb763cda7a0c0e45c49951}\label{class_napi_1_1_value_a580263f743cb763cda7a0c0e45c49951} 
+bool {\bfseries operator!=} (const \mbox{\hyperlink{class_napi_1_1_value}{Value}} \&other) const
+\begin{DoxyCompactList}\small\item\em Tests if this value does not strictly equal another value. \end{DoxyCompactList}\item 
+\Hypertarget{class_napi_1_1_value_ada554f19e69df3becf95da7273b1a25a}\label{class_napi_1_1_value_ada554f19e69df3becf95da7273b1a25a} 
+bool {\bfseries Strict\+Equals} (const \mbox{\hyperlink{class_napi_1_1_value}{Value}} \&other) const
+\begin{DoxyCompactList}\small\item\em Tests if this value strictly equals another value. \end{DoxyCompactList}\item 
+\Hypertarget{class_napi_1_1_value_a1e1930afac70f2811a222c363d892a42}\label{class_napi_1_1_value_a1e1930afac70f2811a222c363d892a42} 
+\mbox{\hyperlink{class_napi_1_1_env}{Napi\+::\+Env}} {\bfseries Env} () const
+\begin{DoxyCompactList}\small\item\em Gets the environment the value is associated with. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_napi_1_1_value_a988bdb3e9806beb7761b4ea864461005}{Is\+Empty}} () const
+\item 
+\Hypertarget{class_napi_1_1_value_a5da2e4f1a5a6b237159c4cfbd0866281}\label{class_napi_1_1_value_a5da2e4f1a5a6b237159c4cfbd0866281} 
+napi\+\_\+valuetype {\bfseries Type} () const
+\begin{DoxyCompactList}\small\item\em Gets the type of the value. \end{DoxyCompactList}\item 
+\Hypertarget{class_napi_1_1_value_ac67d471b3773d6458cb1587acb105882}\label{class_napi_1_1_value_ac67d471b3773d6458cb1587acb105882} 
+bool {\bfseries Is\+Undefined} () const
+\begin{DoxyCompactList}\small\item\em Tests if a value is an undefined Java\+Script value. \end{DoxyCompactList}\item 
+\Hypertarget{class_napi_1_1_value_adc11fc44a7ee5204535387369f1fa787}\label{class_napi_1_1_value_adc11fc44a7ee5204535387369f1fa787} 
+bool {\bfseries Is\+Null} () const
+\begin{DoxyCompactList}\small\item\em Tests if a value is a null Java\+Script value. \end{DoxyCompactList}\item 
+\Hypertarget{class_napi_1_1_value_ae876a79e6ac45840cb76fbdb5d5f0e71}\label{class_napi_1_1_value_ae876a79e6ac45840cb76fbdb5d5f0e71} 
+bool {\bfseries Is\+Boolean} () const
+\begin{DoxyCompactList}\small\item\em Tests if a value is a Java\+Script boolean. \end{DoxyCompactList}\item 
+\Hypertarget{class_napi_1_1_value_a55b70b6e71b4e3eb5eda4ef6da44fb61}\label{class_napi_1_1_value_a55b70b6e71b4e3eb5eda4ef6da44fb61} 
+bool {\bfseries Is\+Number} () const
+\begin{DoxyCompactList}\small\item\em Tests if a value is a Java\+Script number. \end{DoxyCompactList}\item 
+\Hypertarget{class_napi_1_1_value_a4f62ef1c00bdd6ec33ef6bc53bd40954}\label{class_napi_1_1_value_a4f62ef1c00bdd6ec33ef6bc53bd40954} 
+bool {\bfseries Is\+String} () const
+\begin{DoxyCompactList}\small\item\em Tests if a value is a Java\+Script string. \end{DoxyCompactList}\item 
+\Hypertarget{class_napi_1_1_value_aece440d4ba60f726044bf590a26f18e9}\label{class_napi_1_1_value_aece440d4ba60f726044bf590a26f18e9} 
+bool {\bfseries Is\+Symbol} () const
+\begin{DoxyCompactList}\small\item\em Tests if a value is a Java\+Script symbol. \end{DoxyCompactList}\item 
+\Hypertarget{class_napi_1_1_value_a5611708b6e0aacddb688a8dba6dc028d}\label{class_napi_1_1_value_a5611708b6e0aacddb688a8dba6dc028d} 
+bool {\bfseries Is\+Array} () const
+\begin{DoxyCompactList}\small\item\em Tests if a value is a Java\+Script array. \end{DoxyCompactList}\item 
+\Hypertarget{class_napi_1_1_value_a9beba019f6caf6cd8a8fe1f7ef23a1f4}\label{class_napi_1_1_value_a9beba019f6caf6cd8a8fe1f7ef23a1f4} 
+bool {\bfseries Is\+Array\+Buffer} () const
+\begin{DoxyCompactList}\small\item\em Tests if a value is a Java\+Script array buffer. \end{DoxyCompactList}\item 
+\Hypertarget{class_napi_1_1_value_a23ebf28e327e5e67378efb06b0237e07}\label{class_napi_1_1_value_a23ebf28e327e5e67378efb06b0237e07} 
+bool {\bfseries Is\+Typed\+Array} () const
+\begin{DoxyCompactList}\small\item\em Tests if a value is a Java\+Script typed array. \end{DoxyCompactList}\item 
+\Hypertarget{class_napi_1_1_value_ae5bd652acc39256b28fe89e23720c164}\label{class_napi_1_1_value_ae5bd652acc39256b28fe89e23720c164} 
+bool {\bfseries Is\+Object} () const
+\begin{DoxyCompactList}\small\item\em Tests if a value is a Java\+Script object. \end{DoxyCompactList}\item 
+\Hypertarget{class_napi_1_1_value_ae8a76974575d2a58c7aa69e43b6bc70a}\label{class_napi_1_1_value_ae8a76974575d2a58c7aa69e43b6bc70a} 
+bool {\bfseries Is\+Function} () const
+\begin{DoxyCompactList}\small\item\em Tests if a value is a Java\+Script function. \end{DoxyCompactList}\item 
+\Hypertarget{class_napi_1_1_value_ac4cdad6473b6d31a671a98318fa28e86}\label{class_napi_1_1_value_ac4cdad6473b6d31a671a98318fa28e86} 
+bool {\bfseries Is\+Promise} () const
+\begin{DoxyCompactList}\small\item\em Tests if a value is a Java\+Script promise. \end{DoxyCompactList}\item 
+\Hypertarget{class_napi_1_1_value_abf010c00f7c2e5d65f29740bf4483209}\label{class_napi_1_1_value_abf010c00f7c2e5d65f29740bf4483209} 
+bool {\bfseries Is\+Data\+View} () const
+\begin{DoxyCompactList}\small\item\em Tests if a value is a Java\+Script data view. \end{DoxyCompactList}\item 
+\Hypertarget{class_napi_1_1_value_a7ae7ce9bb0c81e08285aa36f810b3257}\label{class_napi_1_1_value_a7ae7ce9bb0c81e08285aa36f810b3257} 
+bool {\bfseries Is\+Buffer} () const
+\begin{DoxyCompactList}\small\item\em Tests if a value is a Node buffer. \end{DoxyCompactList}\item 
+\Hypertarget{class_napi_1_1_value_aedb256ac2a1e0c1aee11cc966579e81f}\label{class_napi_1_1_value_aedb256ac2a1e0c1aee11cc966579e81f} 
+bool {\bfseries Is\+External} () const
+\begin{DoxyCompactList}\small\item\em Tests if a value is a pointer to external data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\T \mbox{\hyperlink{class_napi_1_1_value_a9c1a9c4eca9617b0aafbe311c946982a}{As}} () const
+\item 
+\Hypertarget{class_napi_1_1_value_a9c1fed3959cfccb6b5e3355ed2142b61}\label{class_napi_1_1_value_a9c1fed3959cfccb6b5e3355ed2142b61} 
+Maybe\+Or\+Value$<$ \mbox{\hyperlink{class_napi_1_1_boolean}{Boolean}} $>$ {\bfseries To\+Boolean} () const
+\begin{DoxyCompactList}\small\item\em Coerces a value to a Java\+Script boolean. \end{DoxyCompactList}\item 
+\Hypertarget{class_napi_1_1_value_a531c0bf83f10b3abf11355cc440e1409}\label{class_napi_1_1_value_a531c0bf83f10b3abf11355cc440e1409} 
+Maybe\+Or\+Value$<$ \mbox{\hyperlink{class_napi_1_1_number}{Number}} $>$ {\bfseries To\+Number} () const
+\begin{DoxyCompactList}\small\item\em Coerces a value to a Java\+Script number. \end{DoxyCompactList}\item 
+\Hypertarget{class_napi_1_1_value_ae38ce41d7a0b7241975d0676e4fbb30b}\label{class_napi_1_1_value_ae38ce41d7a0b7241975d0676e4fbb30b} 
+Maybe\+Or\+Value$<$ \mbox{\hyperlink{class_napi_1_1_string}{String}} $>$ {\bfseries To\+String} () const
+\begin{DoxyCompactList}\small\item\em Coerces a value to a Java\+Script string. \end{DoxyCompactList}\item 
+\Hypertarget{class_napi_1_1_value_a872d39e601d5a1b522e6f2935362e4dd}\label{class_napi_1_1_value_a872d39e601d5a1b522e6f2935362e4dd} 
+Maybe\+Or\+Value$<$ \mbox{\hyperlink{class_napi_1_1_object}{Object}} $>$ {\bfseries To\+Object} () const
+\begin{DoxyCompactList}\small\item\em Coerces a value to a Java\+Script object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T$>$ }\\static \mbox{\hyperlink{class_napi_1_1_value}{Value}} \mbox{\hyperlink{class_napi_1_1_value_a0ee78f70cade37fb28fef3087ef7e9e2}{From}} (napi\+\_\+env env, const T \&value)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_napi_1_1_value_ad0a0cc895c3134df3ca3267dbf2dfe08}\label{class_napi_1_1_value_ad0a0cc895c3134df3ca3267dbf2dfe08} 
+napi\+\_\+env {\bfseries \+\_\+env}
+\begin{DoxyCompactList}\small\item\em !cond INTERNAL \end{DoxyCompactList}\item 
+\Hypertarget{class_napi_1_1_value_ae2060cfa039ca4c6abaff238fb00d1f8}\label{class_napi_1_1_value_ae2060cfa039ca4c6abaff238fb00d1f8} 
+napi\+\_\+value {\bfseries \+\_\+value}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A Java\+Script value of unknown type.
+
+For type-\/specific operations, convert to one of the \doxylink{class_napi_1_1_value}{Value} subclasses using a {\ttfamily To\texorpdfstring{$\ast$}{*}} or {\ttfamily \doxylink{class_napi_1_1_value_a9c1a9c4eca9617b0aafbe311c946982a}{As()}} method. The {\ttfamily To\texorpdfstring{$\ast$}{*}} methods do type coercion; the {\ttfamily \doxylink{class_napi_1_1_value_a9c1a9c4eca9617b0aafbe311c946982a}{As()}} method does not. \begin{DoxyVerb}Napi::Value value = ...
+if (!value.IsString()) throw Napi::TypeError::New(env, "Invalid
+arg..."); Napi::String str = value.As<Napi::String>(); // Cast to a
+string value
+
+Napi::Value anotherValue = ...
+bool isTruthy = anotherValue.ToBoolean(); // Coerce to a boolean value 
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_napi_1_1_value_a9c1a9c4eca9617b0aafbe311c946982a}\index{Napi::Value@{Napi::Value}!As@{As}}
+\index{As@{As}!Napi::Value@{Napi::Value}}
+\doxysubsubsection{\texorpdfstring{As()}{As()}}
+{\footnotesize\ttfamily \label{class_napi_1_1_value_a9c1a9c4eca9617b0aafbe311c946982a} 
+template$<$typename T$>$ \\
+T Napi\+::\+Value\+::\+As (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Casts to another type of {\ttfamily \doxylink{class_napi_1_1_value}{Napi\+::\+Value}}, when the actual type is known or assumed.
+
+This conversion does NOT coerce the type. Calling any methods inappropriate for the actual value type will throw {\ttfamily \doxylink{class_napi_1_1_error}{Napi\+::\+Error}}. \Hypertarget{class_napi_1_1_value_a0ee78f70cade37fb28fef3087ef7e9e2}\index{Napi::Value@{Napi::Value}!From@{From}}
+\index{From@{From}!Napi::Value@{Napi::Value}}
+\doxysubsubsection{\texorpdfstring{From()}{From()}}
+{\footnotesize\ttfamily \label{class_napi_1_1_value_a0ee78f70cade37fb28fef3087ef7e9e2} 
+template$<$typename T$>$ \\
+\mbox{\hyperlink{class_napi_1_1_value}{Value}} Napi\+::\+Value\+::\+From (\begin{DoxyParamCaption}\item[{napi\+\_\+env}]{env}{, }\item[{const T \&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Creates a JS value from a C++ primitive.
+
+{\ttfamily value} may be any of\+:
+\begin{DoxyItemize}
+\item bool
+\item Any integer type
+\item Any floating point type
+\item const char\texorpdfstring{$\ast$}{*} (encoded using UTF-\/8, null-\/terminated)
+\item const char16\+\_\+t\texorpdfstring{$\ast$}{*} (encoded using UTF-\/16-\/\+LE, null-\/terminated)
+\item std\+::string (encoded using UTF-\/8)
+\item std\+::u16string
+\item napi\+::\+Value
+\item napi\+\_\+value 
+\end{DoxyItemize}\Hypertarget{class_napi_1_1_value_a988bdb3e9806beb7761b4ea864461005}\index{Napi::Value@{Napi::Value}!IsEmpty@{IsEmpty}}
+\index{IsEmpty@{IsEmpty}!Napi::Value@{Napi::Value}}
+\doxysubsubsection{\texorpdfstring{IsEmpty()}{IsEmpty()}}
+{\footnotesize\ttfamily \label{class_napi_1_1_value_a988bdb3e9806beb7761b4ea864461005} 
+bool Napi\+::\+Value\+::\+Is\+Empty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Checks if the value is empty (uninitialized).
+
+An empty value is invalid, and most attempts to perform an operation on an empty value will result in an exception. Note an empty value is distinct from Java\+Script {\ttfamily null} or {\ttfamily undefined}, which are valid values.
+
+When C++ exceptions are disabled at compile time, a method with a {\ttfamily \doxylink{class_napi_1_1_value}{Value}} return type may return an empty value to indicate a pending exception. So when not using C++ exceptions, callers should check whether the value is empty before attempting to use it. \Hypertarget{class_napi_1_1_value_af19dbe71df9d7d29bd204935192a4d5f}\index{Napi::Value@{Napi::Value}!operator napi\_value@{operator napi\_value}}
+\index{operator napi\_value@{operator napi\_value}!Napi::Value@{Napi::Value}}
+\doxysubsubsection{\texorpdfstring{operator napi\_value()}{operator napi\_value()}}
+{\footnotesize\ttfamily \label{class_napi_1_1_value_af19dbe71df9d7d29bd204935192a4d5f} 
+Napi\+::\+Value\+::operator napi\+\_\+value (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Converts to a Node-\/\+API value primitive.
+
+If the instance is {\itshape empty}, this returns {\ttfamily nullptr}. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+node\+\_\+modules/node-\/addon-\/api/napi.\+h\item 
+node\+\_\+modules/node-\/addon-\/api/napi-\/inl.\+h\end{DoxyCompactItemize}

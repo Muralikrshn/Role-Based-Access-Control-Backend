@@ -1,0 +1,54 @@
+\doxysection{Napi\+::Env Class Reference}
+\hypertarget{class_napi_1_1_env}{}\label{class_napi_1_1_env}\index{Napi::Env@{Napi::Env}}
+
+
+{\ttfamily \#include $<$napi.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_napi_1_1_env_a0fe2fdf73ba203a87c0c7b1b27ffce16}\label{class_napi_1_1_env_a0fe2fdf73ba203a87c0c7b1b27ffce16} 
+{\bfseries Env} (napi\+\_\+env env)
+\item 
+\Hypertarget{class_napi_1_1_env_ab62002c27b58b66a9af4b2059fc717e3}\label{class_napi_1_1_env_ab62002c27b58b66a9af4b2059fc717e3} 
+{\bfseries operator napi\+\_\+env} () const
+\item 
+\Hypertarget{class_napi_1_1_env_a06f210136f1381a31046e1118dbc5c90}\label{class_napi_1_1_env_a06f210136f1381a31046e1118dbc5c90} 
+\mbox{\hyperlink{class_napi_1_1_object}{Object}} {\bfseries Global} () const
+\item 
+\Hypertarget{class_napi_1_1_env_ae4a30c185fcf9957e9af84c966a31677}\label{class_napi_1_1_env_ae4a30c185fcf9957e9af84c966a31677} 
+\mbox{\hyperlink{class_napi_1_1_value}{Value}} {\bfseries Undefined} () const
+\item 
+\Hypertarget{class_napi_1_1_env_a410a8ef1c496cafe1a767f3f09810f9c}\label{class_napi_1_1_env_a410a8ef1c496cafe1a767f3f09810f9c} 
+\mbox{\hyperlink{class_napi_1_1_value}{Value}} {\bfseries Null} () const
+\item 
+\Hypertarget{class_napi_1_1_env_a0e46584af1798aa5ea458d0044678432}\label{class_napi_1_1_env_a0e46584af1798aa5ea458d0044678432} 
+bool {\bfseries Is\+Exception\+Pending} () const
+\item 
+\Hypertarget{class_napi_1_1_env_a022b0d253eeea0f9ffbdc8de503b44fb}\label{class_napi_1_1_env_a022b0d253eeea0f9ffbdc8de503b44fb} 
+\mbox{\hyperlink{class_napi_1_1_error}{Error}} {\bfseries Get\+And\+Clear\+Pending\+Exception} () const
+\item 
+\Hypertarget{class_napi_1_1_env_a79baced1a13c812002e79102592e417e}\label{class_napi_1_1_env_a79baced1a13c812002e79102592e417e} 
+Maybe\+Or\+Value$<$ \mbox{\hyperlink{class_napi_1_1_value}{Value}} $>$ {\bfseries Run\+Script} (const char \texorpdfstring{$\ast$}{*}utf8script) const
+\item 
+\Hypertarget{class_napi_1_1_env_a4c58ae410f34bed2482eaed535ba28f0}\label{class_napi_1_1_env_a4c58ae410f34bed2482eaed535ba28f0} 
+Maybe\+Or\+Value$<$ \mbox{\hyperlink{class_napi_1_1_value}{Value}} $>$ {\bfseries Run\+Script} (const std\+::string \&utf8script) const
+\item 
+\Hypertarget{class_napi_1_1_env_aa383952fcce17d832d259888bc585f59}\label{class_napi_1_1_env_aa383952fcce17d832d259888bc585f59} 
+Maybe\+Or\+Value$<$ \mbox{\hyperlink{class_napi_1_1_value}{Value}} $>$ {\bfseries Run\+Script} (\mbox{\hyperlink{class_napi_1_1_string}{String}} script) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Environment for Node-\/\+API values and operations.
+
+All Node-\/\+API values and operations must be associated with an environment. An environment instance is always provided to callback functions; that environment must then be used for any creation of Node-\/\+API values or other Node-\/\+API operations within the callback. (Many methods infer the environment from the {\ttfamily this} instance that the method is called on.)
+
+In the future, multiple environments per process may be supported, although current implementations only support one environment per process.
+
+In the V8 Java\+Script engine, a Node-\/\+API environment approximately corresponds to an Isolate. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+node\+\_\+modules/node-\/addon-\/api/napi.\+h\item 
+node\+\_\+modules/node-\/addon-\/api/napi-\/inl.\+h\end{DoxyCompactItemize}

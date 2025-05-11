@@ -1,0 +1,27 @@
+\doxysection{node\+\_\+modules/is-\/promise Directory Reference}
+\hypertarget{dir_d8e96919202e4e857b9676dcc69c582f}{}\label{dir_d8e96919202e4e857b9676dcc69c582f}\index{node\_modules/is-\/promise Directory Reference@{node\_modules/is-\/promise Directory Reference}}
+
+
+\doxysubsection{Detailed Description}
+\href{https://promisesaplus.com/}{\texttt{ }}\hypertarget{readme.md_autotoc_md1971}{}\doxysubsection{\texorpdfstring{is-\/promise}{is-\/promise}}\label{readme.md_autotoc_md1971}
+Test whether an object looks like a promises-\/a+ promise
+
+\href{https://travis-ci.org/then/is-promise}{\texttt{ }} \href{https://david-dm.org/then/is-promise}{\texttt{ }} \href{https://www.npmjs.org/package/is-promise}{\texttt{ }}\hypertarget{readme.md_autotoc_md1972}{}\doxysubsubsection{\texorpdfstring{Installation}{Installation}}\label{readme.md_autotoc_md1972}
+\begin{DoxyVerb}$ npm install is-promise
+\end{DoxyVerb}
+
+
+You can also use it client side via npm.\hypertarget{readme.md_autotoc_md1973}{}\doxysubsubsection{\texorpdfstring{API}{API}}\label{readme.md_autotoc_md1973}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ isPromise\ from\ 'is-\/promise';}
+\DoxyCodeLine{}
+\DoxyCodeLine{isPromise(Promise.resolve());//=>true}
+\DoxyCodeLine{isPromise(\{then:function\ ()\ \{...\}\});//=>true}
+\DoxyCodeLine{isPromise(null);//=>false}
+\DoxyCodeLine{isPromise(\{\});//=>false}
+\DoxyCodeLine{isPromise(\{then:\ true\})//=>false}
+
+\end{DoxyCode}
+\hypertarget{readme.md_autotoc_md1974}{}\doxysubsubsection{\texorpdfstring{License}{License}}\label{readme.md_autotoc_md1974}
+MIT 

@@ -1,0 +1,236 @@
+\doxysection{node\+\_\+modules/jws Directory Reference}
+\hypertarget{dir_eb90a87877359f641388f0f194fca5e8}{}\label{dir_eb90a87877359f641388f0f194fca5e8}\index{node\_modules/jws Directory Reference@{node\_modules/jws Directory Reference}}
+\doxysubsubsection*{Directories}
+\begin{DoxyCompactItemize}
+\item 
+directory \mbox{\hyperlink{dir_cd57880dfec65084ef546e0d76224d5b}{lib}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An implementation of \href{http://self-issued.info/docs/draft-ietf-jose-json-web-signature.html}{\texttt{ JSON Web Signatures}}.
+
+This was developed against {\ttfamily draft-\/ietf-\/jose-\/json-\/web-\/signature-\/08} and implements the entire spec {\bfseries{except}} X.\+509 Certificate Chain signing/verifying (patches welcome).
+
+There are both synchronous ({\ttfamily jws.\+sign}, {\ttfamily jws.\+verify}) and streaming ({\ttfamily jws.\+create\+Sign}, {\ttfamily jws.\+create\+Verify}) APIs.\hypertarget{readme.md_autotoc_md2010}{}\doxysubsection{\texorpdfstring{Install}{Install}}\label{readme.md_autotoc_md2010}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ jws}
+
+\end{DoxyCode}
+\hypertarget{readme.md_autotoc_md2011}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{readme.md_autotoc_md2011}
+\hypertarget{readme.md_autotoc_md2012}{}\doxysubsubsection{\texorpdfstring{jws.\+ALGORITHMS}{jws.\+ALGORITHMS}}\label{readme.md_autotoc_md2012}
+Array of supported algorithms. The following algorithms are currently supported.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ alg Parameter Value   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Digital Signature or MAC Algorithm    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ alg Parameter Value   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Digital Signature or MAC Algorithm    }\\\cline{1-2}
+\endhead
+HS256   &HMAC using SHA-\/256 hash algorithm    \\\cline{1-2}
+HS384   &HMAC using SHA-\/384 hash algorithm    \\\cline{1-2}
+HS512   &HMAC using SHA-\/512 hash algorithm    \\\cline{1-2}
+RS256   &RSASSA using SHA-\/256 hash algorithm    \\\cline{1-2}
+RS384   &RSASSA using SHA-\/384 hash algorithm    \\\cline{1-2}
+RS512   &RSASSA using SHA-\/512 hash algorithm    \\\cline{1-2}
+PS256   &RSASSA-\/\+PSS using SHA-\/256 hash algorithm    \\\cline{1-2}
+PS384   &RSASSA-\/\+PSS using SHA-\/384 hash algorithm    \\\cline{1-2}
+PS512   &RSASSA-\/\+PSS using SHA-\/512 hash algorithm    \\\cline{1-2}
+ES256   &ECDSA using P-\/256 curve and SHA-\/256 hash algorithm    \\\cline{1-2}
+ES384   &ECDSA using P-\/384 curve and SHA-\/384 hash algorithm    \\\cline{1-2}
+ES512   &ECDSA using P-\/521 curve and SHA-\/512 hash algorithm    \\\cline{1-2}
+none   &No digital signature or MAC value included   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{readme.md_autotoc_md2013}{}\doxysubsubsection{\texorpdfstring{jws.\+sign(options)}{jws.\+sign(options)}}\label{readme.md_autotoc_md2013}
+(Synchronous) Return a JSON Web Signature for a header and a payload.
+
+Options\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily header}
+\item {\ttfamily payload}
+\item {\ttfamily secret} or {\ttfamily private\+Key}
+\item {\ttfamily encoding} (Optional, defaults to \textquotesingle{}utf8\textquotesingle{})
+\end{DoxyItemize}
+
+{\ttfamily header} must be an object with an {\ttfamily alg} property. {\ttfamily header.\+alg} must be one a value found in {\ttfamily jws.\+ALGORITHMS}. See above for a table of supported algorithms.
+
+If {\ttfamily payload} is not a buffer or a string, it will be coerced into a string using {\ttfamily JSON.\+stringify}.
+
+Example
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ signature\ =\ jws.sign(\{}
+\DoxyCodeLine{\ \ header:\ \{\ alg:\ 'HS256'\ \},}
+\DoxyCodeLine{\ \ payload:\ 'h.\ jon\ benjamin',}
+\DoxyCodeLine{\ \ secret:\ 'has\ a\ van',}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{readme.md_autotoc_md2014}{}\doxysubsubsection{\texorpdfstring{jws.\+verify(signature, algorithm, secret\+Or\+Key)}{jws.\+verify(signature, algorithm, secret\+Or\+Key)}}\label{readme.md_autotoc_md2014}
+(Synchronous) Returns {\ttfamily true} or {\ttfamily false} for whether a signature matches a secret or key.
+
+{\ttfamily signature} is a JWS Signature. {\ttfamily header.\+alg} must be a value found in {\ttfamily jws.\+ALGORITHMS}. See above for a table of supported algorithms. {\ttfamily secret\+Or\+Key} is a string or buffer containing either the secret for HMAC algorithms, or the PEM encoded public key for RSA and ECDSA.
+
+Note that the {\ttfamily "{}alg"{}} value from the signature header is ignored.\hypertarget{readme.md_autotoc_md2015}{}\doxysubsubsection{\texorpdfstring{jws.\+decode(signature)}{jws.\+decode(signature)}}\label{readme.md_autotoc_md2015}
+(Synchronous) Returns the decoded header, decoded payload, and signature parts of the JWS Signature.
+
+Returns an object with three properties, e.\+g. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{\ header:\ \{\ alg:\ 'HS256'\ \},}
+\DoxyCodeLine{\ \ payload:\ 'h.\ jon\ benjamin',}
+\DoxyCodeLine{\ \ signature:\ 'YOWPewyGHKu4Y\_0M\_vtlEnNlqmFOclqp4Hy6hVHfFT4'}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{readme.md_autotoc_md2016}{}\doxysubsubsection{\texorpdfstring{jws.\+create\+Sign(options)}{jws.\+create\+Sign(options)}}\label{readme.md_autotoc_md2016}
+Returns a new Sign\+Stream object.
+
+Options\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily header} (required)
+\item {\ttfamily payload}
+\item {\ttfamily key} \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} {\ttfamily private\+Key} \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} {\ttfamily secret}
+\item {\ttfamily encoding} (Optional, defaults to \textquotesingle{}utf8\textquotesingle{})
+\end{DoxyItemize}
+
+Other than {\ttfamily header}, all options expect a string or a buffer when the value is known ahead of time, or a stream for convenience. {\ttfamily key}/{\ttfamily private\+Key}/{\ttfamily secret} may also be an object when using an encrypted private key, see the \href{https://nodejs.org/api/crypto.html\#crypto_sign_sign_private_key_output_format}{\texttt{ crypto documentation}}.
+
+Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ This...}
+\DoxyCodeLine{jws.createSign(\{}
+\DoxyCodeLine{\ \ header:\ \{\ alg:\ 'RS256'\ \},}
+\DoxyCodeLine{\ \ privateKey:\ privateKeyStream,}
+\DoxyCodeLine{\ \ payload:\ payloadStream,}
+\DoxyCodeLine{\}).on('done',\ function(signature)\ \{}
+\DoxyCodeLine{\ \ //\ ...}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ is\ equivalent\ to\ this:}
+\DoxyCodeLine{const\ signer\ =\ jws.createSign(\{}
+\DoxyCodeLine{\ \ header:\ \{\ alg:\ 'RS256'\ \},}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{privateKeyStream.pipe(signer.privateKey);}
+\DoxyCodeLine{payloadStream.pipe(signer.payload);}
+\DoxyCodeLine{signer.on('done',\ function(signature)\ \{}
+\DoxyCodeLine{\ \ //\ ...}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{readme.md_autotoc_md2017}{}\doxysubsubsection{\texorpdfstring{jws.\+create\+Verify(options)}{jws.\+create\+Verify(options)}}\label{readme.md_autotoc_md2017}
+Returns a new Verify\+Stream object.
+
+Options\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily signature}
+\item {\ttfamily algorithm}
+\item {\ttfamily key} \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} {\ttfamily public\+Key} \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} {\ttfamily secret}
+\item {\ttfamily encoding} (Optional, defaults to \textquotesingle{}utf8\textquotesingle{})
+\end{DoxyItemize}
+
+All options expect a string or a buffer when the value is known ahead of time, or a stream for convenience.
+
+Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ This...}
+\DoxyCodeLine{jws.createVerify(\{}
+\DoxyCodeLine{\ \ publicKey:\ pubKeyStream,}
+\DoxyCodeLine{\ \ signature:\ sigStream,}
+\DoxyCodeLine{\}).on('done',\ function(verified,\ obj)\ \{}
+\DoxyCodeLine{\ \ //\ ...}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ is\ equivilant\ to\ this:}
+\DoxyCodeLine{const\ verifier\ =\ jws.createVerify();}
+\DoxyCodeLine{pubKeyStream.pipe(verifier.publicKey);}
+\DoxyCodeLine{sigStream.pipe(verifier.signature);}
+\DoxyCodeLine{verifier.on('done',\ function(verified,\ obj)\ \{}
+\DoxyCodeLine{\ \ //\ ...}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{readme.md_autotoc_md2018}{}\doxysubsubsection{\texorpdfstring{Class\+: Sign\+Stream}{Class\+: Sign\+Stream}}\label{readme.md_autotoc_md2018}
+A {\ttfamily Readable Stream} that emits a single data event (the calculated signature) when done.\hypertarget{readme.md_autotoc_md2019}{}\doxysubsubsubsection{\texorpdfstring{Event\+: \textquotesingle{}done\textquotesingle{}}{Event\+: \textquotesingle{}done\textquotesingle{}}}\label{readme.md_autotoc_md2019}
+{\ttfamily function (signature) \{ \}}\hypertarget{readme.md_autotoc_md2020}{}\doxysubsubsubsection{\texorpdfstring{signer.\+payload}{signer.\+payload}}\label{readme.md_autotoc_md2020}
+A {\ttfamily Writable Stream} that expects the JWS payload. Do {\itshape not} use if you passed a {\ttfamily payload} option to the constructor.
+
+Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{payloadStream.pipe(signer.payload);}
+
+\end{DoxyCode}
+\hypertarget{readme.md_autotoc_md2021}{}\doxysubsubsubsection{\texorpdfstring{signer.\+secret~\newline
+signer.\+key~\newline
+signer.\+private\+Key}{signer.\+secret~\newline
+signer.\+key~\newline
+signer.\+private\+Key}}\label{readme.md_autotoc_md2021}
+A {\ttfamily Writable Stream}. Expects the JWS secret for HMAC, or the private\+Key for ECDSA and RSA. Do {\itshape not} use if you passed a {\ttfamily secret} or {\ttfamily key} option to the constructor.
+
+Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{privateKeyStream.pipe(signer.privateKey);}
+
+\end{DoxyCode}
+\hypertarget{readme.md_autotoc_md2022}{}\doxysubsubsection{\texorpdfstring{Class\+: Verify\+Stream}{Class\+: Verify\+Stream}}\label{readme.md_autotoc_md2022}
+This is a {\ttfamily Readable Stream} that emits a single data event, the result of whether or not that signature was valid.\hypertarget{readme.md_autotoc_md2023}{}\doxysubsubsubsection{\texorpdfstring{Event\+: \textquotesingle{}done\textquotesingle{}}{Event\+: \textquotesingle{}done\textquotesingle{}}}\label{readme.md_autotoc_md2023}
+{\ttfamily function (valid, obj) \{ \}}
+
+{\ttfamily valid} is a boolean for whether or not the signature is valid.\hypertarget{readme.md_autotoc_md2024}{}\doxysubsubsubsection{\texorpdfstring{verifier.\+signature}{verifier.\+signature}}\label{readme.md_autotoc_md2024}
+A {\ttfamily Writable Stream} that expects a JWS Signature. Do {\itshape not} use if you passed a {\ttfamily signature} option to the constructor.\hypertarget{readme.md_autotoc_md2025}{}\doxysubsubsubsection{\texorpdfstring{verifier.\+secret~\newline
+verifier.\+key~\newline
+verifier.\+public\+Key}{verifier.\+secret~\newline
+verifier.\+key~\newline
+verifier.\+public\+Key}}\label{readme.md_autotoc_md2025}
+A {\ttfamily Writable Stream} that expects a public key or secret. Do {\itshape not} use if you passed a {\ttfamily key} or {\ttfamily secret} option to the constructor.\hypertarget{readme.md_autotoc_md2026}{}\doxysubsection{\texorpdfstring{TODO}{TODO}}\label{readme.md_autotoc_md2026}
+
+\begin{DoxyItemize}
+\item It feels like there should be some convenience options/\+APIs for defining the algorithm rather than having to define a header object with `\{ alg\+: \textquotesingle{}ES512' \}\`{} or whatever every time.
+\item X.\+509 support, ugh
+\end{DoxyItemize}\hypertarget{readme.md_autotoc_md2027}{}\doxysubsection{\texorpdfstring{License}{License}}\label{readme.md_autotoc_md2027}
+MIT
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Copyright\ (c)\ 2013-\/2015\ Brian\ J.\ Brennan}
+\DoxyCodeLine{}
+\DoxyCodeLine{Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a}
+\DoxyCodeLine{copy\ of\ this\ software\ and\ associated\ documentation\ files\ (the}
+\DoxyCodeLine{"{}Software"{}),\ to\ deal\ in\ the\ Software\ without\ restriction,\ including}
+\DoxyCodeLine{without\ limitation\ the\ rights\ to\ use,\ copy,\ modify,\ merge,\ publish,}
+\DoxyCodeLine{distribute,\ sublicense,\ and/or\ sell\ copies\ of\ the\ Software,\ and\ to}
+\DoxyCodeLine{permit\ persons\ to\ whom\ the\ Software\ is\ furnished\ to\ do\ so,\ subject\ to}
+\DoxyCodeLine{the\ following\ conditions:}
+\DoxyCodeLine{}
+\DoxyCodeLine{The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included}
+\DoxyCodeLine{in\ all\ copies\ or\ substantial\ portions\ of\ the\ Software.}
+\DoxyCodeLine{}
+\DoxyCodeLine{THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS}
+\DoxyCodeLine{OR\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF}
+\DoxyCodeLine{MERCHANTABILITY,\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND}
+\DoxyCodeLine{NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE}
+\DoxyCodeLine{LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION}
+\DoxyCodeLine{OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,\ OUT\ OF\ OR\ IN\ CONNECTION}
+\DoxyCodeLine{WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE\ SOFTWARE.}
+
+\end{DoxyCode}
+ 

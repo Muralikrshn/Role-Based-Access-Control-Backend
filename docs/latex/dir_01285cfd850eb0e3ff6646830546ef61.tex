@@ -1,0 +1,406 @@
+\doxysection{node\+\_\+modules/bcrypt Directory Reference}
+\hypertarget{dir_01285cfd850eb0e3ff6646830546ef61}{}\label{dir_01285cfd850eb0e3ff6646830546ef61}\index{node\_modules/bcrypt Directory Reference@{node\_modules/bcrypt Directory Reference}}
+\doxysubsubsection*{Directories}
+\begin{DoxyCompactItemize}
+\item 
+directory \mbox{\hyperlink{dir_71e4d9cecafdc9952645eb53b03bf07c}{examples}}
+\item 
+directory \mbox{\hyperlink{dir_56f42e887cea10d7d1b2a638e9fd456e}{src}}
+\item 
+directory \mbox{\hyperlink{dir_0c7f7ba9ab553088901f18807c684506}{test}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\href{https://github.com/kelektiv/node.bcrypt.js/actions/workflows/ci.yaml}{\texttt{ }}
+
+\href{https://ci.appveyor.com/project/defunctzombie/node-bcrypt-js-pgo26/branch/master}{\texttt{ }}
+
+A library to help you hash passwords.
+
+You can read about \href{https://en.wikipedia.org/wiki/Bcrypt}{\texttt{ bcrypt in Wikipedia}} as well as in the following article\+: \href{http://codahale.com/how-to-safely-store-a-password/}{\texttt{ How To Safely Store A Password}}\hypertarget{README.md_autotoc_md322}{}\doxysubsection{\texorpdfstring{If You Are Submitting Bugs or Issues}{If You Are Submitting Bugs or Issues}}\label{README.md_autotoc_md322}
+Please verify that the Node\+JS version you are using is a {\itshape stable} version; Unstable versions are currently not supported and issues created while using an unstable version will be closed.
+
+If you are on a stable version of Node\+JS, please provide a sufficient code snippet or log files for installation issues. The code snippet does not require you to include confidential information. However, it must provide enough information so the problem can be replicable, or it may be closed without an explanation.\hypertarget{README.md_autotoc_md323}{}\doxysubsection{\texorpdfstring{Version Compatibility}{Version Compatibility}}\label{README.md_autotoc_md323}
+{\itshape Please upgrade to atleast v5.\+0.\+0 to avoid security issues mentioned below.}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Node Version   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bcrypt Version    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Node Version   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bcrypt Version    }\\\cline{1-2}
+\endhead
+0.\+4   &\texorpdfstring{$<$}{<}= 0.\+4    \\\cline{1-2}
+0.\+6, 0.\+8, 0.\+10   &\texorpdfstring{$>$}{>}= 0.\+5    \\\cline{1-2}
+0.\+11   &\texorpdfstring{$>$}{>}= 0.\+8    \\\cline{1-2}
+4   &\texorpdfstring{$<$}{<}= 2.\+1.\+0    \\\cline{1-2}
+8   &\texorpdfstring{$>$}{>}= 1.\+0.\+3 \texorpdfstring{$<$}{<} 4.\+0.\+0    \\\cline{1-2}
+10, 11   &\texorpdfstring{$>$}{>}= 3    \\\cline{1-2}
+12 onwards   &\texorpdfstring{$>$}{>}= 3.\+0.\+6   \\\cline{1-2}
+\end{longtabu}
+
+
+{\ttfamily node-\/gyp} only works with stable/released versions of node. Since the {\ttfamily bcrypt} module uses {\ttfamily node-\/gyp} to build and install, you\textquotesingle{}ll need a stable version of node to use bcrypt. If you do not, you\textquotesingle{}ll likely see an error that starts with\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{gyp\ ERR!\ stack\ Error:\ "{}pre"{}\ versions\ of\ node\ cannot\ be\ installed,\ use\ the\ -\/-\/nodedir\ flag\ instead}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md324}{}\doxysubsection{\texorpdfstring{Security Issues And Concerns}{Security Issues And Concerns}}\label{README.md_autotoc_md324}
+\begin{quote}
+Per bcrypt implementation, only the first 72 bytes of a string are used. Any extra bytes are ignored when matching passwords. Note that this is not the first 72 {\itshape characters}. It is possible for a string to contain less than 72 characters, while taking up more than 72 bytes (e.\+g. a UTF-\/8 encoded string containing emojis). \end{quote}
+
+
+As should be the case with any security tool, anyone using this library should scrutinise it. If you find or suspect an issue with the code, please bring it to the maintainers\textquotesingle{} attention. We will spend some time ensuring that this library is as secure as possible.
+
+Here is a list of BCrypt-\/related security issues/concerns that have come up over the years.
+
+
+\begin{DoxyItemize}
+\item An \href{http://www.openwall.com/lists/oss-security/2011/06/20/2}{\texttt{ issue with passwords}} was found with a version of the Blowfish algorithm developed for John the Ripper. This is not present in the Open\+BSD version and is thus not a problem for this module. HT \href{https://twitter.com/zooko}{\texttt{ zooko}}.
+\item Versions {\ttfamily \texorpdfstring{$<$}{<} 5.\+0.\+0} suffer from bcrypt wrap-\/around bug and {\itshape will truncate passwords \texorpdfstring{$>$}{>}= 255 characters leading to severely weakened passwords}. Please upgrade at earliest. See \href{https://github.com/kelektiv/node.bcrypt.js/wiki/Security-Issues-and-Concerns\#bcrypt-wrap-around-bug-medium-severity}{\texttt{ this wiki page}} for more details.
+\item Versions {\ttfamily \texorpdfstring{$<$}{<} 5.\+0.\+0} {\itshape do not handle NUL characters inside passwords properly leading to all subsequent characters being dropped and thus resulting in severely weakened passwords}. Please upgrade at earliest. See \href{https://github.com/kelektiv/node.bcrypt.js/wiki/Security-Issues-and-Concerns\#improper-nul-handling-medium-severity}{\texttt{ this wiki page}} for more details.
+\end{DoxyItemize}\hypertarget{README.md_autotoc_md325}{}\doxysubsection{\texorpdfstring{Compatibility Note}{Compatibility Note}}\label{README.md_autotoc_md325}
+This library supports {\ttfamily \$2a\$} and {\ttfamily \$2b\$} prefix bcrypt hashes. {\ttfamily \$2x\$} and {\ttfamily \$2y\$} hashes are specific to bcrypt implementation developed for John the Ripper. In theory, they should be compatible with {\ttfamily \$2b\$} prefix.
+
+Compatibility with hashes generated by other languages is not 100\% guaranteed due to difference in character encodings. However, it should not be an issue for most cases.\hypertarget{README.md_autotoc_md326}{}\doxysubsubsection{\texorpdfstring{Migrating from v1.\+0.\+x}{Migrating from v1.\+0.\+x}}\label{README.md_autotoc_md326}
+Hashes generated in earlier version of {\ttfamily bcrypt} remain 100\% supported in {\ttfamily v2.\+x.\+x} and later versions. In most cases, the migration should be a bump in the {\ttfamily package.\+json}.
+
+Hashes generated in {\ttfamily v2.\+x.\+x} using the defaults parameters will not work in earlier versions.\hypertarget{README.md_autotoc_md327}{}\doxysubsection{\texorpdfstring{Dependencies}{Dependencies}}\label{README.md_autotoc_md327}
+
+\begin{DoxyItemize}
+\item Node\+JS
+\item {\ttfamily node-\/gyp}
+\begin{DoxyItemize}
+\item Please check the dependencies for this tool at\+: \href{https://github.com/nodejs/node-gyp}{\texttt{ https\+://github.\+com/nodejs/node-\/gyp}}
+\begin{DoxyItemize}
+\item Windows users will need the options for c\# and c++ installed with their visual studio instance.
+\item Python 2.\+x/3.x
+\end{DoxyItemize}
+\end{DoxyItemize}
+\item {\ttfamily Open\+SSL} -\/ This is only required to build the {\ttfamily bcrypt} project if you are using versions \texorpdfstring{$<$}{<}= 0.\+7.\+7. Otherwise, we\textquotesingle{}re using the builtin node crypto bindings for seed data (which use the same Open\+SSL code paths we were, but don\textquotesingle{}t have the external dependency).
+\end{DoxyItemize}\hypertarget{README.md_autotoc_md328}{}\doxysubsection{\texorpdfstring{Install via NPM}{Install via NPM}}\label{README.md_autotoc_md328}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ bcrypt}
+
+\end{DoxyCode}
+ {\itshape {\bfseries{Note\+:}}} OS X users using Xcode 4.\+3.\+1 or above may need to run the following command in their terminal prior to installing if errors occur regarding xcodebuild\+: {\ttfamily sudo xcode-\/select -\/switch /\+Applications/\+Xcode.app/\+Contents/\+Developer}
+
+{\itshape Pre-\/built binaries for various Node\+JS versions are made available on a best-\/effort basis.}
+
+Only the current stable and supported LTS releases are actively tested against.
+
+{\itshape There may be an interval between the release of the module and the availabilty of the compiled modules.}
+
+Currently, we have pre-\/built binaries that support the following platforms\+:
+
+
+\begin{DoxyEnumerate}
+\item Windows x32 and x64
+\item Linux x64 (GlibC and musl)
+\item mac\+OS
+\end{DoxyEnumerate}
+
+If you face an error like this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{node-\/pre-\/gyp\ ERR!\ Tried\ to\ download(404):\ https://github.com/kelektiv/node.bcrypt.js/releases/download/v1.0.2/bcrypt\_lib-\/v1.0.2-\/node-\/v48-\/linux-\/x64.tar.gz}
+
+\end{DoxyCode}
+
+
+make sure you have the appropriate dependencies installed and configured for your platform. You can find installation instructions for the dependencies for some common platforms \href{https://github.com/kelektiv/node.bcrypt.js/wiki/Installation-Instructions}{\texttt{ in this page}}.\hypertarget{README.md_autotoc_md329}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{README.md_autotoc_md329}
+\hypertarget{README.md_autotoc_md330}{}\doxysubsubsection{\texorpdfstring{async (recommended)}{async (recommended)}}\label{README.md_autotoc_md330}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ bcrypt\ =\ require('bcrypt');}
+\DoxyCodeLine{const\ saltRounds\ =\ 10;}
+\DoxyCodeLine{const\ myPlaintextPassword\ =\ 's0/\(\backslash\)/\(\backslash\)P4\$\$w0rD';}
+\DoxyCodeLine{const\ someOtherPlaintextPassword\ =\ 'not\_bacon';}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md331}{}\doxysubsubsubsection{\texorpdfstring{To hash a password\+:}{To hash a password\+:}}\label{README.md_autotoc_md331}
+Technique 1 (generate a salt and hash on separate function calls)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{bcrypt.genSalt(saltRounds,\ function(err,\ salt)\ \{}
+\DoxyCodeLine{\ \ \ \ bcrypt.hash(myPlaintextPassword,\ salt,\ function(err,\ hash)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Store\ hash\ in\ your\ password\ DB.}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Technique 2 (auto-\/gen a salt and hash)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{bcrypt.hash(myPlaintextPassword,\ saltRounds,\ function(err,\ hash)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Store\ hash\ in\ your\ password\ DB.}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Note that both techniques achieve the same end-\/result.\hypertarget{README.md_autotoc_md332}{}\doxysubsubsubsection{\texorpdfstring{To check a password\+:}{To check a password\+:}}\label{README.md_autotoc_md332}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Load\ hash\ from\ your\ password\ DB.}
+\DoxyCodeLine{bcrypt.compare(myPlaintextPassword,\ hash,\ function(err,\ result)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ result\ ==\ true}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{bcrypt.compare(someOtherPlaintextPassword,\ hash,\ function(err,\ result)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ result\ ==\ false}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+A Note on Timing Attacks\hypertarget{README.md_autotoc_md333}{}\doxysubsubsection{\texorpdfstring{with promises}{with promises}}\label{README.md_autotoc_md333}
+bcrypt uses whatever {\ttfamily Promise} implementation is available in {\ttfamily global.\+Promise}. Node\+JS \texorpdfstring{$>$}{>}= 0.\+12 has a native {\ttfamily Promise} implementation built in. However, this should work in any Promises/\+A+ compliant implementation.
+
+Async methods that accept a callback, return a {\ttfamily Promise} when callback is not specified if Promise support is available.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{bcrypt.hash(myPlaintextPassword,\ saltRounds).then(function(hash)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Store\ hash\ in\ your\ password\ DB.}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Load\ hash\ from\ your\ password\ DB.}
+\DoxyCodeLine{bcrypt.compare(myPlaintextPassword,\ hash).then(function(result)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ result\ ==\ true}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{bcrypt.compare(someOtherPlaintextPassword,\ hash).then(function(result)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ result\ ==\ false}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+This is also compatible with {\ttfamily async/await}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{async\ function\ checkUser(username,\ password)\ \{}
+\DoxyCodeLine{\ \ \ \ //...\ fetch\ user\ from\ a\ db\ etc.}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ const\ match\ =\ await\ bcrypt.compare(password,\ user.passwordHash);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ if(match)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //login}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //...}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md334}{}\doxysubsubsection{\texorpdfstring{ESM import}{ESM import}}\label{README.md_autotoc_md334}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ bcrypt\ from\ "{}bcrypt"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ later}
+\DoxyCodeLine{await\ bcrypt.compare(password,\ hash);}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md335}{}\doxysubsubsection{\texorpdfstring{sync}{sync}}\label{README.md_autotoc_md335}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ bcrypt\ =\ require('bcrypt');}
+\DoxyCodeLine{const\ saltRounds\ =\ 10;}
+\DoxyCodeLine{const\ myPlaintextPassword\ =\ 's0/\(\backslash\)/\(\backslash\)P4\$\$w0rD';}
+\DoxyCodeLine{const\ someOtherPlaintextPassword\ =\ 'not\_bacon';}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md336}{}\doxysubsubsubsection{\texorpdfstring{To hash a password\+:}{To hash a password\+:}}\label{README.md_autotoc_md336}
+Technique 1 (generate a salt and hash on separate function calls)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ salt\ =\ bcrypt.genSaltSync(saltRounds);}
+\DoxyCodeLine{const\ hash\ =\ bcrypt.hashSync(myPlaintextPassword,\ salt);}
+\DoxyCodeLine{//\ Store\ hash\ in\ your\ password\ DB.}
+
+\end{DoxyCode}
+
+
+Technique 2 (auto-\/gen a salt and hash)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ hash\ =\ bcrypt.hashSync(myPlaintextPassword,\ saltRounds);}
+\DoxyCodeLine{//\ Store\ hash\ in\ your\ password\ DB.}
+
+\end{DoxyCode}
+
+
+As with async, both techniques achieve the same end-\/result.\hypertarget{README.md_autotoc_md337}{}\doxysubsubsubsection{\texorpdfstring{To check a password\+:}{To check a password\+:}}\label{README.md_autotoc_md337}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Load\ hash\ from\ your\ password\ DB.}
+\DoxyCodeLine{bcrypt.compareSync(myPlaintextPassword,\ hash);\ //\ true}
+\DoxyCodeLine{bcrypt.compareSync(someOtherPlaintextPassword,\ hash);\ //\ false}
+
+\end{DoxyCode}
+
+
+A Note on Timing Attacks\hypertarget{README.md_autotoc_md338}{}\doxysubsubsection{\texorpdfstring{Why is async mode recommended over sync mode?}{Why is async mode recommended over sync mode?}}\label{README.md_autotoc_md338}
+We recommend using async API if you use {\ttfamily bcrypt} on a server. Bcrypt hashing is CPU intensive which will cause the sync APIs to block the event loop and prevent your application from servicing any inbound requests or events. The async version uses a thread pool which does not block the main event loop.\hypertarget{README.md_autotoc_md339}{}\doxysubsection{\texorpdfstring{API}{API}}\label{README.md_autotoc_md339}
+{\ttfamily BCrypt.}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily gen\+Salt\+Sync(rounds, minor)}
+\begin{DoxyItemize}
+\item {\ttfamily rounds} -\/ \mbox{[}OPTIONAL\mbox{]} -\/ the cost of processing the data. (default -\/ 10)
+\item {\ttfamily minor} -\/ \mbox{[}OPTIONAL\mbox{]} -\/ minor version of bcrypt to use. (default -\/ b)
+\end{DoxyItemize}
+\item {\ttfamily gen\+Salt(rounds, minor, cb)}
+\begin{DoxyItemize}
+\item {\ttfamily rounds} -\/ \mbox{[}OPTIONAL\mbox{]} -\/ the cost of processing the data. (default -\/ 10)
+\item {\ttfamily minor} -\/ \mbox{[}OPTIONAL\mbox{]} -\/ minor version of bcrypt to use. (default -\/ b)
+\item {\ttfamily cb} -\/ \mbox{[}OPTIONAL\mbox{]} -\/ a callback to be fired once the salt has been generated. uses eio making it asynchronous. If {\ttfamily cb} is not specified, a {\ttfamily Promise} is returned if Promise support is available.
+\begin{DoxyItemize}
+\item {\ttfamily err} -\/ First parameter to the callback detailing any errors.
+\item {\ttfamily salt} -\/ Second parameter to the callback providing the generated salt.
+\end{DoxyItemize}
+\end{DoxyItemize}
+\item {\ttfamily hash\+Sync(data, salt)}
+\begin{DoxyItemize}
+\item {\ttfamily data} -\/ \mbox{[}REQUIRED\mbox{]} -\/ the data to be encrypted.
+\item {\ttfamily salt} -\/ \mbox{[}REQUIRED\mbox{]} -\/ the salt to be used to hash the password. if specified as a number then a salt will be generated with the specified number of rounds and used (see example under {\bfseries{Usage}}).
+\end{DoxyItemize}
+\item {\ttfamily hash(data, salt, cb)}
+\begin{DoxyItemize}
+\item {\ttfamily data} -\/ \mbox{[}REQUIRED\mbox{]} -\/ the data to be encrypted.
+\item {\ttfamily salt} -\/ \mbox{[}REQUIRED\mbox{]} -\/ the salt to be used to hash the password. if specified as a number then a salt will be generated with the specified number of rounds and used (see example under {\bfseries{Usage}}).
+\item {\ttfamily cb} -\/ \mbox{[}OPTIONAL\mbox{]} -\/ a callback to be fired once the data has been encrypted. uses eio making it asynchronous. If {\ttfamily cb} is not specified, a {\ttfamily Promise} is returned if Promise support is available.
+\begin{DoxyItemize}
+\item {\ttfamily err} -\/ First parameter to the callback detailing any errors.
+\item {\ttfamily encrypted} -\/ Second parameter to the callback providing the encrypted form.
+\end{DoxyItemize}
+\end{DoxyItemize}
+\item {\ttfamily compare\+Sync(data, encrypted)}
+\begin{DoxyItemize}
+\item {\ttfamily data} -\/ \mbox{[}REQUIRED\mbox{]} -\/ data to compare.
+\item {\ttfamily encrypted} -\/ \mbox{[}REQUIRED\mbox{]} -\/ data to be compared to.
+\end{DoxyItemize}
+\item {\ttfamily compare(data, encrypted, cb)}
+\begin{DoxyItemize}
+\item {\ttfamily data} -\/ \mbox{[}REQUIRED\mbox{]} -\/ data to compare.
+\item {\ttfamily encrypted} -\/ \mbox{[}REQUIRED\mbox{]} -\/ data to be compared to.
+\item {\ttfamily cb} -\/ \mbox{[}OPTIONAL\mbox{]} -\/ a callback to be fired once the data has been compared. uses eio making it asynchronous. If {\ttfamily cb} is not specified, a {\ttfamily Promise} is returned if Promise support is available.
+\begin{DoxyItemize}
+\item {\ttfamily err} -\/ First parameter to the callback detailing any errors.
+\item {\ttfamily same} -\/ Second parameter to the callback providing whether the data and encrypted forms match \mbox{[}true \texorpdfstring{$\vert$}{|} false\mbox{]}.
+\end{DoxyItemize}
+\end{DoxyItemize}
+\item {\ttfamily get\+Rounds(encrypted)} -\/ return the number of rounds used to encrypt a given hash
+\begin{DoxyItemize}
+\item {\ttfamily encrypted} -\/ \mbox{[}REQUIRED\mbox{]} -\/ hash from which the number of rounds used should be extracted.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{README.md_autotoc_md340}{}\doxysubsection{\texorpdfstring{A Note on Rounds}{A Note on Rounds}}\label{README.md_autotoc_md340}
+A note about the cost\+: when you are hashing your data, the module will go through a series of rounds to give you a secure hash. The value you submit is not just the number of rounds the module will go through to hash your data. The module will use the value you enter and go through {\ttfamily 2\texorpdfstring{$^\wedge$}{\string^}rounds} hashing iterations.
+
+From @garthk, on a 2GHz core you can roughly expect\+: \begin{DoxyVerb}rounds=8 : ~40 hashes/sec
+rounds=9 : ~20 hashes/sec
+rounds=10: ~10 hashes/sec
+rounds=11: ~5  hashes/sec
+rounds=12: 2-3 hashes/sec
+rounds=13: ~1 sec/hash
+rounds=14: ~1.5 sec/hash
+rounds=15: ~3 sec/hash
+rounds=25: ~1 hour/hash
+rounds=31: 2-3 days/hash
+\end{DoxyVerb}
+\hypertarget{README.md_autotoc_md341}{}\doxysubsection{\texorpdfstring{A Note on Timing Attacks}{A Note on Timing Attacks}}\label{README.md_autotoc_md341}
+Because it\textquotesingle{}s come up multiple times in this project and other bcrypt projects, it needs to be said. The {\ttfamily bcrypt} library is not susceptible to timing attacks. From codahale/bcrypt-\/ruby\#42\+:
+
+\begin{quote}
+One of the desired properties of a cryptographic hash function is preimage attack resistance, which means there is no shortcut for generating a message which, when hashed, produces a specific digest. \end{quote}
+
+
+A great thread on this, in much more detail can be found @ codahale/bcrypt-\/ruby\#43
+
+If you\textquotesingle{}re unfamiliar with timing attacks and want to learn more you can find a great writeup @ \href{https://codahale.com/a-lesson-in-timing-attacks/}{\texttt{ A Lesson In Timing Attacks}}
+
+However, timing attacks are real. And the comparison function is {\itshape not} time safe. That means that it may exit the function early in the comparison process. Timing attacks happen because of the above. We don\textquotesingle{}t need to be careful that an attacker will learn anything, and our comparison function provides a comparison of hashes. It is a utility to the overall purpose of the library. If you end up using it for something else, we cannot guarantee the security of the comparator. Keep that in mind as you use the library.\hypertarget{README.md_autotoc_md342}{}\doxysubsection{\texorpdfstring{Hash Info}{Hash Info}}\label{README.md_autotoc_md342}
+The characters that comprise the resultant hash are {\ttfamily ./\+ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789\$}.
+
+Resultant hashes will be 60 characters long and they will include the salt among other parameters, as follows\+:
+
+{\ttfamily \$\mbox{[}algorithm\mbox{]}\$\mbox{[}cost\mbox{]}\$\mbox{[}salt\mbox{]}\mbox{[}hash\mbox{]}}
+
+
+\begin{DoxyItemize}
+\item 2 chars hash algorithm identifier prefix. {\ttfamily "{}\$2a\$"{} or "{}\$2b\$"{}} indicates BCrypt
+\item Cost-\/factor (n). Represents the exponent used to determine how many iterations 2\texorpdfstring{$^\wedge$}{\string^}n
+\item 16-\/byte (128-\/bit) salt, base64 encoded to 22 characters
+\item 24-\/byte (192-\/bit) hash, base64 encoded to 31 characters
+\end{DoxyItemize}
+
+Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$2b\$10\$nOUIs5kJ7naTuTFkBy1veuK0kSxUFXfuaOKdOKf9xYT0KKIGSJwFa}
+\DoxyCodeLine{\ |\ \ |\ \ |\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}
+\DoxyCodeLine{\ |\ \ |\ \ |\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ hash-\/value\ =\ K0kSxUFXfuaOKdOKf9xYT0KKIGSJwFa}
+\DoxyCodeLine{\ |\ \ |\ \ |}
+\DoxyCodeLine{\ |\ \ |\ \ salt\ =\ nOUIs5kJ7naTuTFkBy1veu}
+\DoxyCodeLine{\ |\ \ |}
+\DoxyCodeLine{\ |\ \ cost-\/factor\ =>\ 10\ =\ 2\string^10\ rounds}
+\DoxyCodeLine{\ |}
+\DoxyCodeLine{\ hash-\/algorithm\ identifier\ =>\ 2b\ =\ BCrypt}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md343}{}\doxysubsection{\texorpdfstring{Testing}{Testing}}\label{README.md_autotoc_md343}
+If you create a pull request, tests better pass \+:)
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install}
+\DoxyCodeLine{npm\ test}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md344}{}\doxysubsection{\texorpdfstring{Credits}{Credits}}\label{README.md_autotoc_md344}
+The code for this comes from a few sources\+:
+
+
+\begin{DoxyItemize}
+\item blowfish.\+cc -\/ Open\+BSD
+\item bcrypt.\+cc -\/ Open\+BSD
+\item bcrypt\+::gen\+\_\+salt -\/ \href{http://mail-index.netbsd.org/tech-crypto/2002/05/24/msg000204.html}{\texttt{ gen\+\_\+salt inclusion to bcrypt}}
+\item bcrypt\+\_\+node.\+cc -\/ me
+\end{DoxyItemize}\hypertarget{README.md_autotoc_md345}{}\doxysubsection{\texorpdfstring{Contributors}{Contributors}}\label{README.md_autotoc_md345}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/Shadowfiend}{\texttt{ Antonio Salazar Cardozo}} -\/ Early Mac\+OS X support (when we used libbsd)
+\item \href{https://github.com/pixelglow}{\texttt{ Ben Glow}} -\/ Fixes for thread safety with async calls
+\item \href{https://github.com/thegoleffect}{\texttt{ Van Nguyen}} -\/ Found a timing attack in the comparator
+\item \href{https://github.com/newitfarmer}{\texttt{ New\+ITFarmer}} -\/ Initial Cygwin support
+\item \href{https://github.com/dtrejo}{\texttt{ David Trejo}} -\/ packaging fixes
+\item \href{https://github.com/alfredwesterveld}{\texttt{ Alfred Westerveld}} -\/ packaging fixes
+\item \href{https://twitter.com/vincentcr}{\texttt{ Vincent Côté-\/\+Roy}} -\/ Testing around concurrency issues
+\item \href{https://github.com/lloyd}{\texttt{ Lloyd Hilaiel}} -\/ Documentation fixes
+\item \href{https://github.com/shtylman}{\texttt{ Roman Shtylman}} -\/ Code refactoring, general rot reduction, compile options, better memory management with delete and new, and an upgrade to libuv over eio/ev.
+\item \href{https://github.com/vadimg}{\texttt{ Vadim Graboys}} -\/ Code changes to support 0.\+5.\+5+
+\item \href{https://github.com/bnoordhuis}{\texttt{ Ben Noordhuis}} -\/ Fixed a thread safety issue in nodejs that was perfectly mappable to this module.
+\item \href{https://github.com/tootallnate}{\texttt{ Nate Rajlich}} -\/ Bindings and build process.
+\item \href{https://github.com/seanmonstar}{\texttt{ Sean Mc\+Arthur}} -\/ Windows Support
+\item \href{https://github.com/weareu}{\texttt{ Fanie Oosthuysen}} -\/ Windows Support
+\item \href{https://github.com/recrsn}{\texttt{ Amitosh Swain Mahapatra}} -\/ \$2b\$ hash support, ES6 Promise support
+\item \href{https://github.com/NickNaso}{\texttt{ Nicola Del Gobbo}} -\/ Initial implementation with N-\/\+API
+\end{DoxyItemize}\hypertarget{README.md_autotoc_md346}{}\doxysubsection{\texorpdfstring{License}{License}}\label{README.md_autotoc_md346}
+Unless stated elsewhere, file headers or otherwise, the license as stated in the LICENSE file. 

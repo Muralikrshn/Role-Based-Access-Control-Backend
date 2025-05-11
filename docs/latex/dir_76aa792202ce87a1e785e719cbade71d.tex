@@ -1,0 +1,326 @@
+\doxysection{node\+\_\+modules/bson Directory Reference}
+\hypertarget{dir_76aa792202ce87a1e785e719cbade71d}{}\label{dir_76aa792202ce87a1e785e719cbade71d}\index{node\_modules/bson Directory Reference@{node\_modules/bson Directory Reference}}
+\doxysubsubsection*{Directories}
+\begin{DoxyCompactItemize}
+\item 
+directory \mbox{\hyperlink{dir_34d06393a74c6c7575dc6e41186904a5}{etc}}
+\item 
+directory \mbox{\hyperlink{dir_a539671c4a33dd79071a75809834f00a}{lib}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+BSON is short for "{}\+Binary JSON,"{} and is the binary-\/encoded serialization of JSON-\/like documents. You can learn more about it in \href{http://bsonspec.org}{\texttt{ the specification}}.\hypertarget{README.md_autotoc_md529}{}\doxysubsubsection{\texorpdfstring{Table of Contents}{Table of Contents}}\label{README.md_autotoc_md529}
+
+\begin{DoxyItemize}
+\item Usage
+\item Bugs/\+Feature Requests
+\item Installation
+\item Documentation
+\item \doxylink{md_node__modules_2safer-buffer_2_porting-_buffer_faq}{FAQ}
+\end{DoxyItemize}\hypertarget{README.md_autotoc_md530}{}\doxysubsubsection{\texorpdfstring{Release Integrity}{Release Integrity}}\label{README.md_autotoc_md530}
+Releases are created automatically and signed using the \href{https://pgp.mongodb.com/node-driver.asc}{\texttt{ Node team\textquotesingle{}s GPG key}}. This applies to the git tag as well as all release packages provided as part of a Git\+Hub release. To verify the provided packages, download the key and import it using gpg\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{gpg\ -\/-\/import\ node-\/driver.asc}
+
+\end{DoxyCode}
+
+
+The Git\+Hub release contains a detached signature file for the NPM package (named {\ttfamily bson-\/\+X.\+Y.\+Z.\+tgz.\+sig}).
+
+The following command returns the link npm package. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ view\ bson@vX.Y.Z\ dist.tarball\ }
+
+\end{DoxyCode}
+
+
+Using the result of the above command, a {\ttfamily curl} command can return the official npm package for the release.
+
+To verify the integrity of the downloaded package, run the following command\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{gpg\ -\/-\/verify\ bson-\/X.Y.Z.tgz.sig\ bson-\/X.Y.Z.tgz}
+
+\end{DoxyCode}
+
+
+\texorpdfstring{$>$}{>}\mbox{[}!\+Note\mbox{]} No verification is done when using npm to install the package. The contents of the Github tarball and npm\textquotesingle{}s tarball are identical.\hypertarget{README.md_autotoc_md531}{}\doxysubsection{\texorpdfstring{Bugs / Feature Requests}{Bugs / Feature Requests}}\label{README.md_autotoc_md531}
+Think you\textquotesingle{}ve found a bug? Want to see a new feature in {\ttfamily bson}? Please open a case in our issue management tool, JIRA\+:
+
+
+\begin{DoxyEnumerate}
+\item Create an account and login\+: \href{https://jira.mongodb.org}{\texttt{ jira.\+mongodb.\+org}}
+\item Navigate to the NODE project\+: \href{https://jira.mongodb.org/browse/NODE}{\texttt{ jira.\+mongodb.\+org/browse/\+NODE}}
+\item Click {\bfseries{Create Issue}} -\/ Please provide as much information as possible about the issue and how to reproduce it.
+\end{DoxyEnumerate}
+
+Bug reports in JIRA for the NODE driver project are {\bfseries{public}}.\hypertarget{README.md_autotoc_md532}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{README.md_autotoc_md532}
+To build a new version perform the following operations\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install}
+\DoxyCodeLine{npm\ run\ build}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md533}{}\doxysubsubsection{\texorpdfstring{Node.\+js or Bundling Usage}{Node.\+js or Bundling Usage}}\label{README.md_autotoc_md533}
+When using a bundler or Node.\+js you can import bson using the package name\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ BSON,\ EJSON,\ ObjectId\ \}\ from\ 'bson';}
+\DoxyCodeLine{//\ or:}
+\DoxyCodeLine{//\ const\ \{\ BSON,\ EJSON,\ ObjectId\ \}\ =\ require('bson');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ bytes\ =\ BSON.serialize(\{\ \_id:\ new\ ObjectId()\ \});}
+\DoxyCodeLine{console.log(bytes);}
+\DoxyCodeLine{const\ doc\ =\ BSON.deserialize(bytes);}
+\DoxyCodeLine{console.log(EJSON.stringify(doc));}
+\DoxyCodeLine{//\ \{"{}\_id"{}:\{"{}\$oid"{}:"{}..."{}\}\}}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md534}{}\doxysubsubsection{\texorpdfstring{Browser Usage}{Browser Usage}}\label{README.md_autotoc_md534}
+If you are working directly in the browser without a bundler please use the {\ttfamily .mjs} bundle like so\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ type="{}module"{}>}
+\DoxyCodeLine{\ \ import\ \{\ BSON,\ EJSON,\ ObjectId\ \}\ from\ './lib/bson.mjs';}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ const\ bytes\ =\ BSON.serialize(\{\ \_id:\ new\ ObjectId()\ \});}
+\DoxyCodeLine{\ \ console.log(bytes);}
+\DoxyCodeLine{\ \ const\ doc\ =\ BSON.deserialize(bytes);}
+\DoxyCodeLine{\ \ console.log(EJSON.stringify(doc));}
+\DoxyCodeLine{\ \ //\ \{"{}\_id"{}:\{"{}\$oid"{}:"{}..."{}\}\}}
+\DoxyCodeLine{</script>}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md535}{}\doxysubsection{\texorpdfstring{Installation}{Installation}}\label{README.md_autotoc_md535}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ bson}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md536}{}\doxysubsubsection{\texorpdfstring{Mongo\+DB Node.\+js Driver Version Compatibility}{Mongo\+DB Node.\+js Driver Version Compatibility}}\label{README.md_autotoc_md536}
+Only the following version combinations with the \href{https://github.com/mongodb/node-mongodb-native}{\texttt{ Mongo\+DB Node.\+js Driver}} are considered stable.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily bson@1.\+x}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily bson@4.\+x}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily bson@5.\+x}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily bson@6.\+x}    }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily bson@1.\+x}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily bson@4.\+x}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily bson@5.\+x}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily bson@6.\+x}    }\\\cline{1-5}
+\endhead
+{\ttfamily mongodb@6.\+x}   &N/A   &N/A   &N/A   &✓    \\\cline{1-5}
+{\ttfamily mongodb@5.\+x}   &N/A   &N/A   &✓   &N/A    \\\cline{1-5}
+{\ttfamily mongodb@4.\+x}   &N/A   &✓   &N/A   &N/A    \\\cline{1-5}
+{\ttfamily mongodb@3.\+x}   &✓   &N/A   &N/A   &N/A   \\\cline{1-5}
+\end{longtabu}
+\hypertarget{README.md_autotoc_md537}{}\doxysubsection{\texorpdfstring{Documentation}{Documentation}}\label{README.md_autotoc_md537}
+\hypertarget{README.md_autotoc_md538}{}\doxysubsubsection{\texorpdfstring{BSON}{BSON}}\label{README.md_autotoc_md538}
+\href{https://mongodb.github.io/node-mongodb-native/Next/modules/BSON.html}{\texttt{ API documentation}}
+
+\label{README.md_EJSON}%
+\Hypertarget{README.md_EJSON}%
+\hypertarget{README.md_autotoc_md539}{}\doxysubsubsection{\texorpdfstring{EJSON}{EJSON}}\label{README.md_autotoc_md539}
+
+\begin{DoxyItemize}
+\item \doxylink{README.md_EJSON}{EJSON}
+\begin{DoxyItemize}
+\item .parse(text, \mbox{[}options\mbox{]})
+\item .stringify(value, \mbox{[}replacer\mbox{]}, \mbox{[}space\mbox{]}, \mbox{[}options\mbox{]})
+\item .serialize(bson, \mbox{[}options\mbox{]})
+\item .deserialize(ejson, \mbox{[}options\mbox{]})
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\label{_EJSON.parse}%
+\hypertarget{README.md_autotoc_md540}{}\doxysubsubsubsection{\texorpdfstring{{\itshape EJSON}.parse(text, \mbox{[}options\mbox{]})}{{\itshape EJSON}.parse(text, \mbox{[}options\mbox{]})}}\label{README.md_autotoc_md540}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Param   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Param   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-4}
+\endhead
+text   &{\ttfamily string}   &&\\\cline{1-4}
+\mbox{[}options\mbox{]}   &{\ttfamily object}   &&Optional settings    \\\cline{1-4}
+\mbox{[}options.\+relaxed\mbox{]}   &{\ttfamily boolean}   &{\ttfamily true}   &Attempt to return native JS types where possible, rather than BSON types (if true)   \\\cline{1-4}
+\end{longtabu}
+
+
+Parse an Extended JSON string, constructing the Java\+Script value or object described by that string.
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ EJSON\ \}\ =\ require('bson');}
+\DoxyCodeLine{const\ text\ =\ '\{\ "{}int32"{}:\ \{\ "{}\$numberInt"{}:\ "{}10"{}\ \}\ \}';}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ prints\ \{\ int32:\ \{\ [String:\ '10']\ \_bsontype:\ 'Int32',\ value:\ '10'\ \}\ \}}
+\DoxyCodeLine{console.log(EJSON.parse(text,\ \{\ relaxed:\ false\ \}));}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ prints\ \{\ int32:\ 10\ \}}
+\DoxyCodeLine{console.log(EJSON.parse(text));}
+
+\end{DoxyCode}
+
+
+\label{_EJSON.stringify}%
+\hypertarget{README.md_autotoc_md541}{}\doxysubsubsubsection{\texorpdfstring{{\itshape EJSON}.stringify(value, \mbox{[}replacer\mbox{]}, \mbox{[}space\mbox{]}, \mbox{[}options\mbox{]})}{{\itshape EJSON}.stringify(value, \mbox{[}replacer\mbox{]}, \mbox{[}space\mbox{]}, \mbox{[}options\mbox{]})}}\label{README.md_autotoc_md541}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Param   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Param   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-4}
+\endhead
+value   &{\ttfamily object}   &&The value to convert to extended JSON    \\\cline{1-4}
+\mbox{[}replacer\mbox{]}   &{\ttfamily function} $|$ {\ttfamily array}   &&A function that alters the behavior of the stringification process, or an array of String and Number objects that serve as a whitelist for selecting/filtering the properties of the value object to be included in the JSON string. If this value is null or not provided, all properties of the object are included in the resulting JSON string    \\\cline{1-4}
+\mbox{[}space\mbox{]}   &{\ttfamily string} $|$ {\ttfamily number}   &&A String or Number object that\textquotesingle{}s used to insert white space into the output JSON string for readability purposes.    \\\cline{1-4}
+\mbox{[}options\mbox{]}   &{\ttfamily object}   &&Optional settings    \\\cline{1-4}
+\mbox{[}options.\+relaxed\mbox{]}   &{\ttfamily boolean}   &{\ttfamily true}   &Enabled Extended JSON\textquotesingle{}s {\ttfamily relaxed} mode    \\\cline{1-4}
+\mbox{[}options.\+legacy\mbox{]}   &{\ttfamily boolean}   &{\ttfamily true}   &Output in Extended JSON v1   \\\cline{1-4}
+\end{longtabu}
+
+
+Converts a BSON document to an Extended JSON string, optionally replacing values if a replacer function is specified or optionally including only the specified properties if a replacer array is specified.
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ EJSON\ \}\ =\ require('bson');}
+\DoxyCodeLine{const\ Int32\ =\ require('mongodb').Int32;}
+\DoxyCodeLine{const\ doc\ =\ \{\ int32:\ new\ Int32(10)\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ prints\ '\{"{}int32"{}:\{"{}\$numberInt"{}:"{}10"{}\}\}'}
+\DoxyCodeLine{console.log(EJSON.stringify(doc,\ \{\ relaxed:\ false\ \}));}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ prints\ '\{"{}int32"{}:10\}'}
+\DoxyCodeLine{console.log(EJSON.stringify(doc));}
+
+\end{DoxyCode}
+
+
+\label{_EJSON.serialize}%
+\hypertarget{README.md_autotoc_md542}{}\doxysubsubsubsection{\texorpdfstring{{\itshape EJSON}.serialize(bson, \mbox{[}options\mbox{]})}{{\itshape EJSON}.serialize(bson, \mbox{[}options\mbox{]})}}\label{README.md_autotoc_md542}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Param   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Param   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endhead
+bson   &{\ttfamily object}   &The object to serialize    \\\cline{1-3}
+\mbox{[}options\mbox{]}   &{\ttfamily object}   &Optional settings passed to the {\ttfamily stringify} function   \\\cline{1-3}
+\end{longtabu}
+
+
+Serializes an object to an Extended JSON string, and reparse it as a Java\+Script object.
+
+\label{_EJSON.deserialize}%
+\hypertarget{README.md_autotoc_md543}{}\doxysubsubsubsection{\texorpdfstring{{\itshape EJSON}.deserialize(ejson, \mbox{[}options\mbox{]})}{{\itshape EJSON}.deserialize(ejson, \mbox{[}options\mbox{]})}}\label{README.md_autotoc_md543}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Param   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Param   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endhead
+ejson   &{\ttfamily object}   &The Extended JSON object to deserialize    \\\cline{1-3}
+\mbox{[}options\mbox{]}   &{\ttfamily object}   &Optional settings passed to the parse method   \\\cline{1-3}
+\end{longtabu}
+
+
+Deserializes an Extended JSON object into a plain Java\+Script object with native/\+BSON types\hypertarget{README.md_autotoc_md544}{}\doxysubsection{\texorpdfstring{Error Handling}{Error Handling}}\label{README.md_autotoc_md544}
+It is our recommendation to use {\ttfamily BSONError.\+is\+BSONError()} checks on errors and to avoid relying on parsing {\ttfamily error.\+message} and {\ttfamily error.\+name} strings in your code. We guarantee {\ttfamily BSONError.\+is\+BSONError()} checks will pass according to semver guidelines, but errors may be sub-\/classed or their messages may change at any time, even patch releases, as we see fit to increase the helpfulness of the errors.
+
+Any new errors we add to the driver will directly extend an existing error class and no existing error will be moved to a different parent class outside of a major release. This means {\ttfamily BSONError.\+is\+BSONError()} will always be able to accurately capture the errors that our BSON library throws.
+
+Hypothetical example\+: A collection in our Db has an issue with UTF-\/8 data\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{let\ documentCount\ =\ 0;}
+\DoxyCodeLine{const\ cursor\ =\ collection.find(\{\},\ \{\ utf8Validation:\ true\ \});}
+\DoxyCodeLine{try\ \{}
+\DoxyCodeLine{\ \ for\ await\ (const\ doc\ of\ cursor)\ documentCount\ +=\ 1;}
+\DoxyCodeLine{\}\ catch\ (error)\ \{}
+\DoxyCodeLine{\ \ if\ (BSONError.isBSONError(error))\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(`Found\ the\ troublemaker\ UTF-\/8!:\ \$\{documentCount\}\ \$\{error.message\}`);}
+\DoxyCodeLine{\ \ \ \ return\ documentCount;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ throw\ error;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md545}{}\doxysubsection{\texorpdfstring{React Native}{React Native}}\label{README.md_autotoc_md545}
+BSON vendors the required polyfills for {\ttfamily Text\+Encoder}, {\ttfamily Text\+Decoder}, {\ttfamily atob}, {\ttfamily btoa} imported from React Native and therefore doesn\textquotesingle{}t expect users to polyfill these. One additional polyfill, {\ttfamily crypto.\+get\+Random\+Values} is recommended and can be installed with the following command\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save\ react-\/native-\/get-\/random-\/values}
+
+\end{DoxyCode}
+
+
+The following snippet should be placed at the top of the entrypoint (by default this is the root {\ttfamily index.\+js} file) for React Native projects using the BSON library. These lines must be placed for any code that imports {\ttfamily BSON}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Required\ Polyfills\ For\ ReactNative}
+\DoxyCodeLine{import\ 'react-\/native-\/get-\/random-\/values';}
+
+\end{DoxyCode}
+
+
+Finally, import the {\ttfamily BSON} library like so\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ BSON,\ EJSON\ \}\ from\ 'bson';}
+
+\end{DoxyCode}
+
+
+This will cause React Native to import the {\ttfamily node\+\_\+modules/bson/lib/bson.\+rn.\+cjs} bundle (see the {\ttfamily "{}react-\/native"{}} setting we have in the {\ttfamily "{}exports"{}} section of our \href{./package.json}{\texttt{ package.\+json}}.)\hypertarget{README.md_autotoc_md546}{}\doxysubsubsection{\texorpdfstring{Technical Note about React Native module import}{Technical Note about React Native module import}}\label{README.md_autotoc_md546}
+The {\ttfamily "{}exports"{}} definition in our {\ttfamily package.\+json} will result in BSON\textquotesingle{}s Common\+JS bundle being imported in a React Native project instead of the ES module bundle. Importing the Common\+JS bundle is necessary because BSON\textquotesingle{}s ES module bundle of BSON uses top-\/level await, which is not supported syntax in \href{https://hermesengine.dev/}{\texttt{ React Native\textquotesingle{}s runtime hermes}}.\hypertarget{README.md_autotoc_md547}{}\doxysubsection{\texorpdfstring{FAQ}{FAQ}}\label{README.md_autotoc_md547}
+\hypertarget{README.md_autotoc_md548}{}\doxysubsubsubsection{\texorpdfstring{Why does {\ttfamily undefined} get converted to {\ttfamily null}?}{Why does {\ttfamily undefined} get converted to {\ttfamily null}?}}\label{README.md_autotoc_md548}
+The {\ttfamily undefined} BSON type has been \href{http://bsonspec.org/spec.html}{\texttt{ deprecated for many years}}, so this library has dropped support for it. Use the {\ttfamily ignore\+Undefined} option (for example, from the \href{http://mongodb.github.io/node-mongodb-native/2.2/api/MongoClient.html\#connect}{\texttt{ driver}} ) to instead remove {\ttfamily undefined} keys.\hypertarget{README.md_autotoc_md549}{}\doxysubsubsubsection{\texorpdfstring{How do I add custom serialization logic?}{How do I add custom serialization logic?}}\label{README.md_autotoc_md549}
+This library looks for {\ttfamily to\+BSON()} functions on every path, and calls the {\ttfamily to\+BSON()} function to get the value to serialize.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ BSON\ =\ require('bson');}
+\DoxyCodeLine{}
+\DoxyCodeLine{class\ CustomSerialize\ \{}
+\DoxyCodeLine{\ \ toBSON()\ \{}
+\DoxyCodeLine{\ \ \ \ return\ 42;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ obj\ =\ \{\ answer:\ new\ CustomSerialize()\ \};}
+\DoxyCodeLine{//\ "{}\{\ answer:\ 42\ \}"{}}
+\DoxyCodeLine{console.log(BSON.deserialize(BSON.serialize(obj)));}
+
+\end{DoxyCode}
+ 

@@ -1,0 +1,22 @@
+\doxysection{node\+\_\+modules/cookie-\/signature Directory Reference}
+\hypertarget{dir_100b02ce9f2b9c1bef11766247ade3d3}{}\label{dir_100b02ce9f2b9c1bef11766247ade3d3}\index{node\_modules/cookie-\/signature Directory Reference@{node\_modules/cookie-\/signature Directory Reference}}
+
+
+\doxysubsection{Detailed Description}
+Sign and unsign cookies.\hypertarget{Readme.md_autotoc_md714}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{Readme.md_autotoc_md714}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ cookie\ =\ require('cookie-\/signature');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ val\ =\ cookie.sign('hello',\ 'tobiiscool');}
+\DoxyCodeLine{val.should.equal('hello.DGDUkGlIkCzPz+C0B064FNgHdEjox7ch8tOBGslZ5QI');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ val\ =\ cookie.sign('hello',\ 'tobiiscool');}
+\DoxyCodeLine{cookie.unsign(val,\ 'tobiiscool').should.equal('hello');}
+\DoxyCodeLine{cookie.unsign(val,\ 'luna').should.be.false;}
+
+\end{DoxyCode}
+\hypertarget{Readme.md_autotoc_md715}{}\doxysubsection{\texorpdfstring{License}{License}}\label{Readme.md_autotoc_md715}
+MIT.
+
+See LICENSE file for details. 

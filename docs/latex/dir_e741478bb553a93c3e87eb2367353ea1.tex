@@ -1,0 +1,58 @@
+\doxysection{node\+\_\+modules/buffer-\/equal-\/constant-\/time Directory Reference}
+\hypertarget{dir_e741478bb553a93c3e87eb2367353ea1}{}\label{dir_e741478bb553a93c3e87eb2367353ea1}\index{node\_modules/buffer-\/equal-\/constant-\/time Directory Reference@{node\_modules/buffer-\/equal-\/constant-\/time Directory Reference}}
+
+
+\doxysubsection{Detailed Description}
+Constant-\/time {\ttfamily Buffer} comparison for node.\+js. Should work with browserify too.
+
+\href{https://travis-ci.org/goinstant/buffer-equal-constant-time}{\texttt{ }}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ buffer-\/equal-\/constant-\/time}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md569}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{README.md_autotoc_md569}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ bufferEq\ =\ require('buffer-\/equal-\/constant-\/time');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ a\ =\ new\ Buffer('asdf');}
+\DoxyCodeLine{var\ b\ =\ new\ Buffer('asdf');}
+\DoxyCodeLine{if\ (bufferEq(a,b))\ \{}
+\DoxyCodeLine{\ \ //\ the\ same!}
+\DoxyCodeLine{\}\ else\ \{}
+\DoxyCodeLine{\ \ //\ different\ in\ at\ least\ one\ byte!}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+If you\textquotesingle{}d like to install an {\ttfamily .equal()} method onto the node.\+js {\ttfamily Buffer} and {\ttfamily Slow\+Buffer} prototypes\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('buffer-\/equal-\/constant-\/time').install();}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ a\ =\ new\ Buffer('asdf');}
+\DoxyCodeLine{var\ b\ =\ new\ Buffer('asdf');}
+\DoxyCodeLine{if\ (a.equal(b))\ \{}
+\DoxyCodeLine{\ \ //\ the\ same!}
+\DoxyCodeLine{\}\ else\ \{}
+\DoxyCodeLine{\ \ //\ different\ in\ at\ least\ one\ byte!}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+To get rid of the installed {\ttfamily .equal()} method, call {\ttfamily .restore()}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('buffer-\/equal-\/constant-\/time').restore();}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md570}{}\doxysubsection{\texorpdfstring{Legal}{Legal}}\label{README.md_autotoc_md570}
+\copyright{} 2013 Go\+Instant Inc., a salesforce.\+com company
+
+Licensed under the BSD 3-\/clause license. 

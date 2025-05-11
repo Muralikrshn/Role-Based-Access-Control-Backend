@@ -1,0 +1,9 @@
+var searchData=
+[
+  ['data_0',['Data',['../class_napi_1_1_array_buffer.html#a8b15260a2bd327f2d648eed5a26b1d24',1,'Napi::ArrayBuffer::Data()'],['../class_napi_1_1_typed_array_of.html#a0833ec706f0962434cc72349b0ebe443',1,'Napi::TypedArrayOf::Data()'],['../class_napi_1_1_typed_array_of.html#a69ba8b499d634ab807af57391663e817',1,'Napi::TypedArrayOf::Data() const']]],
+  ['dataview_1',['DataView',['../class_napi_1_1_data_view.html#ac9ebdd1c98e82a8af36f483cbd56fead',1,'Napi::DataView::DataView()'],['../class_napi_1_1_data_view.html#ab4fe248c46aa9f5425fc2d4e16cdc08d',1,'Napi::DataView::DataView(napi_env env, napi_value value)']]],
+  ['defineproperties_2',['DefineProperties',['../class_napi_1_1_object.html#af41a3d792550c5996833a058c2370ea3',1,'Napi::Object::DefineProperties(const std::initializer_list&lt; PropertyDescriptor &gt; &amp;properties) const'],['../class_napi_1_1_object.html#a4c45f53183f293db0ca01040c35822c5',1,'Napi::Object::DefineProperties(const std::vector&lt; PropertyDescriptor &gt; &amp;properties) const']]],
+  ['defineproperty_3',['DefineProperty',['../class_napi_1_1_object.html#a694fc12ffb1633dbec40d52705afda63',1,'Napi::Object']]],
+  ['delete_4',['Delete',['../class_napi_1_1_object.html#a3fd87a38e51b7a1272857bd341055e8c',1,'Napi::Object::Delete(napi_value key) const'],['../class_napi_1_1_object.html#ab1950c87068d8fd676af7f35fdb9bdd8',1,'Napi::Object::Delete(Value key) const'],['../class_napi_1_1_object.html#a1afd500e6d9d17fc7008726b2e95ad8e',1,'Napi::Object::Delete(const char *utf8name) const'],['../class_napi_1_1_object.html#acddd6a70cd99b3702cf2f157c20539da',1,'Napi::Object::Delete(const std::string &amp;utf8name) const'],['../class_napi_1_1_object.html#adde21c0ce2e606522036f2cb97fe0909',1,'Napi::Object::Delete(uint32_t index) const']]],
+  ['doublevalue_5',['DoubleValue',['../class_napi_1_1_number.html#a2ba41b7408f886aada8d8f36282dd001',1,'Napi::Number']]]
+];

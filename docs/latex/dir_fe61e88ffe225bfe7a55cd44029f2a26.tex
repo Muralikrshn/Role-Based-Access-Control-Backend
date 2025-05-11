@@ -1,0 +1,378 @@
+\doxysection{node\+\_\+modules/mongoose Directory Reference}
+\hypertarget{dir_fe61e88ffe225bfe7a55cd44029f2a26}{}\label{dir_fe61e88ffe225bfe7a55cd44029f2a26}\index{node\_modules/mongoose Directory Reference@{node\_modules/mongoose Directory Reference}}
+\doxysubsubsection*{Directories}
+\begin{DoxyCompactItemize}
+\item 
+directory \mbox{\hyperlink{dir_78636c4817f3ea1f7e2d1f95f042b081}{dist}}
+\item 
+directory \mbox{\hyperlink{dir_3b3c0801f43785fe4c5d00476099c44d}{lib}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Mongoose is a \href{https://www.mongodb.org/}{\texttt{ Mongo\+DB}} object modeling tool designed to work in an asynchronous environment. Mongoose supports \href{https://nodejs.org/en/}{\texttt{ Node.\+js}} and \href{https://deno.land/}{\texttt{ Deno}} (alpha).
+
+\href{https://github.com/Automattic/mongoose}{\texttt{ }} \href{http://badge.fury.io/js/mongoose}{\texttt{ }} \href{https://deno.land/x/mongoose}{\texttt{ }} \href{https://deno.land/x/mongoose}{\texttt{ }}
+
+\href{https://www.npmjs.com/package/mongoose}{\texttt{ }}\hypertarget{README.md_autotoc_md2501}{}\doxysubsection{\texorpdfstring{Documentation}{Documentation}}\label{README.md_autotoc_md2501}
+The official documentation website is \href{http://mongoosejs.com/}{\texttt{ mongoosejs.\+com}}.
+
+Mongoose 8.\+0.\+0 was released on October 31, 2023. You can find more details on \href{https://mongoosejs.com/docs/migrating_to_8.html}{\texttt{ backwards breaking changes in 8.\+0.\+0 on our docs site}}.\hypertarget{README.md_autotoc_md2502}{}\doxysubsection{\texorpdfstring{Support}{Support}}\label{README.md_autotoc_md2502}
+
+\begin{DoxyItemize}
+\item \href{http://stackoverflow.com/questions/tagged/mongoose}{\texttt{ Stack Overflow}}
+\item \href{https://github.com/Automattic/mongoose/issues/}{\texttt{ Bug Reports}}
+\item \href{http://slack.mongoosejs.io/}{\texttt{ Mongoose Slack Channel}}
+\item \href{http://groups.google.com/group/mongoose-orm}{\texttt{ Help Forum}}
+\item \href{https://www.mongodb.com/docs/manual/support/}{\texttt{ Mongo\+DB Support}}
+\end{DoxyItemize}\hypertarget{README.md_autotoc_md2503}{}\doxysubsection{\texorpdfstring{Plugins}{Plugins}}\label{README.md_autotoc_md2503}
+Check out the \href{http://plugins.mongoosejs.io/}{\texttt{ plugins search site}} to see hundreds of related modules from the community. Next, learn how to write your own plugin from the \href{http://mongoosejs.com/docs/plugins.html}{\texttt{ docs}} or \href{http://thecodebarbarian.com/2015/03/06/guide-to-mongoose-plugins}{\texttt{ this blog post}}.\hypertarget{README.md_autotoc_md2504}{}\doxysubsection{\texorpdfstring{Contributors}{Contributors}}\label{README.md_autotoc_md2504}
+Pull requests are always welcome! Please base pull requests against the {\ttfamily master} branch and follow the \href{https://github.com/Automattic/mongoose/blob/master/CONTRIBUTING.md}{\texttt{ contributing guide}}.
+
+If your pull requests makes documentation changes, please do {\bfseries{not}} modify any {\ttfamily .html} files. The {\ttfamily .html} files are compiled code, so please make your changes in {\ttfamily docs/\texorpdfstring{$\ast$}{*}.pug}, {\ttfamily lib/\texorpdfstring{$\ast$}{*}.js}, or {\ttfamily test/docs/\texorpdfstring{$\ast$}{*}.js}.
+
+View all 400+ \href{https://github.com/Automattic/mongoose/graphs/contributors}{\texttt{ contributors}}.\hypertarget{README.md_autotoc_md2505}{}\doxysubsection{\texorpdfstring{Installation}{Installation}}\label{README.md_autotoc_md2505}
+First install \href{http://nodejs.org/}{\texttt{ Node.\+js}} and \href{https://www.mongodb.org/downloads}{\texttt{ Mongo\+DB}}. Then\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ mongoose}
+
+\end{DoxyCode}
+
+
+Mongoose 6.\+8.\+0 also includes alpha support for \href{https://deno.land/}{\texttt{ Deno}}.\hypertarget{README.md_autotoc_md2506}{}\doxysubsection{\texorpdfstring{Importing}{Importing}}\label{README.md_autotoc_md2506}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Using\ Node.js\ \`{}require()`}
+\DoxyCodeLine{const\ mongoose\ =\ require('mongoose');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Using\ ES6\ imports}
+\DoxyCodeLine{import\ mongoose\ from\ 'mongoose';}
+
+\end{DoxyCode}
+
+
+Or, using \href{https://deno.land/std@0.113.0/node/README.md?source=\#commonjs-modules-loading}{\texttt{ Deno\textquotesingle{}s {\ttfamily create\+Require()} for Common\+JS support}} as follows.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ createRequire\ \}\ from\ 'https://deno.land/std@0.177.0/node/module.ts';}
+\DoxyCodeLine{const\ require\ =\ createRequire(import.meta.url);}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ mongoose\ =\ require('mongoose');}
+\DoxyCodeLine{}
+\DoxyCodeLine{mongoose.connect('mongodb://127.0.0.1:27017/test')}
+\DoxyCodeLine{\ \ .then(()\ =>\ console.log('Connected!'));}
+
+\end{DoxyCode}
+
+
+You can then run the above script using the following.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{deno\ run\ -\/-\/allow-\/net\ -\/-\/allow-\/read\ -\/-\/allow-\/sys\ -\/-\/allow-\/env\ mongoose-\/test.js}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md2507}{}\doxysubsection{\texorpdfstring{Mongoose for Enterprise}{Mongoose for Enterprise}}\label{README.md_autotoc_md2507}
+Available as part of the Tidelift Subscription
+
+The maintainers of mongoose and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use. \href{https://tidelift.com/subscription/pkg/npm-mongoose?utm_source=npm-mongoose&utm_medium=referral&utm_campaign=enterprise&utm_term=repo}{\texttt{ Learn more.}}\hypertarget{README.md_autotoc_md2508}{}\doxysubsection{\texorpdfstring{Overview}{Overview}}\label{README.md_autotoc_md2508}
+\hypertarget{README.md_autotoc_md2509}{}\doxysubsubsection{\texorpdfstring{Connecting to Mongo\+DB}{Connecting to Mongo\+DB}}\label{README.md_autotoc_md2509}
+First, we need to define a connection. If your app uses only one database, you should use {\ttfamily mongoose.\+connect}. If you need to create additional connections, use {\ttfamily mongoose.\+create\+Connection}.
+
+Both {\ttfamily connect} and {\ttfamily create\+Connection} take a {\ttfamily mongodb\+://} URI, or the parameters {\ttfamily host, database, port, options}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{await\ mongoose.connect('mongodb://127.0.0.1/my\_database');}
+
+\end{DoxyCode}
+
+
+Once connected, the {\ttfamily open} event is fired on the {\ttfamily Connection} instance. If you\textquotesingle{}re using {\ttfamily mongoose.\+connect}, the {\ttfamily Connection} is {\ttfamily mongoose.\+connection}. Otherwise, {\ttfamily mongoose.\+create\+Connection} return value is a {\ttfamily Connection}.
+
+{\bfseries{Note\+:}} {\itshape If the local connection fails then try using 127.\+0.\+0.\+1 instead of localhost. Sometimes issues may arise when the local hostname has been changed.}
+
+{\bfseries{Important!}} Mongoose buffers all the commands until it\textquotesingle{}s connected to the database. This means that you don\textquotesingle{}t have to wait until it connects to Mongo\+DB in order to define models, run queries, etc.\hypertarget{README.md_autotoc_md2510}{}\doxysubsubsection{\texorpdfstring{Defining a Model}{Defining a Model}}\label{README.md_autotoc_md2510}
+Models are defined through the {\ttfamily Schema} interface.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ Schema\ =\ mongoose.Schema;}
+\DoxyCodeLine{const\ ObjectId\ =\ Schema.ObjectId;}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ BlogPost\ =\ new\ Schema(\{}
+\DoxyCodeLine{\ \ author:\ ObjectId,}
+\DoxyCodeLine{\ \ title:\ String,}
+\DoxyCodeLine{\ \ body:\ String,}
+\DoxyCodeLine{\ \ date:\ Date}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Aside from defining the structure of your documents and the types of data you\textquotesingle{}re storing, a Schema handles the definition of\+:
+
+
+\begin{DoxyItemize}
+\item \href{http://mongoosejs.com/docs/validation.html}{\texttt{ Validators}} (async and sync)
+\item \href{http://mongoosejs.com/docs/api/schematype.html\#schematype_SchemaType-default}{\texttt{ Defaults}}
+\item \href{http://mongoosejs.com/docs/api/schematype.html\#schematype_SchemaType-get}{\texttt{ Getters}}
+\item \href{http://mongoosejs.com/docs/api/schematype.html\#schematype_SchemaType-set}{\texttt{ Setters}}
+\item \href{http://mongoosejs.com/docs/guide.html\#indexes}{\texttt{ Indexes}}
+\item \href{http://mongoosejs.com/docs/middleware.html}{\texttt{ Middleware}}
+\item \href{http://mongoosejs.com/docs/guide.html\#methods}{\texttt{ Methods}} definition
+\item \href{http://mongoosejs.com/docs/guide.html\#statics}{\texttt{ Statics}} definition
+\item \href{http://mongoosejs.com/docs/plugins.html}{\texttt{ Plugins}}
+\item \href{http://mongoosejs.com/docs/populate.html}{\texttt{ pseudo-\/\+JOINs}}
+\end{DoxyItemize}
+
+The following example shows some of these features\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ Comment\ =\ new\ Schema(\{}
+\DoxyCodeLine{\ \ name:\ \{\ type:\ String,\ default:\ 'hahaha'\ \},}
+\DoxyCodeLine{\ \ age:\ \{\ type:\ Number,\ min:\ 18,\ index:\ true\ \},}
+\DoxyCodeLine{\ \ bio:\ \{\ type:\ String,\ match:\ /[a-\/z]/\ \},}
+\DoxyCodeLine{\ \ date:\ \{\ type:\ Date,\ default:\ Date.now\ \},}
+\DoxyCodeLine{\ \ buff:\ Buffer}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ a\ setter}
+\DoxyCodeLine{Comment.path('name').set(function(v)\ \{}
+\DoxyCodeLine{\ \ return\ capitalize(v);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ middleware}
+\DoxyCodeLine{Comment.pre('save',\ function(next)\ \{}
+\DoxyCodeLine{\ \ notify(this.get('email'));}
+\DoxyCodeLine{\ \ next();}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Take a look at the example in \href{https://github.com/Automattic/mongoose/blob/master/examples/schema/schema.js}{\texttt{ {\ttfamily examples/schema/schema.\+js}}} for an end-\/to-\/end example of a typical setup.\hypertarget{README.md_autotoc_md2511}{}\doxysubsubsection{\texorpdfstring{Accessing a Model}{Accessing a Model}}\label{README.md_autotoc_md2511}
+Once we define a model through `mongoose.\+model(\textquotesingle{}Model\+Name', my\+Schema)\`{}, we can access it through the same function
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MyModel\ =\ mongoose.model('ModelName');}
+
+\end{DoxyCode}
+
+
+Or just do it all at once
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MyModel\ =\ mongoose.model('ModelName',\ mySchema);}
+
+\end{DoxyCode}
+
+
+The first argument is the {\itshape singular} name of the collection your model is for. {\bfseries{Mongoose automatically looks for the {\itshape plural} version of your model name.}} For example, if you use
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MyModel\ =\ mongoose.model('Ticket',\ mySchema);}
+
+\end{DoxyCode}
+
+
+Then {\ttfamily My\+Model} will use the {\bfseries{tickets}} collection, not the {\bfseries{ticket}} collection. For more details read the \href{https://mongoosejs.com/docs/api/mongoose.html\#mongoose_Mongoose-model}{\texttt{ model docs}}.
+
+Once we have our model, we can then instantiate it, and save it\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ instance\ =\ new\ MyModel();}
+\DoxyCodeLine{instance.my.key\ =\ 'hello';}
+\DoxyCodeLine{await\ instance.save();}
+
+\end{DoxyCode}
+
+
+Or we can find documents from the same collection
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{await\ MyModel.find(\{\});}
+
+\end{DoxyCode}
+
+
+You can also {\ttfamily find\+One}, {\ttfamily find\+By\+Id}, {\ttfamily update}, etc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ instance\ =\ await\ MyModel.findOne(\{\ /*\ ...\ */\ \});}
+\DoxyCodeLine{console.log(instance.my.key);\ //\ 'hello'}
+
+\end{DoxyCode}
+
+
+For more details check out \href{http://mongoosejs.com/docs/queries.html}{\texttt{ the docs}}.
+
+{\bfseries{Important!}} If you opened a separate connection using {\ttfamily mongoose.\+create\+Connection()} but attempt to access the model through `mongoose.\+model(\textquotesingle{}Model\+Name')\`{} it will not work as expected since it is not hooked up to an active db connection. In this case access your model through the connection you created\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ conn\ =\ mongoose.createConnection('your\ connection\ string');}
+\DoxyCodeLine{const\ MyModel\ =\ conn.model('ModelName',\ schema);}
+\DoxyCodeLine{const\ m\ =\ new\ MyModel();}
+\DoxyCodeLine{await\ m.save();\ //\ works}
+
+\end{DoxyCode}
+
+
+vs
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ conn\ =\ mongoose.createConnection('your\ connection\ string');}
+\DoxyCodeLine{const\ MyModel\ =\ mongoose.model('ModelName',\ schema);}
+\DoxyCodeLine{const\ m\ =\ new\ MyModel();}
+\DoxyCodeLine{await\ m.save();\ //\ does\ not\ work\ b/c\ the\ default\ connection\ object\ was\ never\ connected}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md2512}{}\doxysubsubsection{\texorpdfstring{Embedded Documents}{Embedded Documents}}\label{README.md_autotoc_md2512}
+In the first example snippet, we defined a key in the Schema that looks like\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{comments:\ [Comment]}
+
+\end{DoxyCode}
+
+
+Where {\ttfamily Comment} is a {\ttfamily Schema} we created. This means that creating embedded documents is as simple as\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ retrieve\ my\ model}
+\DoxyCodeLine{const\ BlogPost\ =\ mongoose.model('BlogPost');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ create\ a\ blog\ post}
+\DoxyCodeLine{const\ post\ =\ new\ BlogPost();}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ create\ a\ comment}
+\DoxyCodeLine{post.comments.push(\{\ title:\ 'My\ comment'\ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{await\ post.save();}
+
+\end{DoxyCode}
+
+
+The same goes for removing them\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ post\ =\ await\ BlogPost.findById(myId);}
+\DoxyCodeLine{post.comments[0].deleteOne();}
+\DoxyCodeLine{await\ post.save();}
+
+\end{DoxyCode}
+
+
+Embedded documents enjoy all the same features as your models. Defaults, validators, middleware.\hypertarget{README.md_autotoc_md2513}{}\doxysubsubsection{\texorpdfstring{Middleware}{Middleware}}\label{README.md_autotoc_md2513}
+See the \href{http://mongoosejs.com/docs/middleware.html}{\texttt{ docs}} page.\hypertarget{README.md_autotoc_md2514}{}\doxysubsubsubsection{\texorpdfstring{Intercepting and mutating method arguments}{Intercepting and mutating method arguments}}\label{README.md_autotoc_md2514}
+You can intercept method arguments via middleware.
+
+For example, this would allow you to broadcast changes about your Documents every time someone {\ttfamily set}s a path in your Document to a new value\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{schema.pre('set',\ function(next,\ path,\ val,\ typel)\ \{}
+\DoxyCodeLine{\ \ //\ \`{}this`\ is\ the\ current\ Document}
+\DoxyCodeLine{\ \ this.emit('set',\ path,\ val);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ Pass\ control\ to\ the\ next\ pre}
+\DoxyCodeLine{\ \ next();}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Moreover, you can mutate the incoming {\ttfamily method} arguments so that subsequent middleware see different values for those arguments. To do so, just pass the new values to {\ttfamily next}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{schema.pre(method,\ function\ firstPre(next,\ methodArg1,\ methodArg2)\ \{}
+\DoxyCodeLine{\ \ //\ Mutate\ methodArg1}
+\DoxyCodeLine{\ \ next('altered-\/'\ +\ methodArg1.toString(),\ methodArg2);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ pre\ declaration\ is\ chainable}
+\DoxyCodeLine{schema.pre(method,\ function\ secondPre(next,\ methodArg1,\ methodArg2)\ \{}
+\DoxyCodeLine{\ \ console.log(methodArg1);}
+\DoxyCodeLine{\ \ //\ =>\ 'altered-\/originalValOfMethodArg1'}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ console.log(methodArg2);}
+\DoxyCodeLine{\ \ //\ =>\ 'originalValOfMethodArg2'}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ Passing\ no\ arguments\ to\ \`{}next`\ automatically\ passes\ along\ the\ current\ argument\ values}
+\DoxyCodeLine{\ \ //\ i.e.,\ the\ following\ \`{}next()`\ is\ equivalent\ to\ \`{}next(methodArg1,\ methodArg2)`}
+\DoxyCodeLine{\ \ //\ and\ also\ equivalent\ to,\ with\ the\ example\ method\ arg}
+\DoxyCodeLine{\ \ //\ values,\ \`{}next('altered-\/originalValOfMethodArg1',\ 'originalValOfMethodArg2')`}
+\DoxyCodeLine{\ \ next();}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md2515}{}\doxysubsubsubsection{\texorpdfstring{Schema gotcha}{Schema gotcha}}\label{README.md_autotoc_md2515}
+{\ttfamily type}, when used in a schema has special meaning within Mongoose. If your schema requires using {\ttfamily type} as a nested property you must use object notation\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ Schema(\{}
+\DoxyCodeLine{\ \ broken:\ \{\ type:\ Boolean\ \},}
+\DoxyCodeLine{\ \ asset:\ \{}
+\DoxyCodeLine{\ \ \ \ name:\ String,}
+\DoxyCodeLine{\ \ \ \ type:\ String\ //\ uh\ oh,\ it\ broke.\ asset\ will\ be\ interpreted\ as\ String}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{new\ Schema(\{}
+\DoxyCodeLine{\ \ works:\ \{\ type:\ Boolean\ \},}
+\DoxyCodeLine{\ \ asset:\ \{}
+\DoxyCodeLine{\ \ \ \ name:\ String,}
+\DoxyCodeLine{\ \ \ \ type:\ \{\ type:\ String\ \}\ //\ works.\ asset\ is\ an\ object\ with\ a\ type\ property}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md2516}{}\doxysubsubsection{\texorpdfstring{Driver Access}{Driver Access}}\label{README.md_autotoc_md2516}
+Mongoose is built on top of the \href{https://github.com/mongodb/node-mongodb-native}{\texttt{ official Mongo\+DB Node.\+js driver}}. Each mongoose model keeps a reference to a \href{http://mongodb.github.io/node-mongodb-native/2.1/api/Collection.html}{\texttt{ native Mongo\+DB driver collection}}. The collection object can be accessed using {\ttfamily Your\+Model.\+collection}. However, using the collection object directly bypasses all mongoose features, including hooks, validation, etc. The one notable exception that {\ttfamily Your\+Model.\+collection} still buffers commands. As such, {\ttfamily Your\+Model.\+collection.\+find()} will {\bfseries{not}} return a cursor.\hypertarget{README.md_autotoc_md2517}{}\doxysubsection{\texorpdfstring{API Docs}{API Docs}}\label{README.md_autotoc_md2517}
+Find the API docs \href{http://mongoosejs.com/docs/api/mongoose.html}{\texttt{ here}}, generated using \href{https://github.com/tj/dox}{\texttt{ dox}} and \href{https://github.com/vkarpov15/acquit}{\texttt{ acquit}}.\hypertarget{README.md_autotoc_md2518}{}\doxysubsection{\texorpdfstring{Related Projects}{Related Projects}}\label{README.md_autotoc_md2518}
+\hypertarget{README.md_autotoc_md2519}{}\doxysubsubsection{\texorpdfstring{Mongo\+DB Runners}{Mongo\+DB Runners}}\label{README.md_autotoc_md2519}
+
+\begin{DoxyItemize}
+\item \href{https://www.npmjs.com/package/run-rs}{\texttt{ run-\/rs}}
+\item \href{https://www.npmjs.com/package/mongodb-memory-server}{\texttt{ mongodb-\/memory-\/server}}
+\item \href{https://www.npmjs.com/package/mongodb-topology-manager}{\texttt{ mongodb-\/topology-\/manager}}
+\end{DoxyItemize}\hypertarget{README.md_autotoc_md2520}{}\doxysubsubsection{\texorpdfstring{Unofficial CLIs}{Unofficial CLIs}}\label{README.md_autotoc_md2520}
+
+\begin{DoxyItemize}
+\item \href{https://www.npmjs.com/package/mongoosejs-cli}{\texttt{ mongoosejs-\/cli}}
+\end{DoxyItemize}\hypertarget{README.md_autotoc_md2521}{}\doxysubsubsection{\texorpdfstring{Data Seeding}{Data Seeding}}\label{README.md_autotoc_md2521}
+
+\begin{DoxyItemize}
+\item \href{https://www.npmjs.com/package/dookie}{\texttt{ dookie}}
+\item \href{https://www.npmjs.com/package/seedgoose}{\texttt{ seedgoose}}
+\item \href{https://www.npmjs.com/package/mongoose-data-seed}{\texttt{ mongoose-\/data-\/seed}}
+\end{DoxyItemize}\hypertarget{README.md_autotoc_md2522}{}\doxysubsubsection{\texorpdfstring{Express Session Stores}{Express Session Stores}}\label{README.md_autotoc_md2522}
+
+\begin{DoxyItemize}
+\item \href{https://www.npmjs.com/package/connect-mongodb-session}{\texttt{ connect-\/mongodb-\/session}}
+\item \href{https://www.npmjs.com/package/connect-mongo}{\texttt{ connect-\/mongo}}
+\end{DoxyItemize}\hypertarget{README.md_autotoc_md2523}{}\doxysubsection{\texorpdfstring{License}{License}}\label{README.md_autotoc_md2523}
+Copyright (c) 2010 Learn\+Boost \texorpdfstring{$<$}{<}\href{mailto:dev@learnboost.com}{\texttt{ dev@learnboost.\+com}}\texorpdfstring{$>$}{>}
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \textquotesingle{}Software\textquotesingle{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\+:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \textquotesingle{}AS IS\textquotesingle{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 

@@ -1,0 +1,213 @@
+\doxysection{node\+\_\+modules/path-\/to-\/regexp Directory Reference}
+\hypertarget{dir_b0e956fb6315e86fe9ba61d8c1a605e3}{}\label{dir_b0e956fb6315e86fe9ba61d8c1a605e3}\index{node\_modules/path-\/to-\/regexp Directory Reference@{node\_modules/path-\/to-\/regexp Directory Reference}}
+\doxysubsubsection*{Directories}
+\begin{DoxyCompactItemize}
+\item 
+directory \mbox{\hyperlink{dir_08f514f288880e75997588e2a2b9bda0}{dist}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{quote}
+Turn a path string such as {\ttfamily /user/\+:name} into a regular expression. \end{quote}
+
+
+\href{https://npmjs.org/package/path-to-regexp}{\texttt{ }} \href{https://npmjs.org/package/path-to-regexp}{\texttt{ }} \href{https://github.com/pillarjs/path-to-regexp/actions/workflows/ci.yml?query=branch\%3Amaster}{\texttt{ }} \href{https://codecov.io/gh/pillarjs/path-to-regexp}{\texttt{ }} \hypertarget{Readme.md_autotoc_md3095}{}\doxysubsection{\texorpdfstring{Installation}{Installation}}\label{Readme.md_autotoc_md3095}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ path-\/to-\/regexp\ -\/-\/save}
+
+\end{DoxyCode}
+\hypertarget{Readme.md_autotoc_md3096}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{Readme.md_autotoc_md3096}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{}
+\DoxyCodeLine{\ \ match,}
+\DoxyCodeLine{\ \ pathToRegexp,}
+\DoxyCodeLine{\ \ compile,}
+\DoxyCodeLine{\ \ parse,}
+\DoxyCodeLine{\ \ stringify,}
+\DoxyCodeLine{\}\ =\ require("{}path-\/to-\/regexp"{});}
+
+\end{DoxyCode}
+\hypertarget{Readme.md_autotoc_md3097}{}\doxysubsubsection{\texorpdfstring{Parameters}{Parameters}}\label{Readme.md_autotoc_md3097}
+Parameters match arbitrary strings in a path by matching up to the end of the segment, or up to any proceeding tokens. They are defined by prefixing a colon to the parameter name ({\ttfamily \+:foo}). Parameter names can use any valid Java\+Script identifier, or be double quoted to use other characters ({\ttfamily \+:"{}param-\/name"{}}).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ fn\ =\ match("{}/:foo/:bar"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{fn("{}/test/route"{});}
+\DoxyCodeLine{//=>\ \{\ path:\ '/test/route',\ params:\ \{\ foo:\ 'test',\ bar:\ 'route'\ \}\ \}}
+
+\end{DoxyCode}
+\hypertarget{Readme.md_autotoc_md3098}{}\doxysubsubsection{\texorpdfstring{Wildcard}{Wildcard}}\label{Readme.md_autotoc_md3098}
+Wildcard parameters match one or more characters across multiple segments. They are defined the same way as regular parameters, but are prefixed with an asterisk ({\ttfamily \texorpdfstring{$\ast$}{*}foo}).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ fn\ =\ match("{}/*splat"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{fn("{}/bar/baz"{});}
+\DoxyCodeLine{//=>\ \{\ path:\ '/bar/baz',\ params:\ \{\ splat:\ [\ 'bar',\ 'baz'\ ]\ \}\ \}}
+
+\end{DoxyCode}
+\hypertarget{Readme.md_autotoc_md3099}{}\doxysubsubsection{\texorpdfstring{Optional}{Optional}}\label{Readme.md_autotoc_md3099}
+Braces can be used to define parts of the path that are optional.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ fn\ =\ match("{}/users\{/:id\}/delete"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{fn("{}/users/delete"{});}
+\DoxyCodeLine{//=>\ \{\ path:\ '/users/delete',\ params:\ \{\}\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{fn("{}/users/123/delete"{});}
+\DoxyCodeLine{//=>\ \{\ path:\ '/users/123/delete',\ params:\ \{\ id:\ '123'\ \}\ \}}
+
+\end{DoxyCode}
+\hypertarget{Readme.md_autotoc_md3100}{}\doxysubsection{\texorpdfstring{Match}{Match}}\label{Readme.md_autotoc_md3100}
+The {\ttfamily match} function returns a function for matching strings against a path\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{path}} String or array of strings.
+\item {\bfseries{options}} {\itshape (optional)} (Extends path\+To\+Regexp options)
+\begin{DoxyItemize}
+\item {\bfseries{decode}} Function for decoding strings to params, or {\ttfamily false} to disable all processing. (default\+: {\ttfamily decode\+URIComponent})
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ fn\ =\ match("{}/foo/:bar"{});}
+
+\end{DoxyCode}
+
+
+{\bfseries{Please note\+:}} {\ttfamily path-\/to-\/regexp} is intended for ordered data (e.\+g. paths, hosts). It can not handle arbitrarily ordered data (e.\+g. query strings, URL fragments, JSON, etc).\hypertarget{Readme.md_autotoc_md3101}{}\doxysubsection{\texorpdfstring{Path\+To\+Regexp}{Path\+To\+Regexp}}\label{Readme.md_autotoc_md3101}
+The {\ttfamily path\+To\+Regexp} function returns a regular expression for matching strings against paths. It
+
+
+\begin{DoxyItemize}
+\item {\bfseries{path}} String or array of strings.
+\item {\bfseries{options}} {\itshape (optional)} (See parse for more options)
+\begin{DoxyItemize}
+\item {\bfseries{sensitive}} Regexp will be case sensitive. (default\+: {\ttfamily false})
+\item {\bfseries{end}} Validate the match reaches the end of the string. (default\+: {\ttfamily true})
+\item {\bfseries{delimiter}} The default delimiter for segments, e.\+g. {\ttfamily \mbox{[}\texorpdfstring{$^\wedge$}{\string^}/\mbox{]}} for {\ttfamily \+:named} parameters. (default\+: `'/\textquotesingle{}{\ttfamily )}
+\item {\ttfamily \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}trailing\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Allows optional trailing delimiter to match. (default\+:}true\`{})
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ regexp,\ keys\ \}\ =\ pathToRegexp("{}/foo/:bar"{});}
+
+\end{DoxyCode}
+\hypertarget{Readme.md_autotoc_md3102}{}\doxysubsection{\texorpdfstring{Compile ("{}\+Reverse"{} Path-\/\+To-\/\+Reg\+Exp)}{Compile ("{}\+Reverse"{} Path-\/\+To-\/\+Reg\+Exp)}}\label{Readme.md_autotoc_md3102}
+The {\ttfamily compile} function will return a function for transforming parameters into a valid path\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{path}} A string.
+\item {\bfseries{options}} (See parse for more options)
+\begin{DoxyItemize}
+\item {\bfseries{delimiter}} The default delimiter for segments, e.\+g. {\ttfamily \mbox{[}\texorpdfstring{$^\wedge$}{\string^}/\mbox{]}} for {\ttfamily \+:named} parameters. (default\+: `'/\textquotesingle{}{\ttfamily )}
+\item {\ttfamily \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}encode\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Function for encoding input strings for output into the path, or}false{\ttfamily to disable entirely. (default\+:}encode\+URIComponent\`{})
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ toPath\ =\ compile("{}/user/:id"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{toPath(\{\ id:\ "{}name"{}\ \});\ //=>\ "{}/user/name"{}}
+\DoxyCodeLine{toPath(\{\ id:\ "{}café"{}\ \});\ //=>\ "{}/user/caf\%C3\%A9"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ toPathRepeated\ =\ compile("{}/*segment"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{toPathRepeated(\{\ segment:\ ["{}foo"{}]\ \});\ //=>\ "{}/foo"{}}
+\DoxyCodeLine{toPathRepeated(\{\ segment:\ ["{}a"{},\ "{}b"{},\ "{}c"{}]\ \});\ //=>\ "{}/a/b/c"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ When\ disabling\ \`{}encode`,\ you\ need\ to\ make\ sure\ inputs\ are\ encoded\ correctly.\ No\ arrays\ are\ accepted.}
+\DoxyCodeLine{const\ toPathRaw\ =\ compile("{}/user/:id"{},\ \{\ encode:\ false\ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{toPathRaw(\{\ id:\ "{}\%3A\%2F"{}\ \});\ //=>\ "{}/user/\%3A\%2F"{}}
+
+\end{DoxyCode}
+\hypertarget{Readme.md_autotoc_md3103}{}\doxysubsection{\texorpdfstring{Stringify}{Stringify}}\label{Readme.md_autotoc_md3103}
+Transform {\ttfamily Token\+Data} (a sequence of tokens) back into a Path-\/to-\/\+Reg\+Exp string.
+
+
+\begin{DoxyItemize}
+\item {\bfseries{data}} A {\ttfamily Token\+Data} instance
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ data\ =\ new\ TokenData([}
+\DoxyCodeLine{\ \ \{\ type:\ "{}text"{},\ value:\ "{}/"{}\ \},}
+\DoxyCodeLine{\ \ \{\ type:\ "{}param"{},\ name:\ "{}foo"{}\ \},}
+\DoxyCodeLine{]);}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ path\ =\ stringify(data);\ //=>\ "{}/:foo"{}}
+
+\end{DoxyCode}
+\hypertarget{Readme.md_autotoc_md3104}{}\doxysubsection{\texorpdfstring{Developers}{Developers}}\label{Readme.md_autotoc_md3104}
+
+\begin{DoxyItemize}
+\item If you are rewriting paths with match and compile, consider using {\ttfamily encode\+: false} and {\ttfamily decode\+: false} to keep raw paths passed around.
+\item To ensure matches work on paths containing characters usually encoded, such as emoji, consider using \href{https://github.com/pillarjs/encodeurl}{\texttt{ encodeurl}} for {\ttfamily encode\+Path}.
+\end{DoxyItemize}\hypertarget{Readme.md_autotoc_md3105}{}\doxysubsubsection{\texorpdfstring{Parse}{Parse}}\label{Readme.md_autotoc_md3105}
+The {\ttfamily parse} function accepts a string and returns {\ttfamily Token\+Data}, the set of tokens and other metadata parsed from the input string. {\ttfamily Token\+Data} is can used with {\ttfamily match} and {\ttfamily compile}.
+
+
+\begin{DoxyItemize}
+\item {\bfseries{path}} A string.
+\item {\bfseries{options}} {\itshape (optional)}
+\begin{DoxyItemize}
+\item {\bfseries{encode\+Path}} A function for encoding input strings. (default\+: {\ttfamily x =\texorpdfstring{$>$}{>} x}, recommended\+: \href{https://github.com/pillarjs/encodeurl}{\texttt{ {\ttfamily encodeurl}}})
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{Readme.md_autotoc_md3106}{}\doxysubsubsection{\texorpdfstring{Tokens}{Tokens}}\label{Readme.md_autotoc_md3106}
+{\ttfamily Token\+Data} is a sequence of tokens, currently of types {\ttfamily text}, {\ttfamily parameter}, {\ttfamily wildcard}, or {\ttfamily group}.\hypertarget{Readme.md_autotoc_md3107}{}\doxysubsubsection{\texorpdfstring{Custom path}{Custom path}}\label{Readme.md_autotoc_md3107}
+In some applications, you may not be able to use the {\ttfamily path-\/to-\/regexp} syntax, but still want to use this library for {\ttfamily match} and {\ttfamily compile}. For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ TokenData,\ match\ \}\ from\ "{}path-\/to-\/regexp"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ tokens\ =\ [}
+\DoxyCodeLine{\ \ \{\ type:\ "{}text"{},\ value:\ "{}/"{}\ \},}
+\DoxyCodeLine{\ \ \{\ type:\ "{}parameter"{},\ name:\ "{}foo"{}\ \},}
+\DoxyCodeLine{];}
+\DoxyCodeLine{const\ path\ =\ new\ TokenData(tokens);}
+\DoxyCodeLine{const\ fn\ =\ match(path);}
+\DoxyCodeLine{}
+\DoxyCodeLine{fn("{}/test"{});\ //=>\ \{\ path:\ '/test',\ index:\ 0,\ params:\ \{\ foo:\ 'test'\ \}\ \}}
+
+\end{DoxyCode}
+\hypertarget{Readme.md_autotoc_md3108}{}\doxysubsection{\texorpdfstring{Errors}{Errors}}\label{Readme.md_autotoc_md3108}
+An effort has been made to ensure ambiguous paths from previous releases throw an error. This means you might be seeing an error when things worked before.\hypertarget{Readme.md_autotoc_md3109}{}\doxysubsubsection{\texorpdfstring{Unexpected {\ttfamily ?} or {\ttfamily +}}{Unexpected {\ttfamily ?} or {\ttfamily +}}}\label{Readme.md_autotoc_md3109}
+In past releases, {\ttfamily ?}, {\ttfamily \texorpdfstring{$\ast$}{*}}, and {\ttfamily +} were used to denote optional or repeating parameters. As an alternative, try these\+:
+
+
+\begin{DoxyItemize}
+\item For optional ({\ttfamily ?}), use an empty segment in a group such as {\ttfamily /\+:file\{.\+:ext\}}.
+\item For repeating ({\ttfamily +}), only wildcard matching is supported, such as {\ttfamily /\texorpdfstring{$\ast$}{*}path}.
+\item For optional repeating ({\ttfamily \texorpdfstring{$\ast$}{*}}), use a group and a wildcard parameter such as {\ttfamily /files\{/\texorpdfstring{$\ast$}{*}path\}}.
+\end{DoxyItemize}\hypertarget{Readme.md_autotoc_md3110}{}\doxysubsubsection{\texorpdfstring{Unexpected {\ttfamily (}, {\ttfamily )}, {\ttfamily \mbox{[}}, {\ttfamily \mbox{]}}, etc.}{Unexpected {\ttfamily (}, {\ttfamily )}, {\ttfamily \mbox{[}}, {\ttfamily \mbox{]}}, etc.}}\label{Readme.md_autotoc_md3110}
+Previous versions of Path-\/to-\/\+Reg\+Exp used these for Reg\+Exp features. This version no longer supports them so they\textquotesingle{}ve been reserved to avoid ambiguity. To use these characters literally, escape them with a backslash, e.\+g. {\ttfamily "{}\textbackslash{}\textbackslash{}("{}}.\hypertarget{Readme.md_autotoc_md3111}{}\doxysubsubsection{\texorpdfstring{Missing parameter name}{Missing parameter name}}\label{Readme.md_autotoc_md3111}
+Parameter names must be provided after {\ttfamily \+:} or {\ttfamily \texorpdfstring{$\ast$}{*}}, and they must be a valid Java\+Script identifier. If you want an parameter name that isn\textquotesingle{}t a Java\+Script identifier, such as starting with a number, you can wrap the name in quotes like {\ttfamily \+:"{}my-\/name"{}}.\hypertarget{Readme.md_autotoc_md3112}{}\doxysubsubsection{\texorpdfstring{Unterminated quote}{Unterminated quote}}\label{Readme.md_autotoc_md3112}
+Parameter names can be wrapped in double quote characters, and this error means you forgot to close the quote character.\hypertarget{Readme.md_autotoc_md3113}{}\doxysubsubsection{\texorpdfstring{Express \texorpdfstring{$<$}{<}= 4.\+x}{Express \texorpdfstring{$<$}{<}= 4.\+x}}\label{Readme.md_autotoc_md3113}
+Path-\/\+To-\/\+Reg\+Exp breaks compatibility with Express \texorpdfstring{$<$}{<}= {\ttfamily 4.\+x} in the following ways\+:
+
+
+\begin{DoxyItemize}
+\item The wildcard {\ttfamily \texorpdfstring{$\ast$}{*}} must have a name, matching the behavior of parameters {\ttfamily \+:}.
+\item The optional character {\ttfamily ?} is no longer supported, use braces instead\+: {\ttfamily /\+:file\{.\+:ext\}}.
+\item Regexp characters are not supported.
+\item Some characters have been reserved to avoid confusion during upgrade ({\ttfamily ()\mbox{[}\mbox{]}?+!}).
+\item Parameter names now support valid Java\+Script identifiers, or quoted like {\ttfamily \+:"{}this"{}}.
+\end{DoxyItemize}\hypertarget{Readme.md_autotoc_md3114}{}\doxysubsection{\texorpdfstring{License}{License}}\label{Readme.md_autotoc_md3114}
+MIT 

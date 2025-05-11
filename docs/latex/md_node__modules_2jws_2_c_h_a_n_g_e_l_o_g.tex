@@ -1,0 +1,22 @@
+\chapter{Change Log}
+\hypertarget{md_node__modules_2jws_2_c_h_a_n_g_e_l_o_g}{}\label{md_node__modules_2jws_2_c_h_a_n_g_e_l_o_g}\index{Change Log@{Change Log}}
+\label{md_node__modules_2jws_2_c_h_a_n_g_e_l_o_g_autotoc_md2003}%
+\Hypertarget{md_node__modules_2jws_2_c_h_a_n_g_e_l_o_g_autotoc_md2003}%
+
+
+All notable changes to this project will be documented in this file.\hypertarget{md_node__modules_2jws_2_c_h_a_n_g_e_l_o_g_autotoc_md2004}{}\doxysection{\texorpdfstring{\mbox{[}3.\+0.\+0\mbox{]}}{\mbox{[}3.\+0.\+0\mbox{]}}}\label{md_node__modules_2jws_2_c_h_a_n_g_e_l_o_g_autotoc_md2004}
+\hypertarget{md_node__modules_2jws_2_c_h_a_n_g_e_l_o_g_autotoc_md2005}{}\doxysubsection{\texorpdfstring{Changed}{Changed}}\label{md_node__modules_2jws_2_c_h_a_n_g_e_l_o_g_autotoc_md2005}
+
+\begin{DoxyItemize}
+\item {\bfseries{BREAKING}}\+: {\ttfamily jwt.\+verify} now requires an {\ttfamily algorithm} parameter, and {\ttfamily jws.\+create\+Verify} requires an {\ttfamily algorithm} option. The {\ttfamily "{}alg"{}} field signature headers is ignored. This mitigates a critical security flaw in the library which would allow an attacker to generate signatures with arbitrary contents that would be accepted by {\ttfamily jwt.\+verify}. See \href{https://auth0.com/blog/2015/03/31/critical-vulnerabilities-in-json-web-token-libraries/}{\texttt{ https\+://auth0.\+com/blog/2015/03/31/critical-\/vulnerabilities-\/in-\/json-\/web-\/token-\/libraries/}} for details.
+\end{DoxyItemize}\hypertarget{md_node__modules_2jws_2_c_h_a_n_g_e_l_o_g_autotoc_md2006}{}\doxysection{\texorpdfstring{\href{https://github.com/brianloveswords/node-jws/compare/v1.0.1...v2.0.0}{\texttt{ 2.\+0.\+0}} -\/ 2015-\/01-\/30}{\href{https://github.com/brianloveswords/node-jws/compare/v1.0.1...v2.0.0}{\texttt{ 2.\+0.\+0}} -\/ 2015-\/01-\/30}}\label{md_node__modules_2jws_2_c_h_a_n_g_e_l_o_g_autotoc_md2006}
+\hypertarget{md_node__modules_2jws_2_c_h_a_n_g_e_l_o_g_autotoc_md2007}{}\doxysubsection{\texorpdfstring{Changed}{Changed}}\label{md_node__modules_2jws_2_c_h_a_n_g_e_l_o_g_autotoc_md2007}
+
+\begin{DoxyItemize}
+\item {\bfseries{BREAKING}}\+: Default payload encoding changed from {\ttfamily binary} to {\ttfamily utf8}. {\ttfamily utf8} is a is a more sensible default than {\ttfamily binary} because many payloads, as far as I can tell, will contain user-\/facing strings that could be in any language. ({\ttfamily \href{https://github.com/brianloveswords/node-jws/commit/6b6de48}{\texttt{ 6b6de48}}})
+\item Code reorganization, thanks \href{https://github.com/fearphage}{\texttt{ @fearphage}}! ({\ttfamily \href{https://github.com/brianloveswords/node-jws/commit/7880050}{\texttt{ 7880050}}})
+\end{DoxyItemize}\hypertarget{md_node__modules_2jws_2_c_h_a_n_g_e_l_o_g_autotoc_md2008}{}\doxysubsection{\texorpdfstring{Added}{Added}}\label{md_node__modules_2jws_2_c_h_a_n_g_e_l_o_g_autotoc_md2008}
+
+\begin{DoxyItemize}
+\item Option in all relevant methods for {\ttfamily encoding}. For those few users that might be depending on a {\ttfamily binary} encoding of the messages, this is for them. ({\ttfamily \href{https://github.com/brianloveswords/node-jws/commit/6b6de48}{\texttt{ 6b6de48}}}) 
+\end{DoxyItemize}

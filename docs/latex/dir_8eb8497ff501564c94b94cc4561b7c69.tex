@@ -1,0 +1,52 @@
+\doxysection{node\+\_\+modules/touch Directory Reference}
+\hypertarget{dir_8eb8497ff501564c94b94cc4561b7c69}{}\label{dir_8eb8497ff501564c94b94cc4561b7c69}\index{node\_modules/touch Directory Reference@{node\_modules/touch Directory Reference}}
+\doxysubsubsection*{Directories}
+\begin{DoxyCompactItemize}
+\item 
+directory \mbox{\hyperlink{dir_2178a43a3402c02f4a7bb5ecd9b0d605}{bin}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+For all your node touching needs.\hypertarget{README.md_autotoc_md3961}{}\doxysubsection{\texorpdfstring{Installing}{Installing}}\label{README.md_autotoc_md3961}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ touch}
+
+\end{DoxyCode}
+\hypertarget{README.md_autotoc_md3962}{}\doxysubsection{\texorpdfstring{CLI Usage\+:}{CLI Usage\+:}}\label{README.md_autotoc_md3962}
+See {\ttfamily man touch}
+
+This package exports a binary called {\ttfamily nodetouch} that works mostly like the unix builtin {\ttfamily touch(1)}.\hypertarget{README.md_autotoc_md3963}{}\doxysubsection{\texorpdfstring{API Usage\+:}{API Usage\+:}}\label{README.md_autotoc_md3963}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ touch\ =\ require("{}touch"{})}
+
+\end{DoxyCode}
+
+
+Gives you the following functions\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily touch(filename, options, cb)}
+\item {\ttfamily touch.\+sync(filename, options)}
+\item {\ttfamily touch.\+ftouch(fd, options, cb)}
+\item {\ttfamily touch.\+ftouch\+Sync(fd, options)}
+\end{DoxyItemize}
+
+All the {\ttfamily options} objects are optional.
+
+All the async functions return a Promise. If a callback function is provided, then it\textquotesingle{}s attached to the Promise.\hypertarget{README.md_autotoc_md3964}{}\doxysubsection{\texorpdfstring{Options}{Options}}\label{README.md_autotoc_md3964}
+
+\begin{DoxyItemize}
+\item {\ttfamily force} like {\ttfamily touch -\/f} Boolean
+\item {\ttfamily time} like {\ttfamily touch -\/t \texorpdfstring{$<$}{<}date\texorpdfstring{$>$}{>}} Can be a Date object, or any parseable Date string, or epoch ms number.
+\item {\ttfamily atime} like {\ttfamily touch -\/a} Can be either a Boolean, or a Date.
+\item {\ttfamily mtime} like {\ttfamily touch -\/m} Can be either a Boolean, or a Date.
+\item {\ttfamily ref} like {\ttfamily touch -\/r \texorpdfstring{$<$}{<}file\texorpdfstring{$>$}{>}} Must be path to a file.
+\item {\ttfamily nocreate} like {\ttfamily touch -\/c} Boolean
+\end{DoxyItemize}
+
+If neither {\ttfamily atime} nor {\ttfamily mtime} are set, then both values are set. If one of them is set, then the other is not.\hypertarget{README.md_autotoc_md3965}{}\doxysubsection{\texorpdfstring{cli}{cli}}\label{README.md_autotoc_md3965}
+This package creates a {\ttfamily nodetouch} command line executable that works very much like the unix builtin {\ttfamily touch(1)} 
