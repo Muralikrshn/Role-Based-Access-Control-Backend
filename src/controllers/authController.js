@@ -6,6 +6,8 @@ const User = require('../models/userModal');
 
 // Import jsonwebtoken for generating and verifying JWT tokens
 const jwt = require('jsonwebtoken');
+// Import logger for logging events
+const logger = require('../utils/logger');
 
 // Controller to handle user registration
 const Register = async (req, res) => {
@@ -69,6 +71,7 @@ const Login = async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: '1h' } // Token expires in 1 hour
     );
+    logger.info(`User ${username} logged in successfully`);
 
     // Respond with token and user details (excluding password)
     return res.status(200).json({
@@ -83,6 +86,7 @@ const Login = async (req, res) => {
   } catch (error) {
     // Catch and respond to any server errors
     return res.status(500).json({ message: 'Server error' });
+    logger.error(`Login error: ${error.message}`);
   }
 };
 
